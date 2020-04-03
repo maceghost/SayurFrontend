@@ -1,0 +1,184 @@
+<!-- <ion-header>
+  <ion-toolbar text-center>
+    <ion-title>Controller Modes</ion-title>
+    <mat-buttons slot="end">
+      <mat-button class="dismiss button-right" mat-button right (click) = "close()">
+        <ion-icon name="close-circle" ></ion-icon>
+      </mat-button>
+    </mat-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="controller" class="modesContainer">
+    <div class="modeContainer" *ngIf="modesExpanded">
+      <div class="modePicker" *ngFor="let mode of controller.modes">
+        <app-controller-mode [mode-data]="mode"></app-controller-mode>
+      </div>
+    </div>
+  </div>
+</ion-content> -->
+
+
+<!-- <div style = "display:flex;">
+<button  class = "close" mat-button (click) = "closeModal()">
+  <ion-icon  name="close"></ion-icon>
+</button>
+</div> -->
+<div>
+  <div style = "display:flex;width:25vw;justify-content:space-between">
+    <div style = "font-size: 4vh;padding:2vh;">
+      MODES
+    </div>
+      <button mat-button  (click) = "addMode()">
+        <ion-icon  name="add"></ion-icon>
+      </button>
+  </div>
+
+
+  <mat-card class = mode style = "margin: .5vh;width:80vw;" *ngFor = "let i of this.controller.modes">
+    <button *ngIf = 'i.user' mat-button (click) = "deletemode(i)" >
+      <ion-icon  name="trash"></ion-icon>
+    </button>
+    <div style = "margin: .5vh;display:flex;justify-content:space-between;">
+      <div style = "font-size: 3.5vh;">
+
+        <div>
+          {{i.name | uppercase}}
+
+        </div>
+        <button mat-button *ngIf = 'i.user'  (click) = "changename(i)" >
+          <ion-icon  name="create"></ion-icon>
+        </button>
+      </div>
+      <div style = "align-items:center;justify-content:space-between;display:flex;">
+
+        <button mat-button (click) = "editsp(i)" *ngIf = "i.editable">
+          <ion-icon  name="settings"></ion-icon>
+        </button>
+        <button  mat-button (click) = "exitsp(i)" *ngIf = "!i.editable">
+          <ion-icon  name="close"></ion-icon>
+        </button>
+        <button  mat-button (click) = "savesp(i)" *ngIf = "!i.editable && ((i.h_sp != null && i.h_sp != i.newhsp)
+                                                    || (i.c_sp != null && i.c_sp != i.newcsp) || (i.fan != null && i.fan != i.newfan)
+                                                    || (i.fc_only != null && i.fc_only != i.newfan) || (i.setback != null && i.setback != i.newset))">
+          <ion-icon  name="checkmark"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+
+    <div *ngIf = "i.tooclose">
+      Heating setpoint needs to be at least 2 degrees lower than Cooling.
+    </div>
+    <div *ngIf = "i.negative">
+      Can't input negative numbers
+    </div>
+
+    <div style = "width: 80vw; display:flex;flex-wrap: wrap; justify-content:space-between;">
+      <div *ngIf = "i.h_sp != null" style = "width:20vw; margin:3vh;">
+        <div style = "height:4vh;display:flex;align-items: center;justify-content:space-between;margin:.5vh;">
+          <div style = "font-size: 1.75vh;width:20vw;justify-content:center;align-items: center">
+            HEATING SETPOINT:
+
+          </div>
+          <div *ngIf = "i.editable" style = "font-size: 3vh;width:10vw;text-align:center;align-items:center">
+            {{i.h_sp}}
+
+          </div>
+          <div *ngIf = "!i.editable" style = "font-size: 3vh;width:10vw;text-align:center;align-items:center">
+            {{i.newhsp}}
+
+          </div>
+        </div>
+        <div *ngIf = "!i.editable" style = "display:flex;justify-content:space-around;margin:.5vh;">
+          <button mat-button style = "height:3vh;" (click) = "subval(i, 'heat')">
+            <ion-icon  name="remove"></ion-icon>
+          </button>
+          <button mat-button style = "height:3vh;" (click) = "addval(i, 'heat')">
+            <ion-icon  name="add"></ion-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf = "i.c_sp != null" style = "width:20vw; margin:3vh;">
+        <div style = "height:4vh;display:flex;align-items: center;justify-content:space-between;margin:.5vh;">
+          <div style = "font-size: 1.75vh;width:20vw;justify-content:center;align-items: center">
+            COOLING SETPOINT:
+
+          </div>
+          <div *ngIf = "i.editable" style = "font-size: 3vh;width:10vw;text-align:center;align-items:center">
+            {{i.c_sp}}
+
+          </div>
+          <div *ngIf = "!i.editable" style = "font-size: 3vh;width:10vw;text-align:center;align-items:center">
+            {{i.newcsp}}
+
+          </div>
+        </div>
+        <div *ngIf = "!i.editable" style = "display:flex;justify-content:space-around;margin:.5vh;">
+          <button mat-button (click) = "subval(i, 'cool')">
+            <ion-icon  name="remove"></ion-icon>
+          </button>
+          <button mat-button (click) = "addval(i, 'cool')">
+            <ion-icon  name="add"></ion-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf = "this.controller.subtype != 'follower'" style = "width:20vw;margin:3vh;">
+        <div style = "height:4vh;display:flex;align-items: center;justify-content:space-between;margin:.5vh;">
+          <div style = "font-size: 1.75vh;width:20vw;justify-content:center;align-items: center">
+            FAN MINUTES:
+
+          </div>
+          <div *ngIf = "i.editable" style = "font-size: 3vh;width:10vw;text-align:center;align-items:center">
+            {{i.fan}}
+
+          </div>
+          <div *ngIf = "!i.editable" style = "font-size: 3vh;width:10vw;text-align:center;align-items:center">
+            {{i.newfan}}
+
+          </div>
+        </div>
+        <div *ngIf = "!i.editable" style = "display:flex;justify-content:space-around;margin:.5vh;">
+          <button mat-button (click) = "subval(i, 'fan')">
+            <ion-icon  name="remove"></ion-icon>
+          </button>
+          <button mat-button (click) = "addval(i, 'fan')">
+            <ion-icon  name="add"></ion-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf = "i.setback != null && this.controller.subtype != 'follower'" style = "width:20vw;margin:3vh;display:flex;align-items: center;justify-content:space-between;">
+        <div style = "font-size: 1.75vh;width:20vw;justify-content:center;align-items: center">
+          <div>
+            SETBACK:
+          </div>
+
+        </div>
+        <div style = "width:20vw;height:4vh;display:flex;justify-content:center">
+          <ion-toggle *ngIf = "i.editable" disabled="i.editable" [(ngModel)]="i.setback"></ion-toggle>
+          <ion-toggle *ngIf = "!i.editable" [(ngModel)]="i.newset"></ion-toggle>
+
+
+        </div>
+
+      </div>
+      <div *ngIf = "i.fc_only != null && this.controller.subtype != 'follower'" style = "width:20vw;margin:3vh;display:flex;align-items: center;justify-content:space-between;">
+        <div style = "font-size: 1.75vh;width:20vw;justify-content:center;align-items: center">
+          <div>
+            FREE COOL ONLY:
+          </div>
+
+        </div>
+        <div style = "width:20vw;height:4vh;display:flex;justify-content:center">
+          <ion-toggle *ngIf = "i.editable" disabled="i.editable" [(ngModel)]="i.fc_only"></ion-toggle>
+          <ion-toggle *ngIf = "!i.editable" [(ngModel)]="i.newfc"></ion-toggle>
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </mat-card>
+
+</div>

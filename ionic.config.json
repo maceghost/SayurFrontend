@@ -1,0 +1,7 @@
+{
+  "name": "unityLocal",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

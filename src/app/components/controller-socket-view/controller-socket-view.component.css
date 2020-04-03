@@ -1,0 +1,177 @@
+.controllerExpanded {
+  overflow: hidden;
+   width: 100%;
+   height: 100%;
+   /* background-image: url(/assets/images/widgets/open/striped_bg.png);
+   background-repeat: no-repeat;
+   background-size: cover; */
+   text-align: center;
+   border-color: #9e9e9e;
+   border-style: solid;
+   border-radius: 4px;
+   padding: 4px;
+   /* background-color: #607d8b94; */
+   background-color: lightblue;
+
+}
+
+app-socketed-view {
+  height: 100%;
+}
+
+.socketGrid {
+  display:inline-flex;
+  /* flex-wrap: wrap; */
+  /* column-count: 4; */
+  width: 100%;
+
+  flex-flow: row wrap;
+  /* justify-content: space-between; */
+  /* margin-left: 4px;
+  margin-right: 4px; */
+  /* justify-content: space-between;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 4px; */
+  /* overflow-y: scroll; */
+}
+
+.socketGrid::after {
+  content: "";
+  flex: auto;
+}
+
+.socketItem {
+    display: flex;
+    flex-direction: column;
+    /* margin-left: .5vw;  */
+    flex-basis: 22%;
+    overflow: hidden;
+    border-style: solid;
+    border-radius: 2px;
+    border-width: .2vh;
+    border-color: grey;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+
+}
+
+.titlePanel {
+  flex: 0 0 19%;
+}
+.lowerPanel {
+  flex: 0 0 79%;
+  flex-direction: row;
+  display:flex;
+}
+
+.socketPanel {
+  flex: 0 0 33%;
+}
+
+.infoPanel {
+  flex: 0 0 66%;
+}
+
+.socket_unsocketed {
+
+  flex: 0 0 21%;
+  height: 14vh;
+  background-image: url(/assets/images/ctrl_socket_base_unsocketed.png);
+  background-repeat: no-repeat;
+  /* margin: 1px; */
+  background-size: contain;
+  margin: 1px;
+}
+
+.socket_socketed {
+
+  flex: 0 0 21%;
+  height: 14vh;
+  background-image: url(/assets/images/ctrl_socket_base_socketed.png);
+  background-repeat: no-repeat;
+  /* margin: 1px; */
+  background-size: contain;
+  margin: 1px;
+}
+
+.socketName {
+  margin-left: 1vw;
+  font-size: 1.5vh;
+    /* width: 100%; */
+  max-width: 9vw;
+  float: left;
+}
+
+.socketCode {
+  margin-left:1vw;
+}
+
+/* .socketItem {
+  margin-left:1vw;
+  overflow: hidden;
+} */
+
+.gridControl {
+  background-image: url(/assets/images/widgets/open/top_grey_bg_slice.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 5vh;
+  border-radius: .5vh;
+}
+
+.dropContainer  {
+  positon: absolute;
+  background-image: url(/assets/images/grey_socket_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.socketed {
+  position: relative;
+  background-image: url(/assets/images/green_socket_bg.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 7vh;
+      /* width: 6vh; */
+  left: 1.1vw;
+  top: 5.2vh;
+}
+
+.socketCount {
+  position: absolute;
+  top: 4.5vh;
+  background-color: transparent;
+  font-size: 1.5vh;
+  color: #fff;
+  float: left;
+  left: 1.3vw;
+}
+
+.ejectButton {
+  font-size: 26px;
+  position: relative;
+  float: right;
+  color: #ff9a00;
+  top: 35px;
+}
+
+.deleteButton {
+  position: relative;
+  margin-top: 1vh;
+  float: left;
+}
+
+.settingsButton {
+  position: relative;
+  margin-top: 1vh;
+  float: left;
+}
+
+.closeButton {
+  float: right;
+  max-width: 5vh;
+  font-size: 5vh;
+}

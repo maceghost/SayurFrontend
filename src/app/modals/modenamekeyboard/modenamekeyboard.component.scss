@@ -1,0 +1,223 @@
+.mat-dialog-container {
+  // width:75vw;
+  // height:75vh
+}
+// .simple-keyboard{
+//   width:75vw;
+//   height:75vh
+// }
+.keyboard_input{
+  font-size:5vh;
+}
+.settings_container {
+
+  display:flex;
+  flex-wrap: wrap;
+  flex-basis: 2;
+  width: 100%;
+  margin-top: .1vh;
+  margin-bottom: .1vh;
+  background-color: lightgrey;
+
+}
+
+app-controller-settings-item {
+    flex:1;
+    width: 50%;
+}
+
+.controller_container {
+    display: block;
+    width: 73vw;
+    border-radius: 1vh;
+    border-color:green;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0 auto 0 auto;
+    background-color: grey;
+}
+.control {
+  // margin-top: 4vh;
+  // margin-left: 1vh;
+  align-content: flex-end;
+}
+
+.settings-item {
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 2vh;
+}
+
+.controller_inner {
+  position: relative;
+  display: flex;
+  // width: 100%;
+  border-radius: 1vh;
+  border-color:green;
+  border-style: solid;
+  border-width: 1px;
+  background-color: lightgrey;
+  // margin-left: 2vw;
+  // margin-right: 2vw;
+  margin: 2vh;
+  // margin: 0 auto 0 auto;
+  // padding: 2vh;
+  width: fit-content;
+}
+
+// .info {
+//   flex:1;
+//   font-size: 3vh;
+// }
+// .titleContainer {
+//   display: flex;
+//   flex-direction: column;
+// }
+// .title {
+//   flex:2;
+// }
+.type {
+
+}
+.subtype {
+
+}
+.dstate {
+  color: black;
+}
+
+.estate {
+  color: green;
+}
+
+.icon {
+  display:flex;
+  flex:1;
+  // height: 3vh;
+  // width: auto;
+}
+
+.icon i {
+  // margin-left: 1vw;
+}
+
+.icon-inner {
+  display: flex;
+  flex-direction: column;
+  // margin: 2vw auto 2vw auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: .5vw;
+  margin-right: .5vw;
+  min-width: 64px;
+  // width: 2vw;
+}
+
+.icon-inner label {
+  color: grey;
+}
+.icon-inner:hover label {
+  color: blue;
+}
+
+.mode_buttons {
+  position: relative;
+  display: flex;
+  width: 25vh;
+  height: 3vh;
+  margin-top: 6vh;
+  margin-right: 1vh;
+}
+
+.mode_button {
+  width: 16vh;
+  border-radius: 1vh;
+  border-color: var(--ion-color-dark-shade);
+  border-style: solid;
+  border-width: 1px;
+  background-color: lightgrey;
+  font-size: 1.4vh;
+  padding: 0;
+  font-weight: 500;
+}
+
+button.mode_button.active {
+  color: #f5e406;
+  border-color: green;
+  border-width: .2vh;
+  background-color: darkgray;
+}
+
+button.close_button {
+  color:red;
+  // height: 3.7vh;
+  width: 3.7vh;
+  // margin-top: 4vh;
+  background-color: transparent;
+}
+
+// ion-icon {
+//   width: 5vh;
+//   height: 5vh;
+//   object-fit: contain;
+// }
+
+button.save_button {
+  color:blue;
+  // height: 5vh;
+  // width: 5vh;
+  background-color: transparent;
+  // margin-top: 4vh;
+  margin-left: 4vh;
+
+}
+
+i.fa.fa_save {
+  // width: 100%;
+  // height: 100%;
+  font-size: 4vh;
+  object-fit: contain;
+}
+
+.save_button:disabled, button.save_button[disabled]{
+    color:azure;
+    opacity: .4;
+    background-color: transparent;
+    margin-left: 4vh;
+
+    // background: #b3b3b3;
+}
+
+// .fa-save {
+//     font-size: 5vh;
+// }
+
+
+.dismiss-container {
+    margin-bottom: 3vh;
+    height: 2vh;
+    width: 100%;
+}
+
+.dismiss {
+  color: red;
+  background-color: transparent;
+  margin-top: 1vh;
+  margin-right: 1vh;
+  height: 100%;
+  width: 100%;
+  float: right;
+}
+
+.remove {
+  color: red;
+  background-color: transparent;
+}
+
+.setting_container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,33 @@
+
+<ion-app>
+  <ion-header *ngIf="this.auth.isAuthenticated()">
+      <ion-toolbar text-center>
+        <!-- <ion-back-button *ngIf="backButton" class="button-left" (click) = "back()"></ion-back-button> -->
+        <ion-buttons slot="start">
+          <ion-button *ngIf="this.auth.backButton" class="button-left"  color="dark" left (click) = "back()">
+            <ion-icon name="arrow-back" ></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="this.router.url != '/tabs/home'" class="button-left"  color="dark" left (click) = "home()">
+            <ion-icon name="home" ></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+        <ion-title>{{getConfigName()}}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button class="button-right" color="primary" right [disabled]="modalOpen" (click)="openModal('schedules')">
+            <i id='schedule' class='material-icons'>
+                schedule
+            </i>
+          </ion-button>
+          <!-- <ion-button class="button-right" color="primary" right [disabled]="modalOpen" (click)="openModal('settings')">
+            <ion-icon name="settings" ></ion-icon>
+          </ion-button> -->
+          <ion-button class="button-right" color="primary" right (click) = "logout()">
+            <ion-icon name="log-out" ></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+      </ion-toolbar>
+  </ion-header>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>

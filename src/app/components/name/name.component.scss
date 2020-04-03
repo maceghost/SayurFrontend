@@ -1,0 +1,17 @@
+.name-modal-css .modal-wrapper {
+    height: 65vh;
+    width: 95vh;
+    background-color: transparent;
+    border-radius: 2vh;
+    display: block;
+}
+
+.item-name {
+  // max-width: 20vh;
+  max-width: fit-content;
+  border-color: blue;
+  border-style: solid;
+  border-size: .1vh;
+  margin-left: auto;
+  margin-right: auto;
+}

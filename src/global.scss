@@ -1,0 +1,143 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.hg-button {
+  z-index: 200;
+}
+
+app-tabs {
+  margin-top: 6vh;
+}
+
+// input.keyboard_input {
+//   text-align: center;
+//   font-size: 2.5vh;
+//   line-height: 3vh;
+// }
+
+// .modal-wrapper {
+//   width:100%;
+//   height: 100%;
+//   min-width:100%;
+//   min-height: 100%;
+// }
+
+ion-backdrop {
+  width:100%;
+  height: 100%;
+  min-width:100%;
+  min-height: 100%;
+}
+
+.socketItem {
+    display: flex;
+    flex-direction: column;
+    /* margin-left: .5vw;  */
+    flex-basis: 22%;
+    overflow: hidden;
+    border-style: solid;
+    border-radius: 2px;
+    border-width: .2vh;
+    border-color: grey
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 2.4vh; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+.material-icons.md-lightish { color: rgba(208, 204, 204, 1); }
+//
+//
+// .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+// .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+//
+// .material-icons.md-light { color: rgba(255, 255, 255, 1); }
+// .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+.schedule-modal-css .modal-wrapper {
+  display: block;
+  width: 76vw;
+  height: 80vh;
+  background-color: transparent;
+  border-radius: 2vh;
+  // overflow-y: scroll;
+}
+
+.settings-modal-css .modal-wrapper {
+
+  display: block;
+  width: 76vw;
+  height: 80vh;
+  background-color: lightgrey;
+  opacity: 0.8;
+  border-radius: 2vh;
+  // overflow-y: scroll;
+}
+
+page-map-icon {
+  margin-top: 2vh;
+}
+
+app-home .ion-page {
+  top: 5px;
+}
+
+app-setup {
+  margin-left: 1vh;
+  margin-right: 1vh;
+}
+
+app-gateway .ion-page {
+  background-color: #d3d3d385;
+}
+
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  background: red;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: darkgrey;
+}
+
+::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+    background: lightblue;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: #585858;
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0px 1px 2px rgba(58, 58, 58, 0.75);
+}
+
+::-webkit-scrollbar-corner {
+    background: lightblue;
+    // background: #000;
+}

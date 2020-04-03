@@ -1,0 +1,30 @@
+ion-content {
+  margin-top: 6vh;
+}
+
+.tabLabel {
+  font-size: 2vh;
+}
+
+.tabIcon {
+  max-width: 7vh;
+}
+
+img.tabIcon {
+    max-width: 7vh;
+    max-height: 5vh;
+    margin-left: 2vh;
+    border: 0;
+}
+
+ion-icon {
+  zoom: 1.2;
+  max-height: 3vh;
+}
+
+ion-tab-bar {
+  height: 10vh;
+  // min-height: 10vh;
+  // border-color: #00000066;
+  // border-width: .1vh;
+}

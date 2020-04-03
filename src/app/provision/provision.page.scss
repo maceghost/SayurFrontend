@@ -1,0 +1,93 @@
+.logo {
+  width: 166px;
+  height: 80px;
+  margin: 20px auto 0;
+  // border-radius: 10%;
+  // background: url("../assets/img/ionic3-ico.png") no-repeat;
+  background: url('/assets/img/logo.jpeg') no-repeat;
+
+  background-size: 100%;
+}
+
+.siteSetupContainer {
+  max-width: 46vw;
+  padding-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.keyboard_input {
+  max-width: 100%;
+  height: 7vh;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 4.5vh;
+  width: fit-content;
+}
+
+#keyboardDiv {
+    width: 80vw;
+    height: 44vh;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.simple-keyboard.hg-theme-default .hg-button {
+  height: 8vh;
+}
+
+.simple-keyboard.hg-row {
+    min-height: 8vh !important;
+}
+
+div.hg-row {
+    min-height: 8vh !important;
+    padding: 2vh;
+}
+
+// .hg-button {
+//    height: 6vh;
+// }
+
+.hg-button {
+  min-height: 8vh !important;
+  min-width: 4vh !important;
+}
+
+div.hg-button.hg-standardBtn {
+  min-width: 4vh !important;
+  font-size: 4vh !important;
+  min-height: 6vh !important;
+}
+
+.text-primary {
+  font-size: 6vh;
+}
+
+.inputButton {
+    margin-left: 1vh;
+    margin-bottom: 1vh;
+    margin-right: 4vh;
+}
+
+.inputArea {
+  display:flex;
+  margin-top: 3vh;
+}
+
+button.input-button {
+    color: blue;
+}
+
+input {
+  width: 100%;
+  height: 100px;
+  padding: 4vh;
+  font-size: 4vh;
+  border: none;
+  box-sizing: border-box;
+}
+
+.simple-keyboard {
+  max-width: 80vw;
+}

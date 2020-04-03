@@ -1,0 +1,85 @@
+.container {
+  width: 68vw;
+  border-radius: 1vh;
+  border-color:green;
+  border-style: solid;
+  border-width: 1px;
+  // background-color: lightgrey;
+  background-color: rgba(211,211,211,0.52);
+  margin: 0 auto 2vh auto;
+}
+
+.titleContainer {
+  border-radius: .5vh;
+  border-color:green;
+  border-style: solid;
+  border-width: 1px;
+  min-height: 4vh;
+  margin-top: .1vh;
+  margin-bottom: .1vh;
+}
+
+.modeTitle {
+  width: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  // border-radius: .5vh;
+  // border-color:green;
+  // border-style: solid;
+  // border-width: 1px;
+  // min-height: 4vh;
+  // margin-top: .1vh;
+  // margin-bottom: .1vh;
+}
+
+h3 {
+    padding-top: 1.5vh;
+}
+
+.modeValues {
+   display:flex;
+   min-height: 9vh;
+}
+
+.modeValue {
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  border-radius: 1vh;
+  border-color:green;
+  border-style: solid;
+  border-width: 1px;
+  margin: .5vw;
+  // max-width: 120px;
+}
+.modeName {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1vh;
+  font-size: 2vh;
+  flex: 1;
+}
+
+.modeSetting {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2.5vh;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex: 1;
+  color: green;
+}
+
+.toggleButton {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1vh;
+  font-size: 3vh;
+}
+
+.toggleButton.off {
+  color: grey;
+}
+.toggleButton.on {
+  color: green;
+}

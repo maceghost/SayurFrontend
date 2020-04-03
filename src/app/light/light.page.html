@@ -1,0 +1,234 @@
+
+<ion-content *ngIf="this.light" [ngClass]="{modalopen:this.modalopen,modalclosed:!this.modalopen}">
+
+  <ion-card class="detail">
+    <button id='display' class="button-left" color="primary" left [ngClass]="{ 'active' : ( 0 == getDisplayType() ) }" (click)="selectView(0)">
+      <i class='material-icons'>
+          perm_device_information
+      </i>
+    </button>
+    <button id='schedules' class="button-left" color="primary" left [ngClass]="{ 'active' : ( 1 == getDisplayType() ) }" (click)="selectView(1)">
+      <i class='material-icons'>
+          schedule
+      </i>
+    </button>
+    <button id='settings' class="button-left" color="primary" left [ngClass]="{ 'active' : ( 2 == getDisplayType() ) }" (click)="selectView(2)">
+      <i class='material-icons'>
+          settings
+      </i>
+    </button>
+    <!-- <button id="modes" class="button-left" [ngClass]="{ 'active' : ( 3 == getDisplayType() ) }" (click)="selectView(3)">
+      <i class='material-icons'>
+          grid_on
+      </i>
+    </button> -->
+    <button id="history" class="button-left" [ngClass]="{ 'active' : ( 4 == getDisplayType() ) }" (click)="selectView(4)">
+      <i class='material-icons'>
+          history
+      </i>
+    </button>
+    <ion-title style = "color:black">
+      {{this.light.name | uppercase}}
+      <div style = "font-size: 2vh;">
+        {{this.light.type | uppercase }} - {{this.light.subtype | uppercase}}
+        </div>
+
+    </ion-title>
+
+    <div class="grid" [ngSwitch]="getDisplayType()">
+      <ng-container *ngSwitchCase="0">
+        <div style="width:40vw;margin-bottom:7vh;" *ngIf = 'this.light.status'>
+
+          <div *ngIf = "this.light.status" class = "lgtitle">
+
+            <div>
+              OVERRIDE CONTROL
+            </div>
+          </div>
+          <div style = "margin-bottom:5%;height:4vh;display:flex;justify-content:flex-end;font-size:2vh;font-weight:bold;color:orange;"*ngIf = "this.light.status && this.light.status.ov">
+            <div style = "margin-right:5%">
+            OVERRIDE ACTIVE
+            </div>
+            <button style = "height:2vh; width:2vh;" ion-button (click) = "quitov()">
+              <ion-icon  name="close"></ion-icon>
+            </button>
+          </div>
+
+          <div *ngIf = "this.light.status && !this.light.status.dimmable">
+            <div style="display:flex;justify-content:center">
+              <ion-toggle  (ngModelChange)="toggle()"[(ngModel)]="this.light.status.levelbool"></ion-toggle>
+            </div>
+          </div>
+          <div *ngIf = "this.light.status && this.light.status.dimmable">
+            <div style = "display:flex;justify-content:center">
+
+            <!-- <div style = "height:8vh;width:80vw;display:flex;justify-content:center"> -->
+            <!-- <div *ngIf = "this.light.settings.override_level"> -->
+              <ion-range min="0" [max]="this.light.settings.override_level" (mouseup)="range()"
+           (touchend)="range()" [(ngModel)]="this.light.status.level">
+              </ion-range>
+            <!-- </div> -->
+            </div>
+
+
+
+          </div>
+          <div style = "display:flex;align-items:center;height:7vh;" >
+            <div style = "display:flex;align-items:center;font-size:2vh;margin:5%">
+
+              <div>
+                UNITY LIGHT LEVEL:
+
+              </div>
+            </div>
+            <div *ngIf = "this.light.status" style = "display:flex;align-items:center;font-size:3vh;margin:5%">
+              {{this.light.status.level}}
+            </div>
+            <div *ngIf = "!this.light.status" style = "display:flex;align-items:center;font-size:3vh;margin:5%">
+              --
+            </div>
+
+
+          </div>
+        </div>
+        <div class = "panel">
+          <div class = "lgtitle">
+
+            <div>
+              STATE
+            </div>
+          </div>
+          <div *ngIf = 'this.light.status' class = "lgstate">
+              <div *ngIf = "this.light.status.level == 0">
+                OFF
+              </div>
+              <div *ngIf = "this.light.status.level > 0">
+                ON
+              </div>
+
+
+          </div>
+          <div *ngIf = '!this.light.status' class = "lgstate">
+              DISABLED
+
+
+          </div>
+        </div>
+        <div class = "panel">
+
+          <div *ngIf = "this.light.status && !this.light.status.ov">
+            <div class = "smtitle">
+
+              <div>
+                TIME IN CYCLE
+
+              </div>
+            </div>
+
+            <div class = "smstate">
+              {{this.light.status.dur}}
+
+            </div>
+          </div>
+          <div *ngIf = "this.light.status && this.light.status.ov">
+            <div class = "smtitle">
+
+              <div>
+                OVERRIDE TIME REMAINING
+
+              </div>
+            </div>
+
+            <div class = "smstate">
+              {{this.light.status.ov.r}}
+
+            </div>
+          </div>
+        </div>
+        <div class = "panel" *ngIf = 'this.light.status'>
+
+          <div class = "smtitle">
+
+            <div>
+              LIGHT METER LEVEL
+
+            </div>
+          </div>
+
+          <div class = "lgstate">
+            <div *ngIf = "this.light.status.lm">
+              {{this.light.status.lm}}
+
+            </div>
+            <div *ngIf = "!this.light.status.lm">
+              --
+
+            </div>
+
+          </div>
+        </div>
+        <div class = "panel" *ngIf = 'this.light.status'>
+
+          <div class = "smtitle">
+
+            <div>
+              CIRCUITS FILLED
+
+            </div>
+          </div>
+
+          <div class = "smstate">
+              {{this.light.status.sockets.used}} / {{this.light.status.sockets.num}}
+          </div>
+        </div>
+
+
+
+
+      </ng-container>
+
+      <ng-container *ngSwitchCase="1">
+      <div class="schedules_container">
+        <app-controller-schedules [controller]="this.light"></app-controller-schedules>
+      </div>
+      </ng-container>
+
+      <div  *ngSwitchCase="2">
+      <app-controller-settings [controller]="light"></app-controller-settings>
+
+      <!-- <div *ngIf="!selectedSetting">
+        <div class="settings_container">
+              <div *ngFor="let item of settings; let idx = index;">
+                <app-controller-settings-item #settingsItem [parent]="this" [setting]="item" [index]="idx"></app-controller-settings-item>
+              </div>
+        </div>
+      </div> -->
+      <!-- <div class="settings_container" *ngIf="selectedSetting">
+          <div class="control">
+            <button class="close_button" ion-button (click) = "closeSelected()">
+              <i  name="close-circle"></i>
+            </button>
+            <button [disabled]="!selectedSetting.touched" class="save_button">
+              <i  name="save" (click)="saveSetting()"></i>
+
+            </button>
+          </div>
+          <div class = "settings-item">
+            <app-controller-settings-item [parent]="this" [setting]="selectedSetting" [index]="selectedIndex"></app-controller-settings-item>
+          </div>
+      </div> -->
+
+      </div>
+      <!-- <ng-container *ngSwitchCase="3">
+
+      </ng-container> -->
+
+      <div  style = "width:100vw"*ngSwitchCase="4">
+        <app-history [controller]="light"></app-history>
+      <!-- <canvas style = "height: 100%; width: 100%" #graphCanvas></canvas> -->
+      </div>
+    </div>
+
+
+  </ion-card>
+</ion-content>

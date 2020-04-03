@@ -1,0 +1,4 @@
+<div #container *ngIf="initialized" class="day">
+    <div class="dayName">{{getDayName()}}:</div>
+    <label #time class="dayTime" [ngClass]="{'touched' : (touched) }">{{data}}</label>
+</div>

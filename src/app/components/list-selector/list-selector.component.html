@@ -1,0 +1,8 @@
+<!-- <mat-dialog-content> -->
+<div class = "myclass">
+<mat-nav-list style = "overflow: auto;height:70vh;position:fixed">
+  <button class="listitem"[class.disabled]="isOnMap(i)" [disabled]="isOnMap(i)" *ngFor = "let i of this.list"mat-list-item (click)="add(i)"> {{i.name | uppercase}} </button>
+  <!-- <button mat-list-item (click)="undo()"> Undo </button> -->
+</mat-nav-list>
+</div>
+<!-- </mat-dialog-content> -->

@@ -1,0 +1,57 @@
+<ion-content class="main-view">
+  <div class="overlay"></div>
+
+
+  <div class="modal_content" scrollY="true"style="color:white;">
+    <!-- <div style = display:flex">
+      <div style = "display:flex;">
+        <div class="lgtitle">
+          {{this.hvac.name}}
+        </div>
+      </div> -->
+      <div style = "display:flex;justify-content:flex-end;">
+        <div style = "display:flex;">
+          <button style = "height:4vh;color:black;background-color: #db4141" ion-button (click) = "closeModal()">
+            <ion-icon  name="close"></ion-icon>
+          </button>
+          <button style = "height:4vh;color:black;background-color: lightgreen" ion-button (click) = "savesp()">
+            <ion-icon  name="checkmark"></ion-icon>
+          </button>
+        </div>
+      </div>
+    <!-- </div> -->
+    <div class = "hvacheader" >
+      <div class="lgtitle">
+        {{this.hvac.capname}}
+      </div>
+      <div class="type">
+        {{this.type}}
+      </div>
+    </div>
+    <div style = "display:flex;justify-content:center">
+      <div class = number style = display:flex;justify-content:space-around;width:10vh;height:10vh;font-size:5vh;align-items:center;>
+        <div *ngIf = "this.type == 'HEATING'">
+          <!-- what? -->
+          {{this.newhsp}}
+        </div>
+        <div *ngIf = "this.type == 'COOLING'">
+          <!-- where? -->
+          {{this.newcsp}}
+        </div>
+      </div>
+    </div>
+    <div style = "display:flex;justify-content:center">
+
+      <div class = edit style = display:flex;justify-content:space-between;>
+        <button  ion-button style = "height:4vh;" (click) = "subtractclick()">
+          <ion-icon  name="remove"></ion-icon>
+        </button>
+        <button  ion-button style = "height:4vh;" (click) = "addclick()">
+          <ion-icon  name="add"></ion-icon>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</ion-content>

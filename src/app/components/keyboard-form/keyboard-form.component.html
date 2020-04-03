@@ -1,0 +1,11 @@
+<ion-content class="ion-keyboard">
+	<div class="keyboard-container" style="text-align:center">
+		<ng-container *ngIf="type">
+			<input (input)="onInputChange($event)" type="{{type}}" class="keyboard_input" value={{value}} placeholder="{{placeholder}}" />
+		</ng-container>
+		<ng-container *ngIf="!type">
+			<input (input)="onInputChange($event)" class="keyboard_input" value={{value}} placeholder="{{placeholder}}" />
+		</ng-container>
+		<div id="keyboardDiv" #keyboardDiv class="simple-keyboard-main"></div>
+	</div>
+</ion-content>

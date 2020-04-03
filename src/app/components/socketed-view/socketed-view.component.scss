@@ -1,0 +1,26 @@
+.socketedView {
+   display: inline-flex;
+   flex-direction: column;
+   /* background-image: url(/assets/images/socket_bg_nu.png);
+   background-repeat: no-repeat;
+   background-size: cover; */
+   max-height: 100%;
+   width: 100%;
+}
+
+.socket_image {
+  /* flex: 1; */
+  padding-top: 4px;
+  flex-basis: 48%;
+}
+
+.socket_image img {
+    max-width: 23px;
+}
+
+.socket_count {
+  /* flex: 1; */
+  padding-top: 4px;
+  flex-basis: 48%;
+  color: white;
+}

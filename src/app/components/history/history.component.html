@@ -1,0 +1,26 @@
+<!-- <div style = "display:flex;justify-content:space-around"> -->
+  <mat-form-field style = "margin:2vh;width:15vw">
+    <mat-label>Scale (Hrs):</mat-label>
+    <mat-select [(value)]="selected" (selectionChange)="changeTimeScale($event.value)">
+    <mat-option value="24">24</mat-option>
+    <mat-option value="6">6</mat-option>
+    <mat-option value="1">1</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div style = "display:flex;justify-content:space-between;width:15vw;margin:1vh">
+  <button style = "height:4vh; width:4vh;" ion-button (click) = "shift('left')">
+    <ion-icon  name="arrow-dropleft"></ion-icon>
+  </button>
+  <button style = "height:4vh; width:4vh;" ion-button (click) = "shift('right')">
+    <ion-icon  name="arrow-dropright"></ion-icon>
+  </button>
+  </div>
+
+  <!-- </div> -->
+  <div class = 'mainload '*ngIf = this.loading>
+    <ion-spinner color = 'light'></ion-spinner>
+    </div>
+  <div [hidden]="this.loading" class="chart-container" style="height:80vh;max-height:80vh; max-width:95vw">
+
+<canvas  #graphCanvas></canvas>
+</div>

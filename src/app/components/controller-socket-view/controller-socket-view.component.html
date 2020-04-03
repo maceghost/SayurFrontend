@@ -1,0 +1,64 @@
+<!-- <ion-card> -->
+<div class="controllerExpanded">
+  <p>
+    {{controller.name}}
+  </p>
+  <div class="gridControl">
+    <i class="deleteButton material-icons md-32 md-lightish" (click)="trashController(controller)">delete</i>
+    <i class="settingsButton material-icons md-32 md-lightish" (click)="loadStatus(controller)">settings</i>
+    <i class="closeButton material-icons md-32 md-lightish" (click)="closeController()">arrow_drop_up_circle</i>
+    <!-- <button class="expand" ion-button right small color="dark" (click)="closeController()">
+      <ion-icon name="arrow-dropup"></ion-icon>
+    </button> -->
+
+
+  </div>
+  <div class="socketGrid">
+
+    <ng-container *ngFor="let socket of controller.sockets; let idx = index" fxFlex="50">
+      <div class="socketItem">
+        <div class="titlePanel">
+          <div class="socketName">{{socket.name}}</div>
+        </div>
+        <div class="lowerPanel">
+          <!-- <cdk-drop #listOne [connectedTo]="[listTwo]" class="list-sorted" [data]="items2">
+            <div *ngFor="let item of items2" cdkDrag class="list-sorted__item">{{item}}</div>
+          </cdk-drop> -->
+
+          <!-- cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="item"
+          (cdkDropListDropped)="drop($event)" -->
+          <!-- cdkDragHandle -->
+          <!-- [dndAllowExternal]="true" -->
+          <div class="socketPanel"
+            dndDropzone
+            [dndEffectAllowed]="effectAllowed"
+            (dndDragover)="onDragover($event)"
+            (dndDrop)="onDrop($event, socket)"
+            id="{{socket.code}}">
+            <app-socketed-view #socketItem [item]="socket.item"></app-socketed-view>
+          </div>
+
+          <!-- <div class="socketPanel" cdkDrop (cdkDropDropped)="dropped($event)" [cdkDropData]="item" >
+            <app-socketed-view  [count]="2" cdkDragHandle></app-socketed-view>
+          </div> -->
+          <div class="infoPanel">
+            <!-- <app-socketed-view></app-socketed-view> -->
+          <!-- <p class="socketCount">{{socketCount(item)}}</p> -->
+            <i *ngIf="socketCount(socket) > 0" class="ejectButton material-icons md-24 md-lightish" (click)="ejectSocket(socket)">eject</i>
+          </div>
+          <!-- <div *ngIf="!socketed(socket)" class="socket_unsocketed">
+            <p class="socketCount">{{socketCount(item)}}</p>
+          </div>
+          <div *ngIf="socketed(socket)" class="socket_socketed">
+              <div class="socketName">{{socket.name}}</div>
+              <p class="socketCount">{{socketCount(item)}}</p>
+          </div> -->
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</div>
+<!-- </ion-card> -->

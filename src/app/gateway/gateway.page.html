@@ -1,0 +1,122 @@
+<ion-content>
+  <div id="gatewayPanelContainer">
+    <ion-radio-group class="radio_group">
+      <ion-item class="radio_selection">
+        <ion-label>Radios</ion-label>
+        <ion-radio class="radioLeft" value="'1'" (click)="setShowingValue(1)" [checked]="showing == '1'"></ion-radio>
+      </ion-item>
+      <ion-item class="radio_selection">
+        <ion-label>Modbus Devices</ion-label>
+        <ion-radio class="radioRight" value="'2'" (click)="setShowingValue(2)" [checked]="showing == '2'"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <ng-container class="container" *ngIf="showing == '2'">
+      <table *ngIf="ts" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Radio</th>
+            <th>Device Code</th>
+            <th>Actual Slave ID</th>
+            <th>Translated Slave ID</th>
+          </tr>
+        </thead>
+         <!-- | orderBy:'translatedId' -->
+        <tbody>
+          <tr *ngFor="let t of ts">
+            <td>{{t.address}}</td>
+            <td>{{t.code}}</td>
+            <td>{{t.actualId}}</td>
+            <td>{{t.translatedId}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+
+
+    <ng-container class="container" id="gatewayPanelContainer" *ngIf="showing == '1'">
+      <p class="buttonContainer">
+        <button ng-class="{disabled:isDiscovering}" (click)="discover()" class="btn btn-default left-button">
+          <i class="fa fa-map-marker" aria-hidden="true"></i> Discover
+        </button>
+        <button class="btn btn-default middle-button" (click)="reload()">
+          <i class="icon-refresh"></i> Refresh
+        </button>
+        <button ng-class="{disabled:isDiscovering}" (click)="clear()" class="btn btn-danger right-button">
+          <i class="icon-ban-circle icon-white"></i> Clear
+        </button>
+      </p>
+      <div class="search">
+        <label>Filter: </label><input class="search-query" type="text" value="" [(ngModel)]="searchText">
+      </div>
+      <table ng-show="radios" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Address</th>
+            <th>Devices</th>
+            <!-- <th>Route</th>
+            <th>Route Changes</th>
+            <th>Successes</th>
+            <th>Failures</th> -->
+            <th>Configured?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of radios">
+            <td>{{r.address64}}</td>
+            <td>
+              <div *ngIf="r.supportsDevices">
+                <div [ngClass]="{'input-append':r.devicesChanged}">
+                <input class="input-small" type="text" (ngModelChange)="onDevicesChange(r)" [(ngModel)]="r.displayDevices">
+                <button *ngIf="r.devicesChanged" (click)="saveDevices(r)" class="btn btn-medium checkButton" href="#">
+                  <!-- <i class="icon-ok"></i> -->
+                  <i class="fa fa-check" aria-hidden="true"></i>
+
+                </button>
+                <button *ngIf="r.devicesChanged" (click)="cancelDevicesChange(r)" class="btn btn-medium checkButton" href="#">
+                  <!-- <i class="icon-remove"></i> -->
+                  <i class="fa fa-remove" aria-hidden="true"></i>
+
+                </button>
+                </div>
+              </div>
+              <div *ngIf="!r.supportsDevices">
+                {{r.device_type}}
+              </div>
+            </td>
+            <!-- <td>
+              <div *ngIf="!r.editingRoute">
+                <span>{{routeDesc(r)}}</span>
+                <button class="btn btn-medium" (click)="editRoute(r)" href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+              </div>
+              <ng-container *ngIf="r.editingRoute">
+                <div [ngClass]="input-append">
+                  <textarea rows="8"  [(ngModel)]="r.displayRoute"></textarea>
+                  <button (click)="saveRoute(r)" class="btn btn-medium" href="#"><i class="icon-ok"></i></button>
+                  <button type="button" (click)="cancelEditRoute(r)" class="btn btn-medium" href="#"><i class="icon-remove"></i></button>
+                  <button type="button" (click)="clearRoute(r)" class="btn btn-medium btn-danger" href="#"><i class="icon-ban-circle"></i></button>
+                </div>
+              </ng-container>
+            </td> -->
+
+            <!-- <td>{{r.routes}}</td>
+            <td>{{r.acks}}</td>
+            <td>{{r.ack_fails}}</td> -->
+            <!-- <td>
+              <span ng-show="r.progress != null">{{r.progress}}</span>
+              <i ng-show="isConfigured(r)" class="icon-ok icon-green"></i>
+            </td> -->
+            <td>
+              <!-- <span *ngIf="!isConfigured(r)"> </span> -->
+              <!-- <i ng-show="isConfigured(r)" class="icon-ok icon-green"></i> -->
+              <i *ngIf="isConfigured(r)" class="fa fa-check green" aria-hidden="true"></i>
+            </td>
+            <!-- <td>{{r.configured}}</td> -->
+
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+</ion-content>

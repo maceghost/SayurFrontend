@@ -1,0 +1,67 @@
+<!-- <ion-header>
+  <ion-toolbar text-center>
+    <ion-title>Controller Schedules</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="dismiss button-right" ion-button right (click) = "close()">
+        <ion-icon name="close-circle" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content> -->
+
+<!-- <ion-content>
+  <ion-title>Controller Schedules</ion-title> -->
+<div class="controller_schedules">
+  <ion-title>Controller Schedules</ion-title>
+  <div *ngIf="controller">
+    <div class="controller_container">
+      <span class="controller_inner">
+        <button [ngClass]="{ 'active' : ( scheduleMode() == 'on' ) }" class="mode_button" (click)="setScheduleMode('on')">Always On</button>
+        <button [ngClass]="{ 'active' : ( scheduleMode() == 'off' ) }" class="mode_button" (click)="setScheduleMode('off')">Always Off</button>
+        <button [ngClass]="{ 'active' : ( scheduleMode() == 'scheduled' ) }" class="mode_button" (click)="setScheduleMode('scheduled')">Scheduled</button>
+        <!-- <div class="info titleContainer">
+          <div class="title"> {{controller.name}}</div>
+          <div class="control">
+            <button [disabled]="!dirty" class="save_button">
+              <i class="fa fa-save" (click)="saveController()"></i>
+            </button>
+          </div>
+        </div>
+        <p class="info type"> type: {{controller.type}}</p>
+        <p class="info subtype"> subtype: {{controller.subtype}}</p>
+        <p *ngIf="controller.enabled" class="info estate">Enabled</p>
+        <p *ngIf="!controller.enabled" class="info dstate">Disabled</p>
+        <span class="mode_buttons">
+          <button [ngClass]="{ 'active' : ( scheduleMode() == 'on' ) }" class="mode_button" (click)="setScheduleMode('on')">Always On</button>
+          <button [ngClass]="{ 'active' : ( scheduleMode() == 'off' ) }" class="mode_button" (click)="setScheduleMode('off')">Always Off</button>
+          <button [ngClass]="{ 'active' : ( scheduleMode() == 'scheduled' ) }" class="mode_button" (click)="setScheduleMode('scheduled')">Scheduled</button>
+        </span> -->
+      </span>
+      <ng-container *ngIf="scheduled()">
+          <div class="assign_container" *ngFor="let schedule of schedules; let idx = index;">
+            <div *ngIf = "this.controller.type == 'light'">
+              <app-assign-light-schedule #scheduleAction [action] = "this.getActionForSchedule(schedule)"[parent]="this" [schedule]="schedule" [controller]="controller"></app-assign-light-schedule>
+
+            </div>
+            <div *ngIf = "this.controller.type != 'light'">
+              <app-assign-schedule #scheduleAction [action] = "this.getActionForSchedule(schedule)"[parent]="this" [schedule]="schedule" [controller]="controller"></app-assign-schedule>
+
+            </div>
+          </div>
+      </ng-container>
+      <ng-container *ngIf="scheduleMode() != 'scheduled'">
+          <div *ngIf="this.controller.status" style = "display:flex;justify-content:center;margin:4vh;font-size:4vh;color:white">
+            Current Mode: {{this.controller.status.sched.mode_name}}
+          </div>
+          <div *ngIf="!this.controller.status" style = "display:flex;justify-content:center;margin:4vh;font-size:4vh;color:white">
+            Current Mode: Disabled
+          </div>
+      </ng-container>
+
+
+
+    </div>
+  </div>
+</div>
+<!-- </ion-content> -->

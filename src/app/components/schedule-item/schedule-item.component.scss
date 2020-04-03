@@ -1,0 +1,54 @@
+.day {
+  display:flex;
+  flex-direction: column;
+  border-radius: 1vh;
+  border-color: grey;
+  border-style: solid;
+  border-width: 1px;
+  min-width:  4vw;
+  min-height: 4vh;
+  flex:1;
+}
+
+button {
+  position: relative;
+  background-color: transparent;
+  border:none;
+  margin-top: .1vh;
+  margin-bottom: .1vh;
+}
+
+button i {
+  max-width: 1vw;
+}
+
+.dayName {
+   font-size:2vh;
+   width: 60%;
+   margin-top: 1vh;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.dayTime {
+  color: darkgrey;
+  width: 98%;
+  background-color: transparent;
+  min-width: 70px;
+  text-align: center;
+  padding: 0;
+  /* margin: .5vh; */
+  font-size: 2.0vh;
+  margin-left:0;
+  margin-right:0;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.dayTime.touched {
+  color: green;
+}
+
+.dayTime .editing {
+  background-color: white;
+}

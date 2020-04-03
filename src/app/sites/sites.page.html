@@ -1,0 +1,332 @@
+<!-- <md-toolbar md-scroll-shrink="true">
+
+        <div class="md-toolbar-tools">
+          <span>Long title of the page </span>
+          <md-menu>
+            <md-button class="md-icon-button" aria-label="More Tools" ng-click="$mdOpenMenu()">
+              <md-icon md-menu-origin md-font-library="material-icons">more_vert</md-icon>
+              <md-tooltip md-direction="bottom">
+                More Tools
+              </md-tooltip>
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button aria-label="Availability">
+                  <md-icon md-font-library="material-icons">timeline</md-icon>
+                  <span>Timeline</span>
+                </md-button>
+              </md-menu-item>
+
+            </md-menu-content>
+          </md-menu>
+
+        </div>
+
+        <div class="md-toolbar-tools hide">
+          <md-button class="md-icon-button hide-gt-md" ng-click="toggleSidenav('left')" aria-label="Toggle Menu">
+            <md-icon md-font-library="material-icons">menu</md-icon>
+            <md-tooltip md-direction="bottom">
+              Navigation
+            </md-tooltip>
+          </md-button>
+          <span>Long title of the page</span>
+          <span flex></span>
+
+          <md-menu>
+            <md-button class="md-icon-button" aria-label="More Tools" ng-click="$mdOpenMenu()">
+              <md-icon md-menu-origin md-font-library="material-icons">more_vert</md-icon>
+              <md-tooltip md-direction="left">
+                More Tools
+              </md-tooltip>
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button aria-label="Availability">
+                  <md-icon md-font-library="material-icons">timeline</md-icon>
+                  <span>Availability</span>
+                </md-button>
+              </md-menu-item>
+
+            </md-menu-content>
+          </md-menu>
+
+
+        </div>
+
+      </md-toolbar> -->
+
+
+<!-- <ion-content>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Custom Toolbar</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</ion-content> -->
+<mat-toolbar class="flexSpaceBetween">
+  <!-- <div style = "display:flex;justify-content:space-between" -->
+  <span class="flexExpand" >UESG</span>
+
+  <div class = "filter">
+    <button (click) = "this.filterclick = !this.filterclick" style = "position:absolute;width:100%;display:flex;justify-content:space-between">
+      <mat-icon>home</mat-icon>
+
+      <span>
+        <h1>
+          {{this.filter}}
+        </h1>
+      </span>
+
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <div *ngIf = 'this.filterclick' class ='filterdrop'>
+      <input>
+      <div>
+        Views
+        </div>
+        <a>
+          <mat-icon>home</mat-icon>
+          <span>Sites</span>
+          </a>
+
+    </div>
+
+  </div>
+  <div class = "filter">
+    </div>
+    <div class ="flexExpand">
+      </div>
+    <div class = "filter">
+      </div>
+      <div class = "filter">
+        </div>
+
+
+
+</mat-toolbar>
+<ion-header [ngClass]="{modalopen:this.modalopen,modalclosed:!this.modalopen}">
+
+  <ion-toolbar >
+    <div style = "display:flex;justify-content:flex-end; align-items:center">
+      <div>
+    <ion-searchbar #searchbar *ngIf = "searchOpen" [(ngModel)]="terms" showCancelButton="true" (ionCancel)="searchOpen=false"></ion-searchbar>
+    </div>
+    <div>
+    <ion-buttons>
+      <button ion-button icon-only *ngIf = "!searchOpen"  (click) = "anyMethodName()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+
+
+    </ion-buttons>
+    </div>
+    <div class = "show" style = "display:flex">
+
+    <ion-segment [(ngModel)]="type">
+      <ion-label>Show:</ion-label>
+      <ion-segment-button (click) = "typeClick()"value = "hvac">
+        HVAC
+      </ion-segment-button>
+      <ion-segment-button (click) = "typeClick()"value = "freezer">
+        Coolers
+      </ion-segment-button>
+      <ion-segment-button (click) = "typeClick()"value = "light">
+        Lighting
+      </ion-segment-button>
+    </ion-segment>
+    <!-- <ion-item>
+      <ion-label>Show:</ion-label>
+      <ion-select [(ngModel)]="type" okText="Okay" cancelText="Dismiss">
+        <ion-option value="hvac">HVACs</ion-option>
+        <ion-option value="freezer">Coolers</ion-option>
+        <ion-option value="light">Lighting</ion-option>
+      </ion-select>
+    </ion-item> -->
+    </div>
+    <!-- <div style = 'hvacfilter' *ngIf = "this.type == 'hvac'" >
+      <ion-segment >
+        <ion-segment-button *ngFor="let hvacFilter of hvacFilters" (click)="specialClick(hvacFilter.filter)" value="hvacFilter.value">
+          {{hvacFilter.text}}
+        </ion-segment-button>
+
+      </ion-segment>
+
+    </div> -->
+    <div class = 'hvacfilter' *ngIf = "this.type == 'hvac'" >
+      <ion-segment [(ngModel)]="colorfilter">
+        <ion-label>Filter:</ion-label>
+        <ion-segment-button (click)="specialClick('all')" value="all">
+          All
+        </ion-segment-button>
+        <ion-segment-button (click)="specialClick('lightgreen')" value="lightgreen">
+          Green
+        </ion-segment-button>
+        <ion-segment-button (click)="specialClick('#FEFE83')" value="yellow">
+          Yellow
+        </ion-segment-button>
+        <ion-segment-button (click)="specialClick('#F45151')" value="red">
+          Red
+        </ion-segment-button>
+        <ion-segment-button style="display:flex;align-items:center;justify-content:center"(click)="specialClick('offline')" value="offline">
+          <img style="max-height:75%;max-width:75%"src="assets/img/icons8-offline-100.png"/>
+
+        </ion-segment-button>
+
+
+      </ion-segment>
+
+    </div>
+    <div class = 'hvacfilter' *ngIf = "this.type == 'freezer'" >
+      <ion-segment [(ngModel)]="colorfilter">
+        <ion-label>Filter:</ion-label>
+        <ion-segment-button (click)="specialClick('all')" value="all">
+          All
+        </ion-segment-button>
+        <ion-segment-button (click)="specialClick('lightblue')" value="lightblue">
+          Blue
+        </ion-segment-button>
+        <ion-segment-button (click)="specialClick('orange')" value="orange">
+          Orange
+        </ion-segment-button>
+
+        <ion-segment-button style="display:flex;align-items:center;justify-content:center"(click)="specialClick('offline')" value="offline">
+          <img style="max-height:75%;max-width:75%"src="assets/img/icons8-offline-100.png"/>
+
+        </ion-segment-button>
+
+
+      </ion-segment>
+
+    </div>
+    <div>
+    <ion-title *ngIf = 'this.auth.client'>{{this.auth.client.name}}</ion-title>
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+  </ion-toolbar>
+  <!-- <ion-navbar hideBackButton = true>
+    <ion-buttons left>
+      <button class = "back" ion-button navPop>
+        <ion-icon  name="arrow-back"></ion-icon>
+      </button>
+
+    </ion-buttons>
+    <ion-title *ngIf = 'this.auth.client'>{{this.auth.client.name}}</ion-title>
+    <ion-buttons end>
+      <button class = "signout" ion-button (click) = "logout()">
+        SIGN OUT
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar> -->
+
+
+  <!-- <ion-toolbar>
+    <ion-searchbar #searchbar *ngIf = "searchOpen" [(ngModel)]="terms" showCancelButton="true" (ionCancel)="searchOpen=false"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf = "!searchOpen"  (click) = "anyMethodName()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      </ion-buttons>
+  </ion-toolbar> -->
+</ion-header>
+
+<!-- <ion-header [ngClass]="{modalopen:this.modalopen,modalclosed:!this.modalopen}">
+
+
+  <ion-toolbar>
+    <div *ngIf = "this.type != 'light'" class = "header">
+
+      <div class = "segments">
+        <ion-segment [(ngModel)]="type">
+          <ion-segment-button (click) = "typeClick()"value = "hvac">
+            HVAC
+          </ion-segment-button>
+          <ion-segment-button (click) = "typeClick()"value = "freezer">
+            Coolers
+          </ion-segment-button>
+          <ion-segment-button (click) = "typeClick()"value = "light">
+            Lighting
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      <div *ngIf = "this.type == 'hvac'" class = "hvacfilters" style = "display:flex; justify-content:space-around;align-items:center;">
+
+        <button *ngFor="let hvacFilter of hvacFilters" (click)="specialClick(hvacFilter.filter)" value="hvacFilter.value"  [ngClass]="getSelectedClass(hvacFilter)">
+            {{hvacFilter.text}}
+            <img *ngIf="hvacFilter.image" src="{{hvacFilter.image}}"/>
+        </button>
+
+
+      </div>
+      <div *ngIf = "this.type == 'freezer'" class = "hvacfilters" style = "display:flex; justify-content:space-around;align-items:center;">
+        <button *ngFor="let freezer of freezerFilters" (click)="specialClick(freezer.filter)" value="freezer.value"  [ngClass]="getSelectedClass(freezer)">
+            {{freezer.text}}
+            <img *ngIf="freezer.image" src="{{freezer.image}}"/>
+        </button>
+
+
+      </div>
+
+
+      <div class = "search">
+        <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+
+      </div>
+
+    </div>
+    <div *ngIf = "this.type == 'light'" class = "lightheader">
+
+      <div class = "segments">
+        <ion-segment [(ngModel)]="this.type" >
+          <ion-segment-button (click) = "typeClick()" value = "hvac">
+            HVAC
+          </ion-segment-button>
+          <ion-segment-button (click) = "typeClick()"value = "freezer">
+            Coolers
+          </ion-segment-button>
+          <ion-segment-button (click) = "typeClick()"value = "light">
+            Lighting
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+
+
+
+
+      <div class = "search">
+        <div class = "test"></div>
+        <ion-searchbar [(ngModel)]="terms">
+        </ion-searchbar>
+
+      </div>
+
+    </div>
+
+
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content style = "z-index:1"[ngClass]="{modalopen:this.modalopen,modalclosed:!this.modalopen}">
+  <div *ngIf = "!this.auth.homelocsloaded" class = 'mainload' >
+    <ion-spinner color = 'light'></ion-spinner>
+  </div>
+  <ion-card style="flex-wrap:wrap"*ngFor="let item of this.auth.homelocs | search : terms" >
+
+    <app-location (leaveToLoc) = "leaveToLoc($event)" (leaveToHvac) = "leaveToHvac($event)"(lightselected)="lightSelected($event)"(returnedemit)="returned($event)" #locComp [loc] = item></app-location>
+
+
+  </ion-card>
+
+
+</ion-content>

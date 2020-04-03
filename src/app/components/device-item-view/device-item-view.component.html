@@ -1,0 +1,77 @@
+<!-- <ion-card> -->
+<div class="deviceExpanded">
+  <p>
+    {{getDeviceTitle()}}
+  </p>
+  <div class="gridControl">
+    <i class="deleteButton material-icons md-32 md-lightish" (click)="trashDevice(device)">delete</i>
+    <!-- <i class="closeButton material-icons md-32 md-lightish" (click)="closeDevice()">close</i> -->
+    <i class="closeButton material-icons md-32 md-lightish" (click)="closeDevice()">arrow_drop_up_circle</i>
+  </div>
+  <div class="itemGrid" *ngIf="device.items">
+      <ng-container *ngFor="let item of device.items">
+        <div class="item">
+          <div class="itemLeft">
+            <div class="upper">
+              <div class="upperLeft">
+                  <p class="bigNumber">{{ item.display_id  | number:'2.' }}</p>
+              </div>
+              <div class="upperRight">
+                  <div class="itemName">{{item.name}}</div><br/>
+                  <div class="itemId">id: {{ item.internal_id}}</div>
+              </div>
+            </div>
+            <div class="lower">
+              {{getItemValue(item)}}/{{getItemRawValue(item)}}
+            </div>
+          </div>
+          <!-- [dndDisableIf]="draggable.disable" -->
+          <div class="itemRight"
+              [dndDraggable]="item"
+              [dndEffectAllowed]="effectAllowed"
+              (dndStart)="onDragStart($event)"
+              (dndCopied)="onDraggableCopied($event)"
+              (dndLinked)="onDraggableLinked($event)"
+              (dndMoved)="onDraggableMoved($event)"
+              (dndCanceled)="onDragCanceled($event)"
+              (dndEnd)="onDragEnd($event)">
+
+              <!-- <div *ngIf="!socketCount(item)" class="item_unsocketed">
+                  <app-socketed-view [count]="0" cdkDragHandle></app-socketed-view>
+              </div> -->
+              <div [ngClass]="socketCount(item) > 0 ? 'item_socketed' : 'item_unsocketed'">
+                  <app-socketed-view #deviceItem [item]="item" cdkDragHandle></app-socketed-view>
+              </div>
+
+            <!-- <app-socketed-view [count]="socketCount(item)" cdkDragHandle></app-socketed-view> -->
+          </div>
+
+          <!-- <div class="itemRight" cdkDrag [cdkDragData]="item"
+              (cdkDragStarted)="dragStarted($event)"
+              (cdkDragEnded)="dragEnded($event)"
+              (cdkDragEntered)="dragEntered($event)"
+              (cdkDragExited)="dragExited($event)">
+
+              <div class="itemRight">
+                <app-socketed-view [count]="socketCount(item)" cdkDragHandle></app-socketed-view>
+              </div>
+
+          </div> -->
+          <!-- <div *ngIf="!socketCount(item)" class="item_unsocketed">
+              <div class="itemName">{{item.name}}</div>
+              <app-socketed-view></app-socketed-view>
+          </div>
+          <div *ngIf="socketCount(item)" class="item_socketed">
+              <div class="itemName">{{item.name}}</div>
+              <app-socketed-view></app-socketed-view>
+          </div> -->
+          <div class="deviceButtons">
+
+          </div>
+        </div>
+      </ng-container>
+
+
+  </div>
+</div>
+<!-- </ion-card> -->

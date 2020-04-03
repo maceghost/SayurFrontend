@@ -1,0 +1,41 @@
+<div *ngIf="data" class="container">
+    <div class="titleContainer">
+      <h3 class="modeTitle">
+        {{data.name.toUpperCase()}}
+      </h3>
+    </div>
+    <div class="modeValues">
+      <span class="modeValue">
+        <label class="modeName">Cooling Setpoint</label>
+        <div class="modeSetting">{{data.c_sp}}</div>
+      </span>
+      <span class="modeValue">
+        <label class="modeName">Heating Setpoint</label>
+        <div class="modeSetting">{{data.c_sp}}</div>
+      </span>
+      <span class="modeValue">
+        <label class="modeName">Fan Minutes</label>
+        <div class="modeSetting">{{data.fan}}</div>
+      </span>
+      <span class="modeValue">
+        <label class="modeName">Setback</label>
+        <!-- <p class="modeValue">{{data.setback ? 'on' : 'off'}}</p> -->
+        <ng-container *ngIf="!data.setback">
+          <i class="fafa-toggle-off toggleButton off" (click)="toggleSetback(data)"></i>
+        </ng-container>
+        <ng-container *ngIf="data.setback">
+          <i class="fafa-toggle-on toggleButton on" (click)="toggleSetback(data)"></i>
+        </ng-container>
+      </span>
+      <span class="modeValue">
+        <label class="modeName">Free Cool Only</label>
+        <ng-container *ngIf="!data.fc_only">
+          <i class="fafa-toggle-off toggleButton off" (click)="toggleFreeCool(data)"></i>
+        </ng-container>
+        <ng-container *ngIf="data.fc_only">
+          <i class="fafa-toggle-on toggleButton on" (click)="toggleFreeCool(data)"></i>
+        </ng-container>
+        <!-- <p class="modeValue">{{data.fc_only ? 'on' : 'off'}}</p> -->
+      </span>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<ion-content padding class= "no-scroll login auth-page">
+    <div class="login-content">
+      <div style = "padding-top: 80px ">
+        <div class="logo">
+          <img src="assets/img/logo.jpeg" width="100%" height="100%">
+        </div>
+        <h2 ion-text class="text-primary centered">
+          Unity Energy Solutions
+        </h2>
+      </div>
+      <div class="login_container">
+        <ng-container class="flexitem">
+          <div accessibilityRole=form>
+              <input id="pwInput" (keydown.enter)="enterKey(value)" #pwInput (input)="onInputChange($event)" type="password" class="keyboard_input" autocomplete="new-password" [(ngModel)]="value" placeholder="{{placeholder}}" />
+      		    <div id="loginKeyboardDiv" #loginKeyboardDiv class="simple-keyboard-main"></div>
+          </div>
+
+          <!-- <keypad-form #userKeypad *ngSwitchCase="2" [parent]="this"></keypad-form> -->
+        </ng-container>
+
+        <div class="entry_container">
+          <div class="entry_wrapper">
+            <button class="entry_button" (click)="changeEntryMethod($event, 1)" [ngClass]="{ 'active' : entry_method==1 }" >Keyboard</button>
+            <button class="entry_button" (click)="changeEntryMethod($event, 2)" [ngClass]="{ 'active' : entry_method==2 }">Keypad</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</ion-content>

@@ -1,0 +1,26 @@
+
+
+<!-- <div class="controllerContainer">
+  <app-controller-grid *ngIf=""></app-controller-grid>
+</div> -->
+<div class="container" *ngIf="currentTab.view==0">
+    <ng-container *ngFor="let controller of ds.controllers">
+        <div *ngIf="isMapped(controller)">
+            <!-- <div [ngSwitch]="getControllerType(controller)" class="fPos flexInside" flex fxLayout="column" [style.top]="getMapY(controller)" [style.left]="getMapX(controller)" (click)="setDetail(controller)"> -->
+              <!-- <app-hvac-summary *ngSwitchCase="'hvac'" [controller]="controller"></app-hvac-summary> -->
+              <!-- <hvac-small *ngSwitchCase="'hvac'" [controller]="controller"></hvac-small>
+              <app-map-icon *ngSwitchCase="'map_icon'" [controller]="controller"></app-map-icon>
+              <app-co2 *ngSwitchCase="'co2'" [controller]="controller"></app-co2>
+              <app-co2 *ngSwitchCase="'co2vcc'" [controller]="controller"></app-co2>
+              <app-humidity *ngSwitchCase="'humidity'" [controller]="controller"></app-humidity>
+              <app-humidity *ngSwitchCase="'humidityvcc'" [controller]="controller"></app-humidity>
+              <p *ngSwitchDefault>{{controller.name}}&nbsp;{{getControllerType(controller)}}</p>
+            </div> -->
+        </div>
+    </ng-container>
+</div>
+<div class="container" *ngIf="currentTab.view==1">
+    <!-- <div [ngSwitch]="getControllerType(ns.currentTab.item)">
+        <app-controller-detail [parent]="this" [controller]="ns.currentTab.item"></app-controller-detail>
+    </div> -->
+</div>

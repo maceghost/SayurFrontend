@@ -1,0 +1,262 @@
+
+.ios,
+.md,
+.wp{
+  page-hvac {
+    ion-toolbar {
+      display:flex;
+    }
+
+    ion-button {
+      flex:1;
+    }
+
+    ion-title {
+      // right:150px;
+      flex:1;
+      // max-height: 2vh;
+      margin-top: 3vh;
+      margin-bottom: 2vh;
+    }
+
+    ion-button {
+      width: unset;
+      height: unset;
+    }
+
+    ion-icon {
+        display: inline-block;
+        // font-size: 1.2em;
+    }
+
+    ion-card {
+      margin-top: 2.5vh;
+    }
+    app-history {
+      width: 100%;
+      height: 72vh;
+    }
+
+    .setpoint_button {
+      background-color: transparent;
+    }
+
+    .settings_container {
+      width: 72%;
+      margin-top: 2vh;
+      // margin-left: auto;
+      height: 100%;
+      display: flex;
+      flex-basis: 2;
+      flex-wrap: wrap;
+      max-height: 80vh;
+      overflow-y: scroll;
+    }
+
+    #schedules {
+      margin-top: 1vh;
+      color: lightgrey;
+      background-color: transparent;
+    }
+    #history {
+      margin-top: 1vh;
+      color: lightgrey;
+      background-color: transparent;
+    }
+
+    #settings {
+      margin-top: 1vh;
+      color: lightgrey;
+      background-color: transparent;
+    }
+    #modes {
+      margin-top: 1vh;
+      color: lightgrey;
+      background-color: transparent;
+    }
+    #display {
+      margin-top: 1vh;
+      color: lightgrey;
+      background-color: transparent;
+    }
+    #display.active {
+      color: rgb(77, 110, 250);
+    }
+
+    #modes.active {
+      color: rgb(77, 110, 250);
+    }
+
+    #schedules.active {
+      color: rgb(77, 110, 250);
+    }
+
+    #settings.active {
+      color: rgb(77, 110, 250);
+    }
+
+    #history.active {
+      color: rgb(77, 110, 250);
+    }
+
+    .schedules_container {
+      margin-top: 2vh;
+      height: 100%;
+      width: 100%;
+    }
+
+
+    app-controller-settings {
+      height: 65vh;
+      width: 80vw;
+    }
+
+    app-controller-settings-item {
+      min-width: 50vh;
+    }
+
+    .modalopen{
+      -webkit-filter: blur(10px);
+      -moz-filter: blur(10px);
+      -o-filter: blur(10px);
+      -ms-filter: blur(10px);
+      filter: blur(10px);
+    }
+    .modalclosed{
+      -webkit-filter: none;
+      -moz-filter: none;
+      -o-filter: none;
+      -ms-filter: none;
+      filter: none;
+    }
+
+
+
+    .grid {
+      margin-top: 0vh;
+      width: 100%;
+    }
+    .button-ios{
+      color: grey;
+      background-color: white;
+      -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+    .button-md{
+      color: grey;
+      background-color: white;
+      -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+
+
+    .num{
+      display: flex;
+      justify-content: center;
+      font-size: 4.5vh;
+      // margin: 5%;
+      height: 5.5vh;
+      width:6vh;
+      background-color: transparent;
+      // -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      // box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    background: #EFEEEE;
+
+    ion-content {
+      background-color: #0042ad;
+    }
+    .detail {
+      background-color: #e8e8e8;
+    }
+    .grid{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-around;
+
+
+    }
+    .lgtitle{
+      // display: flex;
+      // justify-content: center;
+      font-size: 2.5vh;
+      margin: 5%;
+      font-weight: bold;
+      height: 4vh;
+    }
+    .lgstate{
+      display: flex;
+      justify-content: center;
+      font-size: 4.5vh;
+      margin: 5%;
+      margin-top: 2vh;
+      height: 5.5vh;
+    }
+    .smtitle{
+
+      font-size: 1.75vh;
+      margin: 5%;
+      font-weight: bold;
+      height: 4vh;
+    }
+    .smstate{
+      display: flex;
+      justify-content: center;
+      font-size: 3.25vh;
+      margin: 5%;
+      height:3.75vh;
+    }
+    .panel{
+      display: flex;
+      width: 40vw;
+      justify-content: space-around;
+      max-height: 16vh;
+      // padding: 2.5%;
+    }
+    .setpoints{
+      flex-grow: 2;
+      // width: 40vw;
+      padding: 2.5%;
+    }
+
+    .schedule-modal-css .modal-wrapper {
+      display: block;
+      width: 76vw;
+      height: 80vh;
+      // background-color: transparent;
+      background-color: lightgrey;
+      border-radius: 2vh;
+      // overflow-y: scroll;
+    }
+
+    .settings-modal-css .modal-wrapper {
+
+      display: block;
+      width: 76vw;
+      height: 80vh;
+      background-color: lightgrey;
+      opacity: 0.8;
+      border-radius: 2vh;
+      // overflow-y: scroll;
+    }
+
+    .modes-modal-css .modal-wrapper {
+
+      display: block;
+      width: 76vw;
+      height: 80vh;
+      background-color: lightgrey;
+      opacity: 0.8;
+      border-radius: 2vh;
+      // overflow-y: scroll;
+    }
+
+
+  }
+
+
+}
