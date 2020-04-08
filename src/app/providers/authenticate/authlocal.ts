@@ -61,6 +61,8 @@ export class User {
 })
 export class AuthLocalProvider {
 
+  order:any = {};
+  address:any = {};
   // authState = new BehaviorSubject(false);
   authState = new BehaviorSubject(0);
   rootPage:any = 'LoginPage';
@@ -220,10 +222,12 @@ export class AuthLocalProvider {
     // }
 
     if (this.port) {
-      this.urlBase = this.protocol + '//' + this.hostname + ':' + this.port + '/ng_api';
+      this.urlBase = this.protocol + '//' + this.hostname + ':' + this.port;
     } else {
-      this.urlBase = this.protocol + '//' + this.hostname + + '/ng_api';
+      this.urlBase = this.protocol + '//' + this.hostname
+
     }
+    this.apiUrl = this.urlBase +  '/ng_api';
     // this.apiUrl = this.urlBase + '/api';
     // this.apiUrl = this.urlBase + '/rpc_shim';
     console.log('calling get loc config')
@@ -231,8 +235,18 @@ export class AuthLocalProvider {
     this.get_products().then(result => {
       // console.log('location_config : ',result);
       console.log(result)
+      for (let i of result){
+        if (i.image){
+          i.image = this.urlBase + i.image
+
+        }
+        else{
+          i.image = ''
+        }
+      }
       this.products = result
       this.storeproducts = this.products
+
       this.cart = []
       // if (false === this.location.setup_complete) {
       // // if (this.location.setup_complete && this.location.setup_complete == false) {
@@ -274,11 +288,10 @@ export class AuthLocalProvider {
     //   this.location = result;
     // });
   }
-
   get_products(){
 
     let headers = new Headers();
-    var url = this.urlBase + '/get_products/';
+    var url = this.apiUrl + '/get_products/';
     var map: any = {};
     // map.method = SET_PROCESS_VALUE;
     map.id = self.id++;
@@ -305,6 +318,37 @@ export class AuthLocalProvider {
                resolve(json.result);
              }
            );
+       });
+       return promise;
+
+  }
+  post_order():Promise<any> {
+
+    let headers = new Headers();
+    var url = this.apiUrl + '/post_order/';
+
+    headers = new Headers({ 'Content-Type': "application/json" });
+
+    let promise = new Promise((resolve, reject) => {
+      // console.log('get_user_by_password - url : '+url+' , mparams : '+JSON.stringify(mparms));
+      // console.log('get_user_by_password - params : '+mparms);
+      this.http.post<any>(url, this.order)
+           .toPromise()
+           .then(
+             res => { // Success
+               let json = null;
+               if (typeof res !== 'string'){
+                 json = res
+               }
+               else{
+                 json = JSON.parse(res);
+               }
+
+               resolve(json.result);
+             }
+           ).catch((error: any) => {
+             console.log('get_user_by_password err : '+error);
+           });
        });
        return promise;
 

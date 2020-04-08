@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { StorefrontPage } from './storefront.page';
+import { PaymentPage } from './payment.page';
 import { UnityComponentsModule } from '../components/unity.components.module';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -11,7 +11,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSortModule} from '@angular/material/sort';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -23,7 +24,7 @@ import {MatIconModule} from '@angular/material/icon';
 const routes: Routes = [
   {
     path: '',
-    component: StorefrontPage
+    component: PaymentPage
   }
 ];
 
@@ -37,15 +38,16 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
-    MatIconModule,
+    MatSelectModule,
+    MatRadioModule,
     // MatSort,
     // MatTableDataSource,
     RouterModule.forChild(routes)
   ],
   declarations: [
-    StorefrontPage,
+    PaymentPage,
     // KeyboardFormComponent,
     // KeypadFormComponent
   ]
 })
-export class StorefrontPageModule {}
+export class PaymentPageModule {}

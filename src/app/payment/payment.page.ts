@@ -1,6 +1,7 @@
 import { ViewChildren,Component, ViewChild, ElementRef, OnInit, AfterViewInit, ViewEncapsulation,ChangeDetectorRef } from '@angular/core';
 // import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 import { AuthLocalProvider } from '../providers/authenticate/authlocal';
+import { AuthLocalProvider } from './providers/authenticate/authlocal';
 
 import { Storage } from '@ionic/storage';
 import { KeyboardFormComponent } from '../components/keyboard-form/keyboard-form.component'
@@ -37,32 +38,40 @@ import * as _ from 'lodash';
 
  // @IonicPage()
 
-
 @Component({
-  selector: 'page-storefront',
-  templateUrl: './storefront.page.html',
-  styleUrls: ['css/jacks-business-starter-819719.webflow.css','css/normalize.css',  'css/webflow.css'],
+  selector: 'page-payment',
+  templateUrl: './payment.page.html',
+  styleUrls: ['./payment.page.scss'],
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('detailExpand', [ state('collapsed, void', style({ height: '0px' })), state('expanded', style({ height: '*' })), transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')), transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')) ])
   ],
 })
-export class StorefrontPage implements AfterViewInit{
+export class PaymentPage implements AfterViewInit{
   columnsToDisplay: string[] = ['name', 'price', 'measurement'];
   cartColumnsToDisplay: string[] = ['name','quantity', 'price', 'measurement'];
 
   // dataSource = this.auth.storeproducts;
   dataSource = new MatTableDataSource(this.auth.storeproducts);
   cart = new MatTableDataSource(this.auth.cart);
-  filterOpen = false;
+  address:any = {
+    'address':"",
+    'optional':"",
+    'city':"",
+    'postalcode':"",
+    'province':"",
+    'state':"",
+    'country':"Indonesia"
+  }
+  // country:any = {"name": "Indonesia", "code": "ID"};
+  payments: any = ['Cash on Delivery']
   loading: any;
   username: string;
   password: string;
   remember: boolean = false;
   expandedElement: any | null;
-  numbers:any = []; // [0,1,2,3,4]
-  currency:any = 'Rp';
-  currencies:any = ['Rp','Usd','Rub']
+  numbers:any = Array(101).fill().map((x,i)=>i); // [0,1,2,3,4]
+
   // registerCredentials = { username: '', password: '' };
   @ViewChild('storeSort', { read: MatSort, static: true }) storeSort: MatSort;
   @ViewChild('cartSort', { read: MatSort, static: true }) cartSort: MatSort;
@@ -83,62 +92,11 @@ export class StorefrontPage implements AfterViewInit{
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router, private storage: Storage, private nav: NavController, private auth: AuthLocalProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
 
-    let i: number = 1;
-
-    while (i < 101) {
-        this.numbers.push(i);
-        i++;
-    }
-    console.log(this.numbers)
 
   }
-  ngOnInit(){
-    for (let i of this.auth.storeproducts){
-      i.added = false
-      i.measurements = []
-      if (i.price_per_kg){
-        i.measurements.push('Kg')
-      }
-      if (i.price_per_unit){
-        i.measurements.push('Unit')
-      }
-      if (i.price_per_tied_bunch){
-        i.measurements.push('Tied Bunch')
-      }
 
-      i.measurement = i.measurements[0]
-      i.quantity = 1
-    }
-  }
-  getPrice(item:any){
-    let total = 0
-    switch(item.measurement) {
-      case 'Kg':
-        total = item.price_per_kg
-        break;
-      case 'Unit':
-        total = item.price_per_unit
-        break;
-      case 'Tied Bunch':
-        total = item.price_per_tied_bunch
-        break;
-    }
-    total = total * item.quantity
-    console.log(item.quantity)
-    console.log(this.currency)
-    switch(this.currency) {
-      case 'Usd':
-        console.log(total / 16146.20)
-        total = "$" + (total / 16146.20).toFixed(2).toString()
-        break;
-      case 'Rub':
-        total = "₽" + (total / 214.26).toFixed(2).toString()
-        break;
-      default:
-        total = "Rp" + total.toString()
-    }
-    console.log(total)
-    return total
+  goToSummary(){
+    this.router.navigate(['summary']);
 
   }
 
@@ -181,11 +139,11 @@ export class StorefrontPage implements AfterViewInit{
   ngAfterViewInit (){
       this.dataSource.sort = this.storeSort;
       this.cart.sort = this.cartSort;
-// this.cdRef.detectChanges()
-//       for (let p of this.auth.storeproducts ){
-//         p.expanded = true;
-//         p.quantity = 0
-//       }
+this.cdRef.detectChanges()
+      for (let p of this.auth.storeproducts ){
+        p.expanded = true;
+        p.quantity = 0
+      }
 
     }
 

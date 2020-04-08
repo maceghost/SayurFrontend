@@ -9,6 +9,11 @@ const routes: Routes = [
   { path: 'cloud-login', loadChildren: './cloud-login/cloud-login.module#CloudLoginPageModule' },
   { path: 'sites', loadChildren: './sites/sites.module#SitesPageModule' },
   { path: 'storefront', loadChildren: './storefront/storefront.module#StorefrontPageModule' },
+  { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
+  { path: 'payment', loadChildren: './payment/payment.module#PaymentPageModule' },
+  { path: 'summary', loadChildren: './summary/summary.module#SummaryPageModule' },
+
+
 
 
   { path: '404', redirectTo: '', pathMatch: 'full' },

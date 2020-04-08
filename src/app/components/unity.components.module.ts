@@ -28,6 +28,7 @@ import { LightmodalComponent } from './lightmodal/lightmodal.component';
 import { ListSelectionComponent } from './list-selection/list-selection.component';
 import { ListSelectorComponent } from './list-selector/list-selector.component';
 import { LocationComponent } from './location/location.component';
+import { TestComponent } from './test/test.component';
 
 
 import { MapiconmodalComponent } from './mapiconmodal/mapiconmodal.component';
@@ -75,7 +76,8 @@ import {MatCardModule} from '@angular/material/card';
       NameComponent,
       ListSelectorComponent,
       SearchkeyboardComponent,
-      LocationComponent
+      LocationComponent,
+      TestComponent
   ],
   exports: [
     DeviceViewComponent,
@@ -95,7 +97,8 @@ import {MatCardModule} from '@angular/material/card';
     ListSelectionComponent,
     ListSelectorComponent,
     SearchkeyboardComponent,
-    LocationComponent
+    LocationComponent,
+    TestComponent
 
   ]
 })

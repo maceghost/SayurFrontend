@@ -55,7 +55,7 @@ import { AdjustmentComponentModule } from './adjustment/adjustment.module';
 
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
 
-import { MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 import { KeyboardComponent as KeyboardComponent } from './modals/keyboard/keyboard.component';
 import { ModenamekeyboardComponent as ModenamekeyboardComponent } from './modals/modenamekeyboard/modenamekeyboard.component';
 import { ListSelectComponent as ListSelectComponent } from './modals/list-select/list-select.component';
@@ -111,7 +111,6 @@ library.add(fas, far, fab);
     MatTooltipModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule,
     MatSortModule,
     FontAwesomeModule,
     SpeditPageModule,
@@ -121,7 +120,6 @@ library.add(fas, far, fab);
     AdjustmentComponentModule,
     DragDropModule,
     NgIdleKeepaliveModule.forRoot(),
-    MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatListModule,
