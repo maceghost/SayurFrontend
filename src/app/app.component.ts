@@ -169,7 +169,7 @@ export class AppComponent {
         });
       }
       else{
-        this.router.navigate(['storefront']);
+        this.router.navigate(['storefront-mobile']);
       }
 
     });

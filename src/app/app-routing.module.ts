@@ -12,6 +12,8 @@ const routes: Routes = [
   { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
   { path: 'payment', loadChildren: './payment/payment.module#PaymentPageModule' },
   { path: 'summary', loadChildren: './summary/summary.module#SummaryPageModule' },
+  { path: 'storefront-mobile', loadChildren: './storefront-mobile/storefront-mobile.module#StorefrontMobilePageModule' },
+
 
 
 
