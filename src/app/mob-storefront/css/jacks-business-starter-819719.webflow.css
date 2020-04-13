@@ -7070,6 +7070,7 @@ figcaption {
     height: 14vh;
   }
   .typesel-mobhome {
+    padding:0;
     overflow: hidden;
     width: 100%;
     font-size: 11px;

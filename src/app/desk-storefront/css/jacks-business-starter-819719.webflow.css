@@ -5215,6 +5215,7 @@ figcaption {
 }
 
 .type-deskhome-copy {
+  width: 12vh;
   margin-bottom: 0px;
   padding-right: 8px;
 }
@@ -5931,7 +5932,7 @@ figcaption {
 }
 
 .type-deskhome {
-  width: 9vh;
+  width: 6vh;
   margin-bottom: 0px;
   padding-right: 8px;
 }
