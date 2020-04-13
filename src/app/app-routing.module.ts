@@ -1,42 +1,73 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, Router, RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
-  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'tabs/**', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'provision', loadChildren: './provision/provision.module#ProvisionPageModule' },
-  { path: 'cloud-login', loadChildren: './cloud-login/cloud-login.module#CloudLoginPageModule' },
-  { path: 'sites', loadChildren: './sites/sites.module#SitesPageModule' },
-  { path: 'storefront', loadChildren: './storefront/storefront.module#StorefrontPageModule' },
-  { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
-  { path: 'payment', loadChildren: './payment/payment.module#PaymentPageModule' },
-  { path: 'summary', loadChildren: './summary/summary.module#SummaryPageModule' },
-  { path: 'storefront-mobile', loadChildren: './storefront-mobile/storefront-mobile.module#StorefrontMobilePageModule' },
+import { MobStorefrontComponent } from './mob-storefront/mob-storefront.component';
+import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
+import { ApplicationStateService } from './application-state.service';
 
 
+const desktop_routes: Routes = [
+  {path: '', component: DeskStorefrontComponent},
 
 
+  {path: '**', redirectTo: ''}
+];
 
-  { path: '404', redirectTo: '', pathMatch: 'full' },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
-  { path: '**/**', redirectTo: '', pathMatch: 'full' },
-  // { path: 'device-panel', loadChildren: './device-panel/device-panel.module#DevicePanelPageModule' }
-  // { path: 'tab1a', loadChildren: './tab1a/tab1a.module#Tab1aPageModule' },
-  // { path: 'tab1b', loadChildren: './tab1b/tab1b.module#Tab1bPageModule' },
-  // { path: 'hvac', loadChildren: './hvac/hvac.module#HvacPageModule' },
-  // { path: 'status', loadChildren: './status/status.module#StatusPageModule' }
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
-  // { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-  // { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  // { path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule' },
-  // { path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule' },
+const mobile_routes: Routes = [
+  {path: '', component: MobStorefrontComponent},
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  // as default we set the desktop routing configuration. if mobile will be started it will be replaced below.
+  // note that we must specify some routes here (not an empty array) otherwise the trick below doesn't work...
+  imports: [RouterModule.forRoot(desktop_routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+  public constructor(private router: Router,
+    private applicationStateService: ApplicationStateService) {
+
+    if (applicationStateService.getIsMobileResolution()) {
+      router.resetConfig(mobile_routes);
+    }
+  }
+
+  /**
+   * this function inject new routes for the given module instead the current routes. the operation happens on the given current routes object so after
+   * this method a call to reset routes on router should be called with the the current routes object.
+   * @param currentRoutes
+   * @param routesToInject
+   * @param childNameToReplaceRoutesUnder - the module name to replace its routes.
+   */
+  private injectModuleRoutes(currentRoutes: Routes, routesToInject: Routes, childNameToReplaceRoutesUnder: string): void {
+    for (let i = 0; i < currentRoutes.length; i++) {
+      if (currentRoutes[i].loadChildren != null &&
+        currentRoutes[i].loadChildren.toString().indexOf(childNameToReplaceRoutesUnder) != -1) {
+        // we found it. taking the route prefix
+        let prefixRoute: string = currentRoutes[i].path;
+        // first removing the module line
+        currentRoutes.splice(i, 1);
+        // now injecting the new routes
+        // we need to add the prefix route first
+        this.addPrefixToRoutes(routesToInject, prefixRoute);
+        for (let route of routesToInject) {
+          currentRoutes.push(route);
+        }
+        // since we found it we can break the injection
+        return;
+      }
+
+      if (currentRoutes[i].children != null) {
+        this.injectModuleRoutes(currentRoutes[i].children, routesToInject, childNameToReplaceRoutesUnder);
+      }
+    }
+  }
+
+  private addPrefixToRoutes(routes: Routes, prefix: string) {
+    for (let i = 0; i < routes.length; i++) {
+      routes[i].path = prefix + '/' + routes[i].path;
+    }
+  }
+}
