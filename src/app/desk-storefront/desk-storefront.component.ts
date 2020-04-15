@@ -29,7 +29,7 @@ import {
 @Component({
   selector: 'app-desk-storefront',
   templateUrl: './desk-storefront.component.html',
-  styleUrls: [  'css/webflow.css','css/normalize.css','css/jacks-business-starter-819719.webflow.css'],
+  styleUrls: [  '../css/webflow.css','../css/normalize.css','./desk-storefront.component.css'],
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('detailExpand', [ state('collapsed, void', style({ height: '0px' })), state('expanded', style({ height: '*' })), transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')), transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')) ])
