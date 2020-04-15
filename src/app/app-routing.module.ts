@@ -3,19 +3,25 @@ import { PreloadAllModules, Router, RouterModule, Routes } from '@angular/router
 
 import { MobStorefrontComponent } from './mob-storefront/mob-storefront.component';
 import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
+import { MobCartComponent } from './mob-cart/mob-cart.component';
+import { DeskCartComponent } from './desk-cart/desk-cart.component';
+import { DeskOrderComponent } from './desk-order/desk-order.component';
+import { MobOrderComponent } from './mob-order/mob-order.component';
 import { ApplicationStateService } from './application-state.service';
 
 
 const desktop_routes: Routes = [
-  {path: '', component: DeskStorefrontComponent},
-
-
-  {path: '**', redirectTo: ''}
+  {path: 'shop', component: DeskStorefrontComponent},
+  {path: 'cart', component: DeskCartComponent},
+  {path: 'order', component: DeskOrderComponent},
+  {path: '**', redirectTo: 'shop'}
 ];
 
 const mobile_routes: Routes = [
-  {path: '', component: MobStorefrontComponent},
-  {path: '**', redirectTo: ''}
+  {path: 'shop', component: MobStorefrontComponent},
+  {path: 'cart', component: MobCartComponent},
+  {path: 'order', component: MobOrderComponent},
+  {path: '**', redirectTo: 'shop'}
 ];
 
 @NgModule({

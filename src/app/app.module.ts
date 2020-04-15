@@ -25,6 +25,10 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { FormsModule } from '@angular/forms';
 import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
+import { MobCartComponent } from './mob-cart/mob-cart.component';
+import { DeskCartComponent } from './desk-cart/desk-cart.component';
+import { DeskOrderComponent } from './desk-order/desk-order.component';
+import { MobOrderComponent } from './mob-order/mob-order.component';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -41,6 +45,10 @@ import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.compo
     AppComponent,
     MobStorefrontComponent,
     DeskStorefrontComponent,
+    MobCartComponent,
+    DeskCartComponent,
+    DeskOrderComponent,
+    MobOrderComponent,
 
   ],
 
