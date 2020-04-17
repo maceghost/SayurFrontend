@@ -22,7 +22,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatTableDataSource} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
 import { MobCartComponent } from './mob-cart/mob-cart.component';
@@ -59,7 +59,9 @@ import { MobOrderComponent } from './mob-order/mob-order.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    // MatTableDataSource,
+    MatTableModule
 
   ],
   providers: [ApplicationStateService],

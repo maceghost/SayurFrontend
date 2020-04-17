@@ -69,7 +69,7 @@ export class MobStorefrontComponent implements AfterViewInit{
   //   });
   // }
 
-  constructor(private cdRef: ChangeDetectorRef,private router: Router,private auth: DataService) {
+  constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
 
     let i: number = 1;
 

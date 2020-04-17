@@ -5,6 +5,8 @@ import { Router, NavigationStart, NavigationEnd, NavigationError, Event, Activat
 
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatTable} from '@angular/material/table';
+
 import {
   trigger,
   state,
@@ -14,6 +16,9 @@ import {
   // ...
 } from '@angular/animations';
 
+
+// import * as moment from 'moment';
+import * as _ from 'lodash';
 // import * as moment from 'moment';
 // import * as _ from 'lodash';
 /**
@@ -51,6 +56,9 @@ export class DeskStorefrontComponent implements AfterViewInit{
   numbers:any = []; // [0,1,2,3,4]
   currency:any = 'Rp';
   currencies:any = ['Rp','Usd','Rub']
+  aisle: any;
+  categories: any;
+  subcategories:any;
   // registerCredentials = { username: '', password: '' };
   @ViewChild('storeSort', { read: MatSort, static: true }) storeSort: MatSort;
   @ViewChild('cartSort', { read: MatSort, static: true }) cartSort: MatSort;
@@ -69,7 +77,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
   //   });
   // }
 
-  constructor(private cdRef: ChangeDetectorRef,private router: Router,private auth: DataService) {
+  constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
 
     let i: number = 1;
 
@@ -79,8 +87,11 @@ export class DeskStorefrontComponent implements AfterViewInit{
     }
     console.log(this.numbers)
 
+
+
   }
   ngOnInit(){
+    // this.aisle = this.auth.aisles[0];
     // for (let i of this.auth.storeproducts){
     //   i.added = false
     //   i.measurements = []
@@ -98,6 +109,81 @@ export class DeskStorefrontComponent implements AfterViewInit{
     //   i.quantity = 1
     // }
   }
+
+  updateFilters(){
+    this.auth.category = this.auth.aisle.categories[0]
+
+  }
+  updateSubCatFilter(){
+    this.auth.subcategory = this.auth.category.subcategories[0]
+
+  }
+  getCategories(){
+    console.log(this.auth.aisle)
+    console.log(this.categories)
+
+    this.categories = this.auth.aisle.categories
+    console.log(this.categories)
+
+    if (this.categories.length > 0){
+      return true
+
+    }
+    else{
+      return false
+    }
+  }
+
+  getSubCategories(){
+    this.subcategories = this.auth.category.subcategories
+    if (this.subcategories.length != 0){
+      return true
+
+    }
+    else{
+      return false
+    }
+  }
+  updateCategories(){
+
+
+  }
+  filterProducts(){
+
+    if (this.auth.subcategory){
+      if (this.auth.subcategory == 'All'){
+        return _.filter(this.auth.storeproducts, {category: this.auth.category.name});
+        // return this.auth.storeproducts
+      }
+      else{
+        return _.filter(this.auth.storeproducts, {subcategory: this.auth.subcategory});
+
+      }
+    }
+
+    if (this.auth.category){
+      if (this.auth.category.name == 'All'){
+        return _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
+        // return this.auth.storeproducts
+      }
+      else{
+        return _.filter(this.auth.storeproducts, {category: this.auth.category.name});
+
+      }
+    }
+    if (this.auth.aisle){
+      if (this.auth.aisle.name == 'All'){
+        return this.auth.storeproducts
+      }
+      else{
+        return _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
+
+      }
+    }
+
+  }
+
+
   getPrice(item:any){
     let total = 0
     switch(item.measurement) {

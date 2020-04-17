@@ -228,8 +228,8 @@
        <div class="div-block-4-deskhome">
          <div class="w-layout-grid grid-7-deskhome">
            <h4 class="test-deskhome">Shop</h4>
-           <div (click) = "this.filterOpen = !this.filterOpen" data-hover="" data-delay="0" id="w-node-b90388cbea52-5e559905" class="w-dropdown">
-             <div style="display:flex;"class="dropdown-toggle-deskhome w-dropdown-toggle">
+           <div  data-hover="" data-delay="0" id="w-node-b90388cbea52-5e559905" class="w-dropdown">
+             <div (click) = "this.filterOpen = !this.filterOpen"style="display:flex;"class="dropdown-toggle-deskhome w-dropdown-toggle">
                <!-- <div class="w-icon-dropdown-toggle"></div> -->
 
                <div style="display:flex;align-items:center">Filter</div>
@@ -239,10 +239,82 @@
                </mat-icon>
              </div>
 
-             <nav *ngIf = "this.filterOpen" class="dropdown-list-deskhome open w-dropdown-list">
+
+
+
+
+             <nav *ngIf = "this.filterOpen" class="dropdown-list-deskhome w-dropdown-list">
+              <div class="aisle-deskhome w-form">
+                <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6">
+                  <label class="field-label-3-deskhome">Shop aisle</label>
+
+                  <select (change) = "this.updateFilters()"[(ngModel)]="this.auth.aisle" id="field-6" name="field-6" class="select-field-4 w-select">
+                    <option *ngFor="let aisle of this.auth.aisles" [ngValue]="aisle">{{aisle.name}}</option>
+                  </select>
+                </form>
+
+              </div>
+              <div class="div-block-3-deskhome-copy" *ngIf = "this.getCategories()">
+                <div class="categorhy-deskhome w-form">
+                  <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6">
+                    <label>category</label>
+                    <select (change) = "updateSubCatFilter()"[(ngModel)]="this.auth.category" id="field-6" name="field-6" class="select-field-4 w-select">
+                      <option *ngFor="let cat of this.categories" [ngValue]="cat">{{cat.name}}</option>
+
+                    </select>
+
+                    </form>
+                  <div class="w-form-done">
+                    <div>Thank you! Your submission has been received!</div>
+                  </div>
+                  <div class="w-form-fail">
+                    <div>Oops! Something went wrong while submitting the form.</div>
+                  </div>
+                </div>
+                <div class="subcategory-deskhome w-form"*ngIf = "this.getSubCategories()">
+                  <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>sub-category</label>
+                    <select [(ngModel)]="this.auth.subcategory" id="field-6" name="field-6" class="select-field-4 w-select">
+                    <option *ngFor="let sub of this.subcategories" [ngValue]="sub">{{sub}}</option>
+                  </select>
+                  </form>
+                  <div class="w-form-done">
+                    <div>Thank you! Your submission has been received!</div>
+                  </div>
+                  <div class="w-form-fail">
+                    <div>Oops! Something went wrong while submitting the form.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-block-9 w-form">
+                <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>price</label>
+                  <div class="w-layout-grid grid-2 nav-grid">
+                    <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>min</label></div>
+                    <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>max</label></div>
+                  </div>
+                </form>
+                <div class="w-form-done">
+                  <div>Thank you! Your submission has been received!</div>
+                </div>
+                <div class="w-form-fail">
+                  <div>Oops! Something went wrong while submitting the form.</div>
+                </div>
+              </div>
+            </nav>
+
+
+
+
+             <!-- <nav *ngIf = "!this.filterOpen" class="dropdown-list-deskhome open w-dropdown-list">
                <div class="div-block-3-deskhome">
                  <div class="aisle-deskhome w-form">
-                   <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label class="field-label-3">Shop aisle</label><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
+                   <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6">
+                     <label class="field-label-3">Shop aisle</label>
+
+                     <select [(ngModel)]="this.auth.aisle" id="field-6" name="field-6" class="select-field-4 w-select">
+                       <option *ngFor="let aisle of this.auth.aisles" [value]="aisle">{{aisle.name}}</option>
+
+                     </select>
+                   </form>
                    <div class="w-form-done">
                      <div>Thank you! Your submission has been received!</div>
                    </div>
@@ -283,10 +355,12 @@
                    </div>
                  </div>
                </div>
-             </nav>
+             </nav> -->
            </div>
            <div class="form-block-deskhome w-form">
-             <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="form"><input type="text" class="text-field-2 w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Search.." id="field-3" required=""></form>
+             <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="form">
+               <input matInput (keyup)="applyFilter($event)" type="text" class="text-field-2 w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Search.." id="field-3" required="">
+             </form>
              <div class="w-form-done">
                <div>Thank you! Your submission has been received!</div>
              </div>
@@ -315,8 +389,8 @@
          </div>
        </div>
        <div class="div-block-9-deskhome"></div>
-       <div class="cards-grid-container-2-deskhome">
-         <div *ngFor = "let i of this.auth.storeproducts" id="w-node-c113868c4b55-5e559905">
+       <div class="cards-grid-container-2-deskhome" [dataSource]="dataSource">
+         <div *ngFor = "let i of this.filterProducts()" id="w-node-c113868c4b55-5e559905">
            <div class="cards-image-mask">
              <img style="max-width: 200px;" src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="cards-image">
 

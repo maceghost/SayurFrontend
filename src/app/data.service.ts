@@ -108,6 +108,11 @@ export class DataService {
   storeproducts:any;
   cart:any;
 
+  aisles:any;
+  aisle:any = null;
+  category:any = null;
+  subcategory:any = null;
+
   codes = [
 
     { code:"fz_high", display:"Freezer High"},
@@ -227,13 +232,32 @@ export class DataService {
     }
     this.apiUrl = this.urlBase +  '/ng_api';
 
-    let result:any
+
     this.get_products().then(result => {
       // console.log('location_config : ',result);
-      console.log(result)
+      let myresult:any = result
+      console.log(myresult)
+      this.aisles = myresult.aisles
+      for (let i of this.aisles){
+        console.log(i.categories)
+        for (let j of i.categories){
+          if (j.subcategories.length > 0){
+            j.subcategories.unshift('All')
+
+          }
+        }
+        if (i.categories.length > 0){
+          i.categories.unshift({name:'All',subcategories:[]})
+
+        }
+
+      }
+      this.aisles.unshift({name:'All',categories:[]})
+
+      this.aisle = this.aisles[0]
 
 
-      for (let i of result){
+      for (let i of myresult.products){
         i.added = false
         i.measurements = []
         if (i.price_per_kg){
@@ -256,7 +280,7 @@ export class DataService {
           i.image = ''
         }
       }
-      this.products = result
+      this.products = myresult.products
       this.storeproducts = this.products
 
       this.cart = []
