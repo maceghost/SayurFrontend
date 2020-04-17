@@ -365,30 +365,28 @@
                   </button> -->
              </form>
 
-             <div class="w-form-done">
-               <div>Thank you! Your submission has been received!</div>
-             </div>
-             <div class="w-form-fail">
-               <div>Oops! Something went wrong while submitting the form.</div>
-             </div>
+
            </div>
            <div class="form-block-2-deskhome w-form">
-             <form id="email-form-5" name="email-form-5" data-name="Email Form 5"><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-             <div class="w-form-done">
-               <div>Thank you! Your submission has been received!</div>
-             </div>
-             <div class="w-form-fail">
-               <div>Oops! Something went wrong while submitting the form.</div>
-             </div>
+             <mat-form-field id="email-form-5" name="email-form-5" data-name="Email Form 5">
+               <!-- <mat-label>Sort by</mat-label> -->
+               <select [(ngModel)] = "this.sort" matNativeControl  id="field-6" name="field-6" class="select-field-4 w-select">
+                 <option value="none">Sort by none</option>
+                 <option value="pricelow">Sort by price: low to high</option>
+                 <option value="pricehigh">Sort by price: high to low</option>
+               </select>
+             </mat-form-field>
+
            </div>
            <div class="form-block-3-deskhome w-form">
-             <form id="email-form-6" name="email-form-6" data-name="Email Form 6" class="form-3"><select id="field-7" name="field-7" class="select-field-3 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-             <div class="w-form-done">
-               <div>Thank you! Your submission has been received!</div>
-             </div>
-             <div class="w-form-fail">
-               <div>Oops! Something went wrong while submitting the form.</div>
-             </div>
+             <form id="email-form-6" name="email-form-6" data-name="Email Form 6" class="form-3">
+               <select [(ngModel)] = 'this.currency' id="field-7" name="field-7" class="select-field-3 w-select">
+                 <option *ngFor = "let i of this.currencies" value="{{i}}">{{i}}</option>
+                 <!-- <option value="First">USD</option>
+                 <option value="Second">RUP</option> -->
+               </select>
+             </form>
+
            </div>
          </div>
        </div>

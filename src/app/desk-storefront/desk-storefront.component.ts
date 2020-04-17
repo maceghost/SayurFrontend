@@ -61,6 +61,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
   subcategories:any;
   products:any = this.auth.storeproducts;
   queryTxt:any;
+  sort:any = 'none';
   // registerCredentials = { username: '', password: '' };
   @ViewChild('storeSort', { read: MatSort, static: true }) storeSort: MatSort;
   @ViewChild('cartSort', { read: MatSort, static: true }) cartSort: MatSort;
@@ -146,46 +147,28 @@ export class DeskStorefrontComponent implements AfterViewInit{
       return false
     }
   }
-  updateCategories(){
 
 
-  }
-  filterProducts1(){
-
-    if (this.auth.subcategory){
-      if (this.auth.subcategory == 'All'){
-        return _.filter(this.auth.storeproducts, {category: this.auth.category.name});
-        // return this.auth.storeproducts
-      }
-      else{
-        return _.filter(this.auth.storeproducts, {subcategory: this.auth.subcategory});
-
-      }
-    }
-
-    if (this.auth.category){
-      if (this.auth.category.name == 'All'){
-        return _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
-        // return this.auth.storeproducts
-      }
-      else{
-        return _.filter(this.auth.storeproducts, {category: this.auth.category.name});
-
-      }
-    }
+  filterProducts(){
     if (this.auth.aisle){
       if (this.auth.aisle.name == 'All'){
-        return this.auth.storeproducts
+        this.products = this.auth.storeproducts
       }
       else{
-        return _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
+        this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
 
       }
     }
+    if (this.auth.category){
+      if (this.auth.category.name == 'All'){
+        this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
+        // this.products = this.auth.storeproducts
+      }
+      else{
+        this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
 
-  }
-  filterProducts(){
-
+      }
+    }
     if (this.auth.subcategory){
       if (this.auth.subcategory == 'All'){
         this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
@@ -197,35 +180,23 @@ export class DeskStorefrontComponent implements AfterViewInit{
       }
     }
 
-    if (this.auth.category){
-      if (this.auth.category.name == 'All'){
-        this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
-        // this.products = this.auth.storeproducts
-      }
-      else{
-        this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
 
-      }
-    }
-    if (this.auth.aisle){
-      if (this.auth.aisle.name == 'All'){
-        this.products = this.auth.storeproducts
-      }
-      else{
-        this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
 
-      }
-    }
     if (this.queryTxt){
       let tmp = this.queryTxt
-    this.products = _.filter(this.products, function(o)
-
-    { console.log(JSON.stringify(o));
-
-      return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
-       });
+      this.products = _.filter(this.products, function(o){
+        console.log(JSON.stringify(o));
+        return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
+      });
+      console.log(this.products)
+    }
     console.log(this.products)
-  }
+    if (this.sort == 'pricelow'){
+      this.products = _.orderBy(this.products, ['cheapest'], ['asc']);
+    }
+    if (this.sort == 'pricehigh'){
+      this.products = _.orderBy(this.products, ['cheapest'], ['desc']);
+    }
     return this.products
 
   }
@@ -257,6 +228,21 @@ export class DeskStorefrontComponent implements AfterViewInit{
       default:
         returntotal = "Rp" + total.toString()
     }
+    let cheapest = []
+
+    if (item.price_per_kg){
+
+      cheapest.push(item.price_per_kg)
+    }
+    if (item.price_per_unit){
+
+      cheapest.push(item.price_per_unit)
+    }
+    if (item.price_per_tied_bunch){
+
+      cheapest.push(item.price_per_tied_bunch)
+    }
+    item.cheapest = Math.min(cheapest)
     return returntotal
 
   }
