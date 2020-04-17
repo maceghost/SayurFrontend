@@ -59,6 +59,8 @@ export class DeskStorefrontComponent implements AfterViewInit{
   aisle: any;
   categories: any;
   subcategories:any;
+  products:any = this.auth.storeproducts;
+  queryTxt:any;
   // registerCredentials = { username: '', password: '' };
   @ViewChild('storeSort', { read: MatSort, static: true }) storeSort: MatSort;
   @ViewChild('cartSort', { read: MatSort, static: true }) cartSort: MatSort;
@@ -148,7 +150,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
 
 
   }
-  filterProducts(){
+  filterProducts1(){
 
     if (this.auth.subcategory){
       if (this.auth.subcategory == 'All'){
@@ -182,7 +184,51 @@ export class DeskStorefrontComponent implements AfterViewInit{
     }
 
   }
+  filterProducts(){
 
+    if (this.auth.subcategory){
+      if (this.auth.subcategory == 'All'){
+        this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
+        // this.products = this.auth.storeproducts
+      }
+      else{
+        this.products = _.filter(this.auth.storeproducts, {subcategory: this.auth.subcategory});
+
+      }
+    }
+
+    if (this.auth.category){
+      if (this.auth.category.name == 'All'){
+        this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
+        // this.products = this.auth.storeproducts
+      }
+      else{
+        this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
+
+      }
+    }
+    if (this.auth.aisle){
+      if (this.auth.aisle.name == 'All'){
+        this.products = this.auth.storeproducts
+      }
+      else{
+        this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
+
+      }
+    }
+    if (this.queryTxt){
+      let tmp = this.queryTxt
+    this.products = _.filter(this.products, function(o)
+
+    { console.log(JSON.stringify(o));
+
+      return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
+       });
+    console.log(this.products)
+  }
+    return this.products
+
+  }
 
   getPrice(item:any){
     let total = 0
@@ -198,8 +244,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
         break;
     }
     total = total * item.quantity
-    console.log(item.quantity)
-    console.log(this.currency)
+
     let returntotal:string;
     switch(this.currency) {
       case 'Usd':
@@ -212,7 +257,6 @@ export class DeskStorefrontComponent implements AfterViewInit{
       default:
         returntotal = "Rp" + total.toString()
     }
-    console.log(returntotal)
     return returntotal
 
   }
@@ -291,7 +335,14 @@ export class DeskStorefrontComponent implements AfterViewInit{
   // }
   applyFilter(event: any) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // this.products = _.filter(this.auth.storeproducts, function(o){return o.name.toLowerCase().indexOf(filterValue.toLowerCase()) > -1});
+    this.products = _.filter(this.auth.storeproducts, function(o)
+    { console.log(JSON.stringify(o));
+
+      return JSON.stringify(o).toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+       });
+    console.log(this.products)
+
   }
 
   applyFilter1(event: any) {

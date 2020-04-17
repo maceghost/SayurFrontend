@@ -359,8 +359,12 @@
            </div>
            <div class="form-block-deskhome w-form">
              <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="form">
-               <input matInput (keyup)="applyFilter($event)" type="text" class="text-field-2 w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Search.." id="field-3" required="">
+              <input [(ngModel)]="this.queryTxt"  type="search" class="text-field-2 w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Search.." id="field-3" >
+              <!-- <button mat-button mat-icon-button matSuffix (click)="clearSearchField()" *ngIf="this.queryTxt">
+                      <mat-icon>close</mat-icon>
+                  </button> -->
              </form>
+
              <div class="w-form-done">
                <div>Thank you! Your submission has been received!</div>
              </div>
@@ -389,7 +393,7 @@
          </div>
        </div>
        <div class="div-block-9-deskhome"></div>
-       <div class="cards-grid-container-2-deskhome" [dataSource]="dataSource">
+       <div class="cards-grid-container-2-deskhome" >
          <div *ngFor = "let i of this.filterProducts()" id="w-node-c113868c4b55-5e559905">
            <div class="cards-image-mask">
              <img style="max-width: 200px;" src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="cards-image">
