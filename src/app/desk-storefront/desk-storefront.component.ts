@@ -62,6 +62,9 @@ export class DeskStorefrontComponent implements AfterViewInit{
   products:any = this.auth.storeproducts;
   queryTxt:any;
   sort:any = 'none';
+  minprice:any = null;
+  maxprice:any = null;
+
   // registerCredentials = { username: '', password: '' };
   @ViewChild('storeSort', { read: MatSort, static: true }) storeSort: MatSort;
   @ViewChild('cartSort', { read: MatSort, static: true }) cartSort: MatSort;
@@ -150,6 +153,8 @@ export class DeskStorefrontComponent implements AfterViewInit{
 
 
   filterProducts(){
+    console.log(this.products)
+
     if (this.auth.aisle){
       if (this.auth.aisle.name == 'All'){
         this.products = this.auth.storeproducts
@@ -180,25 +185,60 @@ export class DeskStorefrontComponent implements AfterViewInit{
       }
     }
 
-
-
     if (this.queryTxt){
       let tmp = this.queryTxt
       this.products = _.filter(this.products, function(o){
         console.log(JSON.stringify(o));
         return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
       });
-      console.log(this.products)
     }
-    console.log(this.products)
     if (this.sort == 'pricelow'){
       this.products = _.orderBy(this.products, ['cheapest'], ['asc']);
     }
     if (this.sort == 'pricehigh'){
       this.products = _.orderBy(this.products, ['cheapest'], ['desc']);
     }
+
+    let maxprice = 1000000000
+    let minprice = 0
+    if (this.auth.maxprice){
+      maxprice = parseInt(this.auth.maxprice)
+    }
+    if (this.auth.minprice){
+      minprice = parseInt(this.auth.minprice)
+    }
+
+    // this.products = _.filter(this.products, function(o){
+    //   console.log(minprice,maxprice,o.cheapest);
+    //   if (minprice <= o.cheapest <= maxprice){
+    //     return true
+    //   }
+    //   else{
+    //     return false
+    //   };
+    // })
+    console.log(this.products)
+    this.products = this.products.filter(function (o) {
+      console.log(minprice,maxprice,o.cheapest);
+
+      return minprice <= o.cheapest && o.cheapest <= maxprice;
+    });
+    // this.products = this.products.filter(function (o) {
+    //
+    //   return minprice <= o.cheapest <= maxprice;
+    // });
+
+
     return this.products
 
+  }
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
   }
 
   getPrice(item:any){

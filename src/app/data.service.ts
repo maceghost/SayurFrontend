@@ -105,14 +105,15 @@ export class DataService {
   urlBase: string;
   apiUrl:  string;
   products :any;
-  storeproducts:any;
-  cart:any;
+  storeproducts:any = [];
+  cart:any = [];
 
   aisles:any;
-  aisle:any = null;
+  aisle:any = {name:"All",categories:[]};
   category:any = null;
   subcategory:any = null;
-
+  minprice:any = null;
+  maxprice:any = null;
   codes = [
 
     { code:"fz_high", display:"Freezer High"},
@@ -279,6 +280,21 @@ export class DataService {
         else{
           i.image = ''
         }
+        let cheapest = []
+
+        if (i.price_per_kg){
+
+          cheapest.push(i.price_per_kg)
+        }
+        if (i.price_per_unit){
+
+          cheapest.push(i.price_per_unit)
+        }
+        if (i.price_per_tied_bunch){
+
+          cheapest.push(i.price_per_tied_bunch)
+        }
+        i.cheapest = Math.min(cheapest)
       }
       this.products = myresult.products
       this.storeproducts = this.products

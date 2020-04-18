@@ -243,7 +243,7 @@
 
 
 
-             <nav *ngIf = "this.filterOpen" class="dropdown-list-deskhome w-dropdown-list">
+             <nav [hidden] = "!this.filterOpen" class="dropdown-list-deskhome w-dropdown-list">
               <div class="aisle-deskhome w-form">
                 <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6">
                   <label class="field-label-3-deskhome">Shop aisle</label>
@@ -263,99 +263,37 @@
 
                     </select>
 
-                    </form>
-                  <div class="w-form-done">
-                    <div>Thank you! Your submission has been received!</div>
-                  </div>
-                  <div class="w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
-                  </div>
+                  </form>
+
                 </div>
                 <div class="subcategory-deskhome w-form"*ngIf = "this.getSubCategories()">
                   <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>sub-category</label>
                     <select [(ngModel)]="this.auth.subcategory" id="field-6" name="field-6" class="select-field-4 w-select">
-                    <option *ngFor="let sub of this.subcategories" [ngValue]="sub">{{sub}}</option>
-                  </select>
+                      <option *ngFor="let sub of this.subcategories" [ngValue]="sub">{{sub}}</option>
+                    </select>
                   </form>
-                  <div class="w-form-done">
-                    <div>Thank you! Your submission has been received!</div>
-                  </div>
-                  <div class="w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
-                  </div>
+
                 </div>
               </div>
               <div class="form-block-9 w-form">
-                <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>price</label>
+                <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2">
+                  <label>price</label>
                   <div class="w-layout-grid grid-2 nav-grid">
-                    <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>min</label></div>
-                    <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>max</label></div>
+                    <div>
+                      <input matInput [(ngModel)] = "this.auth.minprice" type="search" (keypress)="numberOnly($event)" class="w-input" maxlength="256" name="field-5" data-name="Field 5" id="field-5">
+                      <label>min</label>
+                    </div>
+                    <div>
+                      <input [(ngModel)] = "this.auth.maxprice" type="search" (keypress)="numberOnly($event)" class="w-input" maxlength="256" name="field-5" data-name="Field 5" id="field-5" required="">
+                      <label>max</label>
+                    </div>
                   </div>
                 </form>
-                <div class="w-form-done">
-                  <div>Thank you! Your submission has been received!</div>
-                </div>
-                <div class="w-form-fail">
-                  <div>Oops! Something went wrong while submitting the form.</div>
-                </div>
+
               </div>
             </nav>
 
 
-
-
-             <!-- <nav *ngIf = "!this.filterOpen" class="dropdown-list-deskhome open w-dropdown-list">
-               <div class="div-block-3-deskhome">
-                 <div class="aisle-deskhome w-form">
-                   <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6">
-                     <label class="field-label-3">Shop aisle</label>
-
-                     <select [(ngModel)]="this.auth.aisle" id="field-6" name="field-6" class="select-field-4 w-select">
-                       <option *ngFor="let aisle of this.auth.aisles" [value]="aisle">{{aisle.name}}</option>
-
-                     </select>
-                   </form>
-                   <div class="w-form-done">
-                     <div>Thank you! Your submission has been received!</div>
-                   </div>
-                   <div class="w-form-fail">
-                     <div>Oops! Something went wrong while submitting the form.</div>
-                   </div>
-                 </div>
-                 <div class="categorhy-deskhome w-form">
-                   <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>category</label><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-                   <div class="w-form-done">
-                     <div>Thank you! Your submission has been received!</div>
-                   </div>
-                   <div class="w-form-fail">
-                     <div>Oops! Something went wrong while submitting the form.</div>
-                   </div>
-                 </div>
-                 <div class="subcategory-deskhome w-form">
-                   <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>sub-category</label><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-                   <div class="w-form-done">
-                     <div>Thank you! Your submission has been received!</div>
-                   </div>
-                   <div class="w-form-fail">
-                     <div>Oops! Something went wrong while submitting the form.</div>
-                   </div>
-                 </div>
-                 <div class="w-form">
-                   <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>price</label>
-                     <div class="w-layout-grid grid-2 nav-grid">
-                       <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>min</label></div>
-                       <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>max</label></div>
-                     </div>
-                   </form>
-                   <div class="w-form-done">
-                     <div>Thank you! Your submission has been received!</div>
-                   </div>
-                   <div class="w-form-fail">
-                     <div>Oops! Something went wrong while submitting the form.</div>
-                   </div>
-                 </div>
-               </div>
-             </nav> -->
            </div>
            <div class="form-block-deskhome w-form">
              <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="form">
@@ -382,8 +320,7 @@
              <form id="email-form-6" name="email-form-6" data-name="Email Form 6" class="form-3">
                <select [(ngModel)] = 'this.currency' id="field-7" name="field-7" class="select-field-3 w-select">
                  <option *ngFor = "let i of this.currencies" value="{{i}}">{{i}}</option>
-                 <!-- <option value="First">USD</option>
-                 <option value="Second">RUP</option> -->
+
                </select>
              </form>
 

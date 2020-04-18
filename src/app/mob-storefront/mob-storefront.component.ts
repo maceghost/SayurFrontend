@@ -29,7 +29,7 @@ import {
 @Component({
   selector: 'app-mob-storefront',
   templateUrl: './mob-storefront.component.html',
-  styleUrls: [  'css/webflow.css','css/normalize.css','css/jacks-business-starter-819719.webflow.css'],
+  styleUrls: [  '../css/webflow.css','../css/normalize.css','./mob-storefront.component.css'],
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('detailExpand', [ state('collapsed, void', style({ height: '0px' })), state('expanded', style({ height: '*' })), transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')), transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')) ])
@@ -51,6 +51,15 @@ export class MobStorefrontComponent implements AfterViewInit{
   numbers:any = []; // [0,1,2,3,4]
   currency:any = 'Rp';
   currencies:any = ['Rp','Usd','Rub']
+  aisle: any;
+  categories: any;
+  subcategories:any;
+  products:any = this.auth.storeproducts;
+  queryTxt:any;
+  sort:any = 'none';
+  minprice:any = null;
+  maxprice:any = null;
+
   // registerCredentials = { username: '', password: '' };
   @ViewChild('storeSort', { read: MatSort, static: true }) storeSort: MatSort;
   @ViewChild('cartSort', { read: MatSort, static: true }) cartSort: MatSort;
@@ -79,8 +88,11 @@ export class MobStorefrontComponent implements AfterViewInit{
     }
     console.log(this.numbers)
 
+
+
   }
   ngOnInit(){
+    // this.aisle = this.auth.aisles[0];
     // for (let i of this.auth.storeproducts){
     //   i.added = false
     //   i.measurements = []
@@ -98,6 +110,132 @@ export class MobStorefrontComponent implements AfterViewInit{
     //   i.quantity = 1
     // }
   }
+
+  updateFilters(){
+    this.auth.category = this.auth.aisle.categories[0]
+
+  }
+  updateSubCatFilter(){
+    this.auth.subcategory = this.auth.category.subcategories[0]
+
+  }
+  getCategories(){
+    console.log(this.auth.aisle)
+    console.log(this.categories)
+
+    this.categories = this.auth.aisle.categories
+    console.log(this.categories)
+
+    if (this.categories.length > 0){
+      return true
+
+    }
+    else{
+      return false
+    }
+  }
+
+  getSubCategories(){
+    this.subcategories = this.auth.category.subcategories
+    if (this.subcategories.length != 0){
+      return true
+
+    }
+    else{
+      return false
+    }
+  }
+
+
+  filterProducts(){
+    console.log(this.products)
+
+    if (this.auth.aisle){
+      if (this.auth.aisle.name == 'All'){
+        this.products = this.auth.storeproducts
+      }
+      else{
+        this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
+
+      }
+    }
+    if (this.auth.category){
+      if (this.auth.category.name == 'All'){
+        this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
+        // this.products = this.auth.storeproducts
+      }
+      else{
+        this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
+
+      }
+    }
+    if (this.auth.subcategory){
+      if (this.auth.subcategory == 'All'){
+        this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
+        // this.products = this.auth.storeproducts
+      }
+      else{
+        this.products = _.filter(this.auth.storeproducts, {subcategory: this.auth.subcategory});
+
+      }
+    }
+
+    if (this.queryTxt){
+      let tmp = this.queryTxt
+      this.products = _.filter(this.products, function(o){
+        console.log(JSON.stringify(o));
+        return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
+      });
+    }
+    if (this.sort == 'pricelow'){
+      this.products = _.orderBy(this.products, ['cheapest'], ['asc']);
+    }
+    if (this.sort == 'pricehigh'){
+      this.products = _.orderBy(this.products, ['cheapest'], ['desc']);
+    }
+
+    let maxprice = 1000000000
+    let minprice = 0
+    if (this.maxprice){
+      maxprice = parseInt(this.maxprice)
+    }
+    if (this.minprice){
+      minprice = parseInt(this.minprice)
+    }
+
+    // this.products = _.filter(this.products, function(o){
+    //   console.log(minprice,maxprice,o.cheapest);
+    //   if (minprice <= o.cheapest <= maxprice){
+    //     return true
+    //   }
+    //   else{
+    //     return false
+    //   };
+    // })
+    console.log(this.products)
+    this.products = this.products.filter(function (o) {
+      console.log(minprice,maxprice,o.cheapest);
+
+      return minprice <= o.cheapest && o.cheapest <= maxprice;
+    });
+    // this.products = this.products.filter(function (o) {
+    //
+    //   return minprice <= o.cheapest <= maxprice;
+    // });
+
+
+    return this.products
+
+  }
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
   getPrice(item:any){
     let total = 0
     switch(item.measurement) {
@@ -112,8 +250,7 @@ export class MobStorefrontComponent implements AfterViewInit{
         break;
     }
     total = total * item.quantity
-    console.log(item.quantity)
-    console.log(this.currency)
+
     let returntotal:string;
     switch(this.currency) {
       case 'Usd':
@@ -126,7 +263,21 @@ export class MobStorefrontComponent implements AfterViewInit{
       default:
         returntotal = "Rp" + total.toString()
     }
-    console.log(returntotal)
+    let cheapest = []
+
+    if (item.price_per_kg){
+
+      cheapest.push(item.price_per_kg)
+    }
+    if (item.price_per_unit){
+
+      cheapest.push(item.price_per_unit)
+    }
+    if (item.price_per_tied_bunch){
+
+      cheapest.push(item.price_per_tied_bunch)
+    }
+    item.cheapest = Math.min(cheapest)
     return returntotal
 
   }
@@ -185,19 +336,22 @@ export class MobStorefrontComponent implements AfterViewInit{
       this.cart.sort = this.cartSort;
     }
     addToCart(product:any){
-      this.auth.storeproducts = this.auth.storeproducts.filter( el => el !== product )
+      // this.auth.storeproducts = this.auth.storeproducts.filter( el => el !== product )
+      product.added = true
       this.auth.cart.push(product)
-      this.cart = new MatTableDataSource(this.auth.cart)
-      this.dataSource = new MatTableDataSource(this.auth.storeproducts);
-      this.refreshTables()
+      // this.cart = new MatTableDataSource(this.auth.cart)
+      // this.dataSource = new MatTableDataSource(this.auth.storeproducts);
+      // this.refreshTables()
 
     }
     removeFromCart(product:any){
+      product.added = false
+
       this.auth.cart = this.auth.cart.filter( el => el !== product );
-      this.auth.storeproducts.push(product)
-      this.cart = this.auth.cart
-      this.dataSource = this.auth.storeproducts
-      this.refreshTables()
+      // this.auth.storeproducts.push(product)
+      // this.cart = this.auth.cart
+      // this.dataSource = this.auth.storeproducts
+      // this.refreshTables()
 
     }
   // ngOnInit(){
@@ -205,7 +359,14 @@ export class MobStorefrontComponent implements AfterViewInit{
   // }
   applyFilter(event: any) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // this.products = _.filter(this.auth.storeproducts, function(o){return o.name.toLowerCase().indexOf(filterValue.toLowerCase()) > -1});
+    this.products = _.filter(this.auth.storeproducts, function(o)
+    { console.log(JSON.stringify(o));
+
+      return JSON.stringify(o).toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+       });
+    console.log(this.products)
+
   }
 
   applyFilter1(event: any) {

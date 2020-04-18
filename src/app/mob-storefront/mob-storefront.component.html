@@ -3,13 +3,13 @@
     <div class="div-block-22-mobhome">
       <a href="#" class="brand-mobhome w-nav-brand">
         <div class="text-block-5-mobhome">Sayur Stall</div>
-      </a>
+      </a><a href="#" class="link-4">Shop</a>
       <nav role="navigation" class="w-nav-menu"><a href="#" class="nav-link-2-mobhome w-nav-link">Shop</a></nav>
     </div>
     <div class="div-block-23-mobhome">
       <div class="div-block-26-mobhome"><a href="#" class="button-3-mobhome w-button">Sign up</a></div>
       <div class="div-block-24-mobhome"><a href="#" class="button-4-mobhome w-button">Sign in</a></div>
-      <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="modal" data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper cart-3-mobhome"><a href="#" data-node-type="commerce-cart-open-link" class="w-commerce-commercecartopenlink cart-button-mobhome w-inline-block"><svg class="w-commerce-commercecartopenlinkicon icon-2-mobhome" width="17px" height="17px" viewbox="0 0 17 17"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M2.60592789,2 L0,2 L0,0 L4.39407211,0 L4.84288393,4 L16,4 L16,9.93844589 L3.76940945,12.3694378 L2.60592789,2 Z M15.5,17 C14.6715729,17 14,16.3284271 14,15.5 C14,14.6715729 14.6715729,14 15.5,14 C16.3284271,14 17,14.6715729 17,15.5 C17,16.3284271 16.3284271,17 15.5,17 Z M5.5,17 C4.67157288,17 4,16.3284271 4,15.5 C4,14.6715729 4.67157288,14 5.5,14 C6.32842712,14 7,14.6715729 7,15.5 C7,16.3284271 6.32842712,17 5.5,17 Z" fill="currentColor" fill-rule="nonzero"></path></g></svg><div class="w-commerce-commercecartopenlinkcount cart-quantity-3-mobhome">0</div></a>
+      <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="modal" data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper cart-3-mobhome"><a href="#" data-node-type="commerce-cart-open-link" class="w-commerce-commercecartopenlink cart-button-mobhome w-inline-block"><svg class="w-commerce-commercecartopenlinkicon icon-2-mobhome" width="17px" height="17px" viewbox="0 0 17 17"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M2.60592789,2 L0,2 L0,0 L4.39407211,0 L4.84288393,4 L16,4 L16,9.93844589 L3.76940945,12.3694378 L2.60592789,2 Z M15.5,17 C14.6715729,17 14,16.3284271 14,15.5 C14,14.6715729 14.6715729,14 15.5,14 C16.3284271,14 17,14.6715729 17,15.5 C17,16.3284271 16.3284271,17 15.5,17 Z M5.5,17 C4.67157288,17 4,16.3284271 4,15.5 C4,14.6715729 4.67157288,14 5.5,14 C6.32842712,14 7,14.6715729 7,15.5 C7,16.3284271 6.32842712,17 5.5,17 Z" fill="currentColor" fill-rule="nonzero"></path></g></svg><div class="w-commerce-commercecartopenlinkcount cart-quantity-3-mobhome">{{this.auth.cart.length}}</div></a>
         <div data-node-type="commerce-cart-container-wrapper" style="display:none" class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-modal">
           <div data-node-type="commerce-cart-container" class="w-commerce-commercecartcontainer">
             <div class="w-commerce-commercecartheader">
@@ -48,10 +48,10 @@
     <div class="div-block-8-mobhome">
       <div class="div-block-25-mobhome">
         <h6 class="header-mobhome">Shop</h6>
-        <div (click) = "this.filterOpen = !this.filterOpen" data-hover="" data-delay="0" class="filter-mobhome w-dropdown">
-          <div style="display:flex;"class="dropdown-toggle-mobhome w-dropdown-toggle">
-
-            <div style="display:flex;align-items:center">Filter</div>
+        <div data-hover="" data-delay="0" class="filter-mobhome w-dropdown">
+          <div (click) = "this.filterOpen = !this.filterOpen"style="display:flex;" class="dropdown-toggle-mobhome w-dropdown-toggle">
+            <!-- <div class="w-icon-dropdown-toggle"></div> -->
+            <div>Filter</div>
             <mat-icon style="height:auto"*ngIf = "!this.filterOpen" aria-hidden="false" aria-label="Example home icon">keyboard_arrow_right
             </mat-icon>
             <mat-icon style="height:auto"*ngIf = "this.filterOpen" aria-hidden="false" aria-label="Example home icon">keyboard_arrow_down
@@ -61,498 +61,120 @@
         </div>
       </div>
       <div class="div-block-31-mobhome">
-        <div *ngIf = "this.filterOpen" class="div-block-31-filtermobhome">
-          <div class="w-layout-grid grid-8-mobhome">
-            <div class="aisle w-form">
-              <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label class="field-label-3">Shop aisle</label><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-              <div class="w-form-done">
-                <div>Thank you! Your submission has been received!</div>
-              </div>
-              <div class="w-form-fail">
-                <div>Oops! Something went wrong while submitting the form.</div>
-              </div>
+        <div [hidden] = "!this.filterOpen" class="div-block-31-filtermobhome">
+          <div class="aisle-mobhome w-form">
+            <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label class="field-label-3">Shop aisle</label>
+              <select (change) = "this.updateFilters()"[(ngModel)]="this.auth.aisle" id="field-6" name="field-6" class="select-field-4 w-select">
+                <option *ngFor="let aisle of this.auth.aisles" [ngValue]="aisle">{{aisle.name}}</option>
+              </select>
+            </form>
+
+          </div>
+          <div *ngIf = "this.getCategories()">
+            <div class="category-mobhome w-form" >
+              <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6">
+                <label>category</label>
+                <select (change) = "updateSubCatFilter()"[(ngModel)]="this.auth.category" id="field-6" name="field-6" class="select-field-4 w-select">
+                  <option *ngFor="let cat of this.categories" [ngValue]="cat">{{cat.name}}</option>
+
+                </select>
+              </form>
+
             </div>
-            <div class="categorhy w-form">
-              <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>category</label><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-              <div class="w-form-done">
-                <div>Thank you! Your submission has been received!</div>
-              </div>
-              <div class="w-form-fail">
-                <div>Oops! Something went wrong while submitting the form.</div>
-              </div>
+            <div class="subcategory-mobhome w-form" *ngIf = "this.getSubCategories()">
+              <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6">
+                <label>sub-category</label>
+                <select [(ngModel)]="this.auth.subcategory" id="field-6" name="field-6" class="select-field-4 w-select">
+                  <option *ngFor="let sub of this.subcategories" [ngValue]="sub">{{sub}}</option>
+                </select>
+              </form>
+
             </div>
           </div>
-          <div class="subcategory-mobhome w-form">
-            <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>sub-category</label><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-          <div class="w-form">
-            <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>price</label>
+          <div class="form-block-10 w-form">
+            <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2">
+              <label>price</label>
               <div class="w-layout-grid grid-2 nav-grid">
-                <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>min</label></div>
-                <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>max</label></div>
+                <div>
+                  <input [(ngModel)] = "this.auth.minprice" type="search" (keypress)="numberOnly($event)" class="w-input" maxlength="256" name="field-5" data-name="Field 5" id="field-5" required="">
+                  <label>min</label>
+                </div>
+                <div>
+                  <input [(ngModel)] = "this.auth.maxprice" type="search" (keypress)="numberOnly($event)" class="w-input" maxlength="256" name="field-5" data-name="Field 5" id="field-5" required="">
+                  <label>max</label>
+                </div>
               </div>
             </form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
+
           </div>
           <div class="form-block-2-mobhomesortby w-form">
-            <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>Sort by</label><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
+            <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>Sort by</label>
+              <select [(ngModel)] = "this.sort" matNativeControl  id="field-6" name="field-6" class="select-field-4 w-select">
+                <option value="none">Sort by none</option>
+                <option value="pricelow">Sort by price: low to high</option>
+                <option value="pricehigh">Sort by price: high to low</option>
+              </select>
+              </form>
+
           </div>
           <div class="form-block-3-mobhome w-form">
-            <form id="email-form-6" name="email-form-6" data-name="Email Form 6" class="form-3"><label class="field-label-2">Currency</label><select id="field-7" name="field-7" class="select-field-3 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
+            <form id="email-form-6" name="email-form-6" data-name="Email Form 6" class="form-3"><label class="field-label-2">Currency</label>
+              <select [(ngModel)] = 'this.currency' id="field-7" name="field-7" class="select-field-3 w-select">
+                <option *ngFor = "let i of this.currencies" value="{{i}}">{{i}}</option>
+
+              </select>
+              </form>
+
           </div>
         </div>
         <div>
           <div class="form-block-mobhome w-form">
-            <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="form-mobhome"><input type="text" class="text-field-2-mobhome w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Search.." id="field-3" required=""></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
+            <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="form-mobhome">
+              <input [(ngModel)]="this.queryTxt"  type="search" class="text-field-2-mobhome w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Search.." id="field-3" >
+
+            </form>
+
           </div>
         </div>
         <div class="div-block-9-mobhome"></div>
         <div class="cards-grid-container-2-mobhome">
-
-          <div *ngFor = "let i of this.auth.storeproducts" id="w-node-e50dc151c71d-8e8593f0">
-            <div class="cards-image-mask-mobhome"><img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="cards-image"></div>
+          <div *ngFor = "let i of this.filterProducts()" id="w-node-e50dc151c71d-8e8593f0">
+            <div class="cards-image-mask-mobhome">
+              <div *ngIf = "i.added" class="div-block-60-mobhome">
+                <div class="text-block-29">{{i.quantity}} in cart</div>
+              </div><img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="cards-image"></div>
             <div class="div-block-29-mobhome">
-              <div style="display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;"class="text-block-6-mobhome">{{i.name}} word and another word special friend</div>
-              <div class="text-block-2-mobhome">est. {{this.getPrice(i)}}</div>
-
+              <div class="text-block-6-mobhome">{{i.name}} plus a few words or two and a loooong one how bout that </div>
+              <div class="text-block-2-mobhome"> est. {{this.getPrice(i)}}</div>
             </div>
             <div class="div-block-7-mobhome">
               <div class="type-mobhome w-form">
-                <form id="email-form" name="email-form" data-name="Email Form">
-                  <select id="field-8" name="field-8" data-name="Field 8" class="typesel-mobhome w-select"[(ngModel)]="i.quantity">
+                <form id="email-form" name="email-form" data-name="Email Form" class="form-7">
+                  <select [(ngModel)]="i.quantity" id="field-8" name="field-8" data-name="Field 8" class="typesel-mobhome w-select">
                     <option *ngFor="let number of this.numbers" [value]="number">{{number}}</option>
-
-                  </select>
-
-                </form>
+                    </select>
+                  </form>
 
               </div>
               <div class="quantity-mobhome w-form">
-                <form id="email-form" name="email-form" data-name="Email Form">
-                  <select id="field-11" name="field-11" data-name="Field 11" class="typesel-mobhome-copy w-select" [(ngModel)]="i.measurement">
+                <form id="email-form" name="email-form" data-name="Email Form" class="form-8">
+                  <select [(ngModel)]="i.measurement" id="field-8" name="field-8" data-name="Field 8" class="typesel-mobhome-copy w-select">
                     <option *ngFor="let i of i.measurements" [value]="i">{{i}}</option>
                   </select>
                 </form>
 
               </div>
-            </div><a href="#" class="button-2-mobhome w-button">Add to Cart</a></div>
+            </div>
+            <a *ngIf = "!i.added"(click) = this.addToCart(i) class="button-2-mobhome w-button">Add to Cart</a>
+            <a *ngIf = "i.added" (click) = this.removeFromCart(i) class="button-2-mobhome w-button">Remove from Cart</a>
+
+          </div>
 
         </div>
       </div>
-
     </div>
   </section>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89212b4fbaea4db21ed817" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>
-
-
-
-<!-- <body class="body">
-  <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar w-nav">
-    <div class="div-block-22-copy">
-      <div class="menubutton-mobhome w-nav-button">
-        <div class="mobhome-menu w-icon-nav-menu"></div>
-      </div>
-      <a href="#" class="brand-copy w-nav-brand">
-        <div class="text-block-5-mobhome">Sayur Stall</div>
-      </a>
-      <nav role="navigation" class="w-nav-menu"><a href="#" class="nav-link-2-deskhome w-nav-link">Shop</a></nav>
-    </div>
-    <div class="div-block-23-mobhome">
-      <div class="div-block-26-mobhome"><a href="#" class="button-3-mobhome w-button">Sign up</a></div>
-      <div class="div-block-24-mobhome"><a href="#" class="button-4-mobhome w-button">Sign in</a></div>
-      <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="modal" data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper cart-3-mobhome"><a href="#" data-node-type="commerce-cart-open-link" class="w-commerce-commercecartopenlink cart-button-3 w-inline-block"><svg class="w-commerce-commercecartopenlinkicon icon-2" width="17px" height="17px" viewbox="0 0 17 17"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M2.60592789,2 L0,2 L0,0 L4.39407211,0 L4.84288393,4 L16,4 L16,9.93844589 L3.76940945,12.3694378 L2.60592789,2 Z M15.5,17 C14.6715729,17 14,16.3284271 14,15.5 C14,14.6715729 14.6715729,14 15.5,14 C16.3284271,14 17,14.6715729 17,15.5 C17,16.3284271 16.3284271,17 15.5,17 Z M5.5,17 C4.67157288,17 4,16.3284271 4,15.5 C4,14.6715729 4.67157288,14 5.5,14 C6.32842712,14 7,14.6715729 7,15.5 C7,16.3284271 6.32842712,17 5.5,17 Z" fill="currentColor" fill-rule="nonzero"></path></g></svg><div class="w-commerce-commercecartopenlinkcount cart-quantity-3">0</div></a>
-        <div data-node-type="commerce-cart-container-wrapper" style="display:none" class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-modal">
-          <div data-node-type="commerce-cart-container" class="w-commerce-commercecartcontainer">
-            <div class="w-commerce-commercecartheader">
-              <h4 class="w-commerce-commercecartheading">Your Cart</h4><a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink w-inline-block"><svg width="16px" height="16px" viewbox="0 0 16 16"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill-rule="nonzero" fill="#333333"><polygon points="6.23223305 8 0.616116524 13.6161165 2.38388348 15.3838835 8 9.76776695 13.6161165 15.3838835 15.3838835 13.6161165 9.76776695 8 15.3838835 2.38388348 13.6161165 0.616116524 8 6.23223305 2.38388348 0.616116524 0.616116524 2.38388348 6.23223305 8"></polygon></g></g></svg></a></div>
-            <div class="w-commerce-commercecartformwrapper">
-              <form data-node-type="commerce-cart-form" style="display:none" class="w-commerce-commercecartform">
-                <script type="text/x-wf-template" id="wf-template-b10d07ad-3c17-41ea-dee0-175a32ab1c5e"></script>
-                <div class="w-commerce-commercecartlist" data-wf-collection="database.commerceOrder.userItems" data-wf-template-id="wf-template-b10d07ad-3c17-41ea-dee0-175a32ab1c5e"></div>
-                <div class="w-commerce-commercecartfooter">
-                  <div class="w-commerce-commercecartlineitem">
-                    <div>Subtotal</div>
-                    <div class="w-commerce-commercecartordervalue"></div>
-                  </div>
-                  <div>
-                    <div data-node-type="commerce-cart-quick-checkout-actions">
-                      <a data-node-type="commerce-cart-apple-pay-button" style="background-image:-webkit-named-image(apple-pay-logo-white);background-size:100% 50%;background-position:50% 50%;background-repeat:no-repeat" class="w-commerce-commercecartapplepaybutton">
-                        <div></div>
-                      </a><a data-node-type="commerce-cart-quick-checkout-button" style="display:none" class="w-commerce-commercecartquickcheckoutbutton"><svg class="w-commerce-commercequickcheckoutgoogleicon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewbox="0 0 16 16"><defs><polygon id="google-mark-a" points="0 .329 3.494 .329 3.494 7.649 0 7.649"></polygon><polygon id="google-mark-c" points=".894 0 13.169 0 13.169 6.443 .894 6.443"></polygon></defs><g fill="none" fill-rule="evenodd"><path fill="#4285F4" d="M10.5967,12.0469 L10.5967,14.0649 L13.1167,14.0649 C14.6047,12.6759 15.4577,10.6209 15.4577,8.1779 C15.4577,7.6339 15.4137,7.0889 15.3257,6.5559 L7.8887,6.5559 L7.8887,9.6329 L12.1507,9.6329 C11.9767,10.6119 11.4147,11.4899 10.5967,12.0469"></path><path fill="#34A853" d="M7.8887,16 C10.0137,16 11.8107,15.289 13.1147,14.067 C13.1147,14.066 13.1157,14.065 13.1167,14.064 L10.5967,12.047 C10.5877,12.053 10.5807,12.061 10.5727,12.067 C9.8607,12.556 8.9507,12.833 7.8887,12.833 C5.8577,12.833 4.1387,11.457 3.4937,9.605 L0.8747,9.605 L0.8747,11.648 C2.2197,14.319 4.9287,16 7.8887,16"></path><g transform="translate(0 4)"><mask id="google-mark-b" fill="#fff"><use xlink:href="#google-mark-a"></use></mask><path fill="#FBBC04" d="M3.4639,5.5337 C3.1369,4.5477 3.1359,3.4727 3.4609,2.4757 L3.4639,2.4777 C3.4679,2.4657 3.4749,2.4547 3.4789,2.4427 L3.4939,0.3287 L0.8939,0.3287 C0.8799,0.3577 0.8599,0.3827 0.8459,0.4117 C-0.2821,2.6667 -0.2821,5.3337 0.8459,7.5887 L0.8459,7.5997 C0.8549,7.6167 0.8659,7.6317 0.8749,7.6487 L3.4939,5.6057 C3.4849,5.5807 3.4729,5.5587 3.4639,5.5337" mask="url(#google-mark-b)"></path></g><mask id="google-mark-d" fill="#fff"><use xlink:href="#google-mark-c"></use></mask><path fill="#EA4335" d="M0.894,4.3291 L3.478,6.4431 C4.113,4.5611 5.843,3.1671 7.889,3.1671 C9.018,3.1451 10.102,3.5781 10.912,4.3671 L13.169,2.0781 C11.733,0.7231 9.85,-0.0219 7.889,0.0001 C4.941,0.0001 2.245,1.6791 0.894,4.3291" mask="url(#google-mark-d)"></path></g></svg><svg class="w-commerce-commercequickcheckoutmicrosofticon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16"><g fill="none" fill-rule="evenodd"><polygon fill="#F05022" points="7 7 1 7 1 1 7 1"></polygon><polygon fill="#7DB902" points="15 7 9 7 9 1 15 1"></polygon><polygon fill="#00A4EE" points="7 15 1 15 1 9 7 9"></polygon><polygon fill="#FFB700" points="15 15 9 15 9 9 15 9"></polygon></g></svg><div>Pay with browser.</div></a></div><a href="/checkout" value="Continue to Checkout" data-node-type="cart-checkout-button" class="w-commerce-commercecartcheckoutbutton" data-loading-text="Hang Tight...">Continue to Checkout</a></div>
-                </div>
-              </form>
-              <div class="w-commerce-commercecartemptystate">
-                <div>No items found.</div>
-              </div>
-              <div style="display:none" data-node-type="commerce-cart-error" class="w-commerce-commercecarterrorstate">
-                <div class="w-cart-error-msg" data-w-cart-quantity-error="Product is not available in this quantity." data-w-cart-checkout-error="Checkout is disabled on this site." data-w-cart-general-error="Something went wrong when adding this item to the cart." data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue.">Product is not available in this quantity.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section-3">
-    <h6 class="heading-6">Sign in for the best experience</h6><a href="#" class="button-6 w-button">Sign in</a><a href="#" class="link-3">Create an account</a></div>
-  <section id="cards-section" class="cards-section-copy">
-    <div class="div-block-8-copy">
-      <div class="div-block-4-copy">
-        <div class="div-block-25">
-          <h6 class="test-copy">Shop</h6>
-          <div data-hover="" data-delay="0" class="w-dropdown">
-            <div class="dropdown-toggle w-dropdown-toggle">
-              <div class="w-icon-dropdown-toggle"></div>
-              <div>Filter</div>
-            </div>
-            <nav class="dropdown-list w-dropdown-list">
-              <div class="div-block-3">
-                <div class="w-form">
-                  <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>category</label>
-                    <div class="w-layout-grid nav-grid"><label class="w-checkbox"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-3" name="checkbox-3" data-name="Checkbox 3" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label></div>
-                  </form>
-                  <div class="w-form-done">
-                    <div>Thank you! Your submission has been received!</div>
-                  </div>
-                  <div class="w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
-                  </div>
-                </div>
-                <div class="w-form">
-                  <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>price</label>
-                    <div class="w-layout-grid grid-2 nav-grid">
-                      <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>min</label></div>
-                      <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>max</label></div>
-                    </div>
-                  </form>
-                  <div class="w-form-done">
-                    <div>Thank you! Your submission has been received!</div>
-                  </div>
-                  <div class="w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
-                  </div>
-                </div>
-              </div>
-            </nav>
-          </div>
-        </div>
-        <div>
-          <div class="form-block w-form">
-            <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="form"><input type="text" class="text-field-2 w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Search.." id="field-3" required=""></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="div-block-9"></div>
-      <div class="cards-grid-container-2-copy">
-
-        <div *ngFor = "let i of this.auth.storeproducts" id="w-node-e50dc151c71d-8e8593f0">
-          <div class="cards-image-mask"><img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="cards-image"></div>
-
-          <div class="div-block-29">
-            <div style="display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;"class="text-block-6-copy">{{i.name}} word and another word special friend</div>
-            <div class="text-block-2-copy">est. {{this.getPrice(i)}}</div>
-          </div>
-          <div class="div-block-7-mobhome">
-            <div class="type-mobhome w-form">
-              <form id="email-form" name="email-form" data-name="Email Form">
-                <select id="field-8" name="field-8" data-name="Field 8" class="typesel-mobhome w-select"[(ngModel)]="i.quantity">
-                  <option *ngFor="let number of this.numbers" [value]="number">{{number}}</option>
-
-                </select>
-              </form>
-
-            </div>
-            <div class="quantity-mobhome w-form">
-              <select id="field-11" name="field-11" data-name="Field 11" class="typesel-mobhome w-select" [(ngModel)]="i.measurement">
-                <option *ngFor="let i of i.measurements" [value]="i">{{i}}</option>
-              </select>
-
-            </div>
-          </div><a *ngIf = "!i.added" (click) = "this.addToCart()" href="#" class="button-2-copy w-button">Add to Cart</a></div>
-
-      </div>
-      <div class="cards-grid-container-2-copy-copy">
-        <div class="div-block-3">
-          <div class="form-block-3 w-form">
-            <form id="email-form-6" name="email-form-6" data-name="Email Form 6" class="form-3"><label class="field-label-2">Currency</label><select id="field-7" name="field-7" class="select-field-3 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-          <div class="form-block-2 w-form">
-            <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>Sort by</label><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-          <div class="w-form">
-            <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>category</label>
-              <div class="w-layout-grid nav-grid"><label class="w-checkbox"><input type="checkbox" id="checkbox-4" name="checkbox-4" data-name="Checkbox 4" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-3" name="checkbox-3" data-name="Checkbox 3" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label></div>
-            </form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-          <div class="w-form">
-            <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>price</label>
-              <div class="w-layout-grid grid-2 nav-grid">
-                <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>min</label></div>
-                <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>max</label></div>
-              </div>
-            </form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89212b4fbaea4db21ed817" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="js/webflow.js" type="text/javascript"></script>
-</body> -->
-
-
-
-
-<!-- <body class="body">
-  <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar w-nav">
-    <div class="div-block-22">
-      <div class="menu-button-2 w-nav-button">
-        <div class="icon-3 w-icon-nav-menu"></div>
-      </div>
-      <a href="#" class="brand w-nav-brand">
-        <div class="text-block-5">Sayur Stall</div>
-      </a>
-      <nav role="navigation" class="w-nav-menu"><a href="#" class="nav-link-2 w-nav-link">Shop</a></nav>
-    </div>
-    <div class="div-block-23">
-      <div class="div-block-26"><a href="#" class="button-3 w-button">Sign up</a></div>
-      <div class="div-block-24"><a href="#" class="button-4 w-button">Sign in</a></div>
-      <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="modal" data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper cart-3"><a href="#" data-node-type="commerce-cart-open-link" class="w-commerce-commercecartopenlink cart-button-3 w-inline-block"><svg class="w-commerce-commercecartopenlinkicon icon-2" width="17px" height="17px" viewbox="0 0 17 17"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M2.60592789,2 L0,2 L0,0 L4.39407211,0 L4.84288393,4 L16,4 L16,9.93844589 L3.76940945,12.3694378 L2.60592789,2 Z M15.5,17 C14.6715729,17 14,16.3284271 14,15.5 C14,14.6715729 14.6715729,14 15.5,14 C16.3284271,14 17,14.6715729 17,15.5 C17,16.3284271 16.3284271,17 15.5,17 Z M5.5,17 C4.67157288,17 4,16.3284271 4,15.5 C4,14.6715729 4.67157288,14 5.5,14 C6.32842712,14 7,14.6715729 7,15.5 C7,16.3284271 6.32842712,17 5.5,17 Z" fill="currentColor" fill-rule="nonzero"></path></g></svg><div class="w-commerce-commercecartopenlinkcount cart-quantity-3">0</div></a>
-        <div data-node-type="commerce-cart-container-wrapper" style="display:none" class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-modal">
-          <div data-node-type="commerce-cart-container" class="w-commerce-commercecartcontainer">
-            <div class="w-commerce-commercecartheader">
-              <h4 class="w-commerce-commercecartheading">Your Cart</h4><a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink w-inline-block"><svg width="16px" height="16px" viewbox="0 0 16 16"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill-rule="nonzero" fill="#333333"><polygon points="6.23223305 8 0.616116524 13.6161165 2.38388348 15.3838835 8 9.76776695 13.6161165 15.3838835 15.3838835 13.6161165 9.76776695 8 15.3838835 2.38388348 13.6161165 0.616116524 8 6.23223305 2.38388348 0.616116524 0.616116524 2.38388348 6.23223305 8"></polygon></g></g></svg></a></div>
-            <div class="w-commerce-commercecartformwrapper">
-              <form data-node-type="commerce-cart-form" style="display:none" class="w-commerce-commercecartform">
-                <script type="text/x-wf-template" id="wf-template-b10d07ad-3c17-41ea-dee0-175a32ab1c5e"></script>
-                <div class="w-commerce-commercecartlist" data-wf-collection="database.commerceOrder.userItems" data-wf-template-id="wf-template-b10d07ad-3c17-41ea-dee0-175a32ab1c5e"></div>
-                <div class="w-commerce-commercecartfooter">
-                  <div class="w-commerce-commercecartlineitem">
-                    <div>Subtotal</div>
-                    <div class="w-commerce-commercecartordervalue"></div>
-                  </div>
-                  <div>
-                    <div data-node-type="commerce-cart-quick-checkout-actions">
-                      <a data-node-type="commerce-cart-apple-pay-button" style="background-image:-webkit-named-image(apple-pay-logo-white);background-size:100% 50%;background-position:50% 50%;background-repeat:no-repeat" class="w-commerce-commercecartapplepaybutton">
-                        <div></div>
-                      </a><a data-node-type="commerce-cart-quick-checkout-button" style="display:none" class="w-commerce-commercecartquickcheckoutbutton"><svg class="w-commerce-commercequickcheckoutgoogleicon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewbox="0 0 16 16"><defs><polygon id="google-mark-a" points="0 .329 3.494 .329 3.494 7.649 0 7.649"></polygon><polygon id="google-mark-c" points=".894 0 13.169 0 13.169 6.443 .894 6.443"></polygon></defs><g fill="none" fill-rule="evenodd"><path fill="#4285F4" d="M10.5967,12.0469 L10.5967,14.0649 L13.1167,14.0649 C14.6047,12.6759 15.4577,10.6209 15.4577,8.1779 C15.4577,7.6339 15.4137,7.0889 15.3257,6.5559 L7.8887,6.5559 L7.8887,9.6329 L12.1507,9.6329 C11.9767,10.6119 11.4147,11.4899 10.5967,12.0469"></path><path fill="#34A853" d="M7.8887,16 C10.0137,16 11.8107,15.289 13.1147,14.067 C13.1147,14.066 13.1157,14.065 13.1167,14.064 L10.5967,12.047 C10.5877,12.053 10.5807,12.061 10.5727,12.067 C9.8607,12.556 8.9507,12.833 7.8887,12.833 C5.8577,12.833 4.1387,11.457 3.4937,9.605 L0.8747,9.605 L0.8747,11.648 C2.2197,14.319 4.9287,16 7.8887,16"></path><g transform="translate(0 4)"><mask id="google-mark-b" fill="#fff"><use xlink:href="#google-mark-a"></use></mask><path fill="#FBBC04" d="M3.4639,5.5337 C3.1369,4.5477 3.1359,3.4727 3.4609,2.4757 L3.4639,2.4777 C3.4679,2.4657 3.4749,2.4547 3.4789,2.4427 L3.4939,0.3287 L0.8939,0.3287 C0.8799,0.3577 0.8599,0.3827 0.8459,0.4117 C-0.2821,2.6667 -0.2821,5.3337 0.8459,7.5887 L0.8459,7.5997 C0.8549,7.6167 0.8659,7.6317 0.8749,7.6487 L3.4939,5.6057 C3.4849,5.5807 3.4729,5.5587 3.4639,5.5337" mask="url(#google-mark-b)"></path></g><mask id="google-mark-d" fill="#fff"><use xlink:href="#google-mark-c"></use></mask><path fill="#EA4335" d="M0.894,4.3291 L3.478,6.4431 C4.113,4.5611 5.843,3.1671 7.889,3.1671 C9.018,3.1451 10.102,3.5781 10.912,4.3671 L13.169,2.0781 C11.733,0.7231 9.85,-0.0219 7.889,0.0001 C4.941,0.0001 2.245,1.6791 0.894,4.3291" mask="url(#google-mark-d)"></path></g></svg><svg class="w-commerce-commercequickcheckoutmicrosofticon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16"><g fill="none" fill-rule="evenodd"><polygon fill="#F05022" points="7 7 1 7 1 1 7 1"></polygon><polygon fill="#7DB902" points="15 7 9 7 9 1 15 1"></polygon><polygon fill="#00A4EE" points="7 15 1 15 1 9 7 9"></polygon><polygon fill="#FFB700" points="15 15 9 15 9 9 15 9"></polygon></g></svg><div>Pay with browser.</div></a></div><a href="/checkout" value="Continue to Checkout" data-node-type="cart-checkout-button" class="w-commerce-commercecartcheckoutbutton" data-loading-text="Hang Tight...">Continue to Checkout</a></div>
-                </div>
-              </form>
-              <div class="w-commerce-commercecartemptystate">
-                <div>No items found.</div>
-              </div>
-              <div style="display:none" data-node-type="commerce-cart-error" class="w-commerce-commercecarterrorstate">
-                <div class="w-cart-error-msg" data-w-cart-quantity-error="Product is not available in this quantity." data-w-cart-checkout-error="Checkout is disabled on this site." data-w-cart-general-error="Something went wrong when adding this item to the cart." data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue.">Product is not available in this quantity.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section-3">
-    <h6 class="heading-6">Sign in for the best experience</h6><a href="#" class="button-6 w-button">Sign in</a><a href="#" class="link-3">Create an account</a></div>
-  <section id="cards-section" class="cards-section-copy">
-    <div class="div-block-8-copy">
-      <div class="div-block-4-copy">
-        <div class="div-block-25">
-          <h6 class="test-copy">Shop</h6>
-          <div data-hover="" data-delay="0" class="w-dropdown">
-            <div class="dropdown-toggle w-dropdown-toggle">
-              <div class="w-icon-dropdown-toggle"></div>
-              <div>Filter</div>
-            </div>
-            <nav class="dropdown-list w-dropdown-list">
-              <div class="div-block-3">
-                <div class="w-form">
-                  <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>category</label>
-                    <div class="w-layout-grid nav-grid"><label class="w-checkbox"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-3" name="checkbox-3" data-name="Checkbox 3" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label></div>
-                  </form>
-                  <div class="w-form-done">
-                    <div>Thank you! Your submission has been received!</div>
-                  </div>
-                  <div class="w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
-                  </div>
-                </div>
-                <div class="w-form">
-                  <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>price</label>
-                    <div class="w-layout-grid grid-2 nav-grid">
-                      <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>min</label></div>
-                      <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>max</label></div>
-                    </div>
-                  </form>
-                  <div class="w-form-done">
-                    <div>Thank you! Your submission has been received!</div>
-                  </div>
-                  <div class="w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
-                  </div>
-                </div>
-              </div>
-            </nav>
-          </div>
-        </div>
-        <div>
-          <div class="form-block w-form">
-            <form id="email-form-3" name="email-form-3" data-name="Email Form 3" class="form"><input type="text" class="text-field-2 w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Search.." id="field-3" required=""></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="div-block-9"></div>
-      <div class="cards-grid-container-2-copy">
-        <div *ngFor = "let i of this.auth.storeproducts" id="w-node-e50dc151c71d-8e8593f0">
-          <div class="cards-image-mask"><img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="cards-image"></div>
-          <div class="div-block-29">
-            <div style="display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;" class="text-block-6-copy">{{i.name}} word and another word special friend</div>
-            <div class="text-block-2-copy"> est. {{this.getPrice(i)}}</div>
-          </div>
-          <div class="div-block-7">
-            <div class="form-block-5 w-form">
-              <form id="email-form" name="email-form" data-name="Email Form">
-                <select id="field-8" name="field-8" data-name="Field 8" class="select-field-5 w-select"[(ngModel)]="i.quantity">
-                  <option *ngFor="let number of this.numbers" [value]="number">{{number}}</option>
-
-                </select>
-              </form>
-
-            </div>
-            <div class="form-block-5 w-form">
-              <form id="email-form" name="email-form" data-name="Email Form">
-                <select id="field-11" name="field-11" data-name="Field 11" class="select-field-5 w-select" [(ngModel)]="i.measurement">
-                  <option *ngFor="let i of i.measurements" [value]="i">{{i}}</option>
-                </select>
-              </form>
-
-            </div>
-          </div>
-          <a *ngIf = "!i.added" (click) = "this.addToCart()"href="#" class="button-2-copy w-button">Add to Cart</a>
-        </div>
-
-      </div>
-      <div class="cards-grid-container-2-copy-copy">
-        <div class="div-block-3">
-          <div class="form-block-3 w-form">
-            <form id="email-form-6" name="email-form-6" data-name="Email Form 6" class="form-3"><label class="field-label-2">Currency</label><select id="field-7" name="field-7" class="select-field-3 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-          <div class="form-block-2 w-form">
-            <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-6"><label>Sort by</label><select id="field-6" name="field-6" class="select-field-4 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select></form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-          <div class="w-form">
-            <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>category</label>
-              <div class="w-layout-grid nav-grid"><label class="w-checkbox"><input type="checkbox" id="checkbox-4" name="checkbox-4" data-name="Checkbox 4" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-3" name="checkbox-3" data-name="Checkbox 3" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label><label class="w-checkbox"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" class="w-checkbox-input"><span class="w-form-label">Checkbox</span></label></div>
-            </form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-          <div class="w-form">
-            <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-2"><label>price</label>
-              <div class="w-layout-grid grid-2 nav-grid">
-                <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>min</label></div>
-                <div><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""><label>max</label></div>
-              </div>
-            </form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89212b4fbaea4db21ed817" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="js/webflow.js" type="text/javascript"></script>
-</body>
- -->
