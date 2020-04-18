@@ -189,7 +189,7 @@
                </path>
              </g>
            </svg>
-           <div class="w-commerce-commercecartopenlinkcount cart-quantity-3">0</div>
+           <div class="w-commerce-commercecartopenlinkcount cart-quantity-3">{{this.auth.cart.length}}</div>
          </a>
          <div data-node-type="commerce-cart-container-wrapper" style="display:none" class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-modal">
            <div data-node-type="commerce-cart-container" class="w-commerce-commercecartcontainer">
@@ -394,8 +394,8 @@
        <div class="cards-grid-container-2-deskhome" >
          <div *ngFor = "let i of this.filterProducts()" id="w-node-c113868c4b55-5e559905">
            <div class="cards-image-mask-deskhome">
-             <div class="div-block-60">
-               <div class="text-block-29">51 in cart</div>
+             <div *ngIf = i.added class="div-block-60">
+               <div class="text-block-29">{{i.quantity}} in cart</div>
               </div>
              <img style="max-width: 200px;" src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="cards-image">
 
@@ -425,7 +425,11 @@
                </form>
 
              </div>
-           </div><a href="#" class="button-2-deskhome w-button">Add to Cart</a></div>
+           </div>
+           <a *ngIf = "!i.added"(click) = this.addToCart(i) class="button-2-deskhome w-button">Add to Cart</a>
+           <a *ngIf = "i.added" (click) = this.removeFromCart(i) class="button-2-deskhome w-button">Remove from Cart</a>
+
+         </div>
        </div>
      </div>
    </section>

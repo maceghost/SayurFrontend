@@ -6977,7 +6977,8 @@ figcaption {
   right: auto;
   bottom: auto;
   padding: 4px 10px 0px 8px;
-  background-color: #e2e2e2;
+  background-color: #3898ec;
+  color: white;
 }
 
 .text-block-29 {

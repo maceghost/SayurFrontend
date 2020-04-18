@@ -301,19 +301,22 @@ export class DeskStorefrontComponent implements AfterViewInit{
       this.cart.sort = this.cartSort;
     }
     addToCart(product:any){
-      this.auth.storeproducts = this.auth.storeproducts.filter( el => el !== product )
+      // this.auth.storeproducts = this.auth.storeproducts.filter( el => el !== product )
+      product.added = true
       this.auth.cart.push(product)
-      this.cart = new MatTableDataSource(this.auth.cart)
-      this.dataSource = new MatTableDataSource(this.auth.storeproducts);
-      this.refreshTables()
+      // this.cart = new MatTableDataSource(this.auth.cart)
+      // this.dataSource = new MatTableDataSource(this.auth.storeproducts);
+      // this.refreshTables()
 
     }
     removeFromCart(product:any){
+      product.added = false
+
       this.auth.cart = this.auth.cart.filter( el => el !== product );
-      this.auth.storeproducts.push(product)
-      this.cart = this.auth.cart
-      this.dataSource = this.auth.storeproducts
-      this.refreshTables()
+      // this.auth.storeproducts.push(product)
+      // this.cart = this.auth.cart
+      // this.dataSource = this.auth.storeproducts
+      // this.refreshTables()
 
     }
   // ngOnInit(){
