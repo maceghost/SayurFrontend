@@ -125,11 +125,8 @@ export class DeskStorefrontComponent implements AfterViewInit{
 
   }
   getCategories(){
-    console.log(this.auth.aisle)
-    console.log(this.categories)
 
     this.categories = this.auth.aisle.categories
-    console.log(this.categories)
 
     if (this.categories.length > 0){
       return true
@@ -153,7 +150,6 @@ export class DeskStorefrontComponent implements AfterViewInit{
 
 
   filterProducts(){
-    console.log(this.products)
 
     if (this.auth.aisle){
       if (this.auth.aisle.name == 'All'){
@@ -217,10 +213,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
     //     return false
     //   };
     // })
-    console.log(this.products)
     this.products = this.products.filter(function (o) {
-      console.log(minprice,maxprice,o.cheapest);
-
       return minprice <= o.cheapest && o.cheapest <= maxprice;
     });
     // this.products = this.products.filter(function (o) {
@@ -268,7 +261,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
       default:
         returntotal = "Rp" + total.toString()
     }
-    let cheapest = []
+    let cheapest:any = []
 
     if (item.price_per_kg){
 
@@ -344,6 +337,10 @@ export class DeskStorefrontComponent implements AfterViewInit{
       // this.auth.storeproducts = this.auth.storeproducts.filter( el => el !== product )
       product.added = true
       this.auth.cart.push(product)
+      // console.log(JSON.parse(JSON.stringify(this.auth.cart)))
+      this.auth.saveCart()
+      localStorage.setItem("cart", JSON.stringify(this.auth.cart));
+
       // this.cart = new MatTableDataSource(this.auth.cart)
       // this.dataSource = new MatTableDataSource(this.auth.storeproducts);
       // this.refreshTables()
@@ -353,6 +350,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
       product.added = false
 
       this.auth.cart = this.auth.cart.filter( el => el !== product );
+      console.log(localStorage.getItem("cart"));
       // this.auth.storeproducts.push(product)
       // this.cart = this.auth.cart
       // this.dataSource = this.auth.storeproducts

@@ -5,6 +5,8 @@ import { Router, NavigationStart, NavigationEnd, NavigationError, Event, Activat
 
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatTable} from '@angular/material/table';
+
 import {
   trigger,
   state,
@@ -14,6 +16,9 @@ import {
   // ...
 } from '@angular/animations';
 
+
+// import * as moment from 'moment';
+import * as _ from 'lodash';
 // import * as moment from 'moment';
 // import * as _ from 'lodash';
 /**
@@ -196,11 +201,11 @@ export class MobStorefrontComponent implements AfterViewInit{
 
     let maxprice = 1000000000
     let minprice = 0
-    if (this.maxprice){
-      maxprice = parseInt(this.maxprice)
+    if (this.auth.maxprice){
+      maxprice = parseInt(this.auth.maxprice)
     }
-    if (this.minprice){
-      minprice = parseInt(this.minprice)
+    if (this.auth.minprice){
+      minprice = parseInt(this.auth.minprice)
     }
 
     // this.products = _.filter(this.products, function(o){
@@ -263,7 +268,7 @@ export class MobStorefrontComponent implements AfterViewInit{
       default:
         returntotal = "Rp" + total.toString()
     }
-    let cheapest = []
+    let cheapest:any = []
 
     if (item.price_per_kg){
 

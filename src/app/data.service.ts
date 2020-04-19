@@ -299,7 +299,9 @@ export class DataService {
       this.products = myresult.products
       this.storeproducts = this.products
 
-      this.cart = []
+
+      this.retrieveCart()
+
       // if (false === this.location.setup_complete) {
       // // if (this.location.setup_complete && this.location.setup_complete == false) {
       //   // console.log('setting rootPage to Provision');
@@ -340,6 +342,49 @@ export class DataService {
     //   this.location = result;
     // });
   }
+  ngOnDestroy(){
+    console.log('hello')
+    localStorage.setItem("cart", this.auth.cart);
+  }
+  ngOnInit(){
+    console.log('hello')
+    console.log(localStorage.getItem("cart"));
+  }
+
+  saveCart(){
+
+    let temp = []
+    for (let i of this.cart){
+      let ob = {name:i.name,quantity:i.quantity,measurement:i.measurement}
+      temp.push(ob)
+    }
+    localStorage.setItem("cart", JSON.stringify(temp));
+    console.log(localStorage.getItem("cart"));
+
+  }
+
+  retrieveCart(){
+    let cart = []
+    for (let i of JSON.parse(localStorage.getItem("cart"))){
+      console.log(i)
+      console.log(this.storeproducts)
+      for (let j of this.storeproducts){
+        if (j.name == i.name){
+          j.added = true
+          j.quantity = i.quantity
+          j.measurement = i.measurement
+          cart.push(j)
+          break
+        }
+      }
+
+
+
+    }
+    console.log(cart)
+    this.cart = cart
+  }
+
   get_products(){
 
     let headers = new Headers();
