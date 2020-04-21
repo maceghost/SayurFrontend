@@ -4431,6 +4431,7 @@ figcaption {
   padding-top: 40px;
   padding-right: 20px;
   padding-left: 20px;
+  margin-bottom:50px;
 }
 
 .div-block-11 {
@@ -4862,6 +4863,10 @@ figcaption {
 
 .cart-button-mobnonav {
   border-radius: 2px;
+}
+
+.cart-quantity-3 {
+  /* display: none; */
 }
 
 .columns-3 {
@@ -6976,6 +6981,12 @@ figcaption {
   padding: 4px 10px 0px 8px;
   background-color: #3898ec;
   color: #fff;
+}
+
+.text-block-30 {
+  color: #ffba62;
+  font-size: 23px;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 991px) {

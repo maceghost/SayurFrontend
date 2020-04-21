@@ -349,15 +349,41 @@ export class DeskCartComponent implements OnInit {
       product.added = false
 
       this.auth.cart = this.auth.cart.filter( el => el !== product );
+      this.auth.saveCart()
       // this.auth.storeproducts.push(product)
       // this.cart = this.auth.cart
       // this.dataSource = this.auth.storeproducts
       // this.refreshTables()
 
     }
-  // ngOnInit(){
-  //   this.dataSource.sort = this.sort;
-  // }
+
+
+    getCartPrice(){
+      let carttotal = 0
+      for (let item of this.auth.cart){
+        let total = 0
+
+        switch(item.measurement) {
+          case 'Kg':
+            total = item.price_per_kg
+            break;
+          case 'Unit':
+            total = item.price_per_unit
+            break;
+          case 'Tied Bunch':
+            total = item.price_per_tied_bunch
+            break;
+        }
+        total = total * item.quantity
+        carttotal = carttotal + total
+      }
+
+      let returntotal:string = "Rp" + carttotal.toString();
+
+
+      return returntotal
+
+    }
   applyFilter(event: any) {
     const filterValue = (event.target as HTMLInputElement).value;
     // this.products = _.filter(this.auth.storeproducts, function(o){return o.name.toLowerCase().indexOf(filterValue.toLowerCase()) > -1});

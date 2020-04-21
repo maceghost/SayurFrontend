@@ -23,13 +23,15 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableDataSource} from '@angular/material/table';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
 import { MobCartComponent } from './mob-cart/mob-cart.component';
 import { DeskCartComponent } from './desk-cart/desk-cart.component';
 import { DeskOrderComponent } from './desk-order/desk-order.component';
 import { MobOrderComponent } from './mob-order/mob-order.component';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 // import 'hammerjs';
@@ -59,9 +61,12 @@ import { MobOrderComponent } from './mob-order/mob-order.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MatIconModule,
     // MatTableDataSource,
-    MatTableModule
+    MatTableModule,
+    // BsDropdownModule.forRoot(),
+    NgxIntlTelInputModule,
 
   ],
   providers: [ApplicationStateService],

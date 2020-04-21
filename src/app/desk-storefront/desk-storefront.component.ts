@@ -44,9 +44,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
   columnsToDisplay: string[] = ['name', 'price', 'measurement'];
   cartColumnsToDisplay: string[] = ['name','quantity', 'price', 'measurement'];
 
-  // dataSource = this.auth.storeproducts;
-  dataSource = new MatTableDataSource(this.auth.storeproducts);
-  cart = new MatTableDataSource(this.auth.cart);
+
   filterOpen = false;
   loading: any;
   username: string;
@@ -59,7 +57,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
   aisle: any;
   categories: any;
   subcategories:any;
-  products:any = this.auth.storeproducts;
+  products:any = [];
   queryTxt:any;
   sort:any = 'none';
   minprice:any = null;
@@ -96,25 +94,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
 
 
   }
-  ngOnInit(){
-    // this.aisle = this.auth.aisles[0];
-    // for (let i of this.auth.storeproducts){
-    //   i.added = false
-    //   i.measurements = []
-    //   if (i.price_per_kg){
-    //     i.measurements.push('Kg')
-    //   }
-    //   if (i.price_per_unit){
-    //     i.measurements.push('Unit')
-    //   }
-    //   if (i.price_per_tied_bunch){
-    //     i.measurements.push('Tied Bunch')
-    //   }
-    //
-    //   i.measurement = i.measurements[0]
-    //   i.quantity = 1
-    // }
-  }
+
 
   updateFilters(){
     this.auth.category = this.auth.aisle.categories[0]
@@ -163,7 +143,6 @@ export class DeskStorefrontComponent implements AfterViewInit{
     if (this.auth.category){
       if (this.auth.category.name == 'All'){
         this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
-        // this.products = this.auth.storeproducts
       }
       else{
         this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
@@ -173,28 +152,12 @@ export class DeskStorefrontComponent implements AfterViewInit{
     if (this.auth.subcategory){
       if (this.auth.subcategory == 'All'){
         this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
-        // this.products = this.auth.storeproducts
       }
       else{
         this.products = _.filter(this.auth.storeproducts, {subcategory: this.auth.subcategory});
 
       }
     }
-
-    if (this.queryTxt){
-      let tmp = this.queryTxt
-      this.products = _.filter(this.products, function(o){
-        console.log(JSON.stringify(o));
-        return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
-      });
-    }
-    if (this.sort == 'pricelow'){
-      this.products = _.orderBy(this.products, ['cheapest'], ['asc']);
-    }
-    if (this.sort == 'pricehigh'){
-      this.products = _.orderBy(this.products, ['cheapest'], ['desc']);
-    }
-
     let maxprice = 1000000000
     let minprice = 0
     if (this.auth.maxprice){
@@ -204,24 +167,35 @@ export class DeskStorefrontComponent implements AfterViewInit{
       minprice = parseInt(this.auth.minprice)
     }
 
-    // this.products = _.filter(this.products, function(o){
-    //   console.log(minprice,maxprice,o.cheapest);
-    //   if (minprice <= o.cheapest <= maxprice){
-    //     return true
-    //   }
-    //   else{
-    //     return false
-    //   };
-    // })
-    this.products = this.products.filter(function (o) {
-      return minprice <= o.cheapest && o.cheapest <= maxprice;
+    this.products = _.filter(this.products, function(o){
+      if (minprice <= o.cheapest && o.cheapest <= maxprice){
+        return true
+      }
+      else{
+        return false
+      }
     });
-    // this.products = this.products.filter(function (o) {
-    //
-    //   return minprice <= o.cheapest <= maxprice;
-    // });
 
 
+    // if (this.queryTxt){
+    //   let tmp = this.queryTxt
+    //   this.products = _.filter(this.products, function(o){
+    //     return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
+    //   });
+    // }
+
+
+    if (this.sort == 'pricelow'){
+      this.products = _.orderBy(this.products, ['cheapest'], ['asc']);
+    }
+    if (this.sort == 'pricehigh'){
+      this.products = _.orderBy(this.products, ['cheapest'], ['desc']);
+    }
+
+
+
+
+    // this.cdRef.detectChanges()
     return this.products
 
   }
@@ -275,10 +249,12 @@ export class DeskStorefrontComponent implements AfterViewInit{
 
       cheapest.push(item.price_per_tied_bunch)
     }
-    item.cheapest = Math.min(cheapest)
+    item.cheapest = Math.min.apply(null, cheapest)
     return returntotal
 
   }
+
+
 
   checkout(){
     this.router.navigate(['checkout']);
@@ -316,16 +292,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
       // p.quantity = 0
     }
   }
-  ngAfterViewInit (){
-      this.dataSource.sort = this.storeSort;
-      this.cart.sort = this.cartSort;
-// this.cdRef.detectChanges()
-//       for (let p of this.auth.storeproducts ){
-//         p.expanded = true;
-//         p.quantity = 0
-//       }
 
-    }
 
     refreshTables(){
       this.cart = new MatTableDataSource(this.auth.cart)
@@ -339,7 +306,6 @@ export class DeskStorefrontComponent implements AfterViewInit{
       this.auth.cart.push(product)
       // console.log(JSON.parse(JSON.stringify(this.auth.cart)))
       this.auth.saveCart()
-      localStorage.setItem("cart", JSON.stringify(this.auth.cart));
 
       // this.cart = new MatTableDataSource(this.auth.cart)
       // this.dataSource = new MatTableDataSource(this.auth.storeproducts);
@@ -350,7 +316,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
       product.added = false
 
       this.auth.cart = this.auth.cart.filter( el => el !== product );
-      console.log(localStorage.getItem("cart"));
+      this.auth.saveCart()
       // this.auth.storeproducts.push(product)
       // this.cart = this.auth.cart
       // this.dataSource = this.auth.storeproducts
