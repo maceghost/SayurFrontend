@@ -38,7 +38,6 @@ import * as _ from 'lodash';
 })
 export class DeskOrderComponent implements OnInit {
 
-
   separateDialCode = true;
 	SearchCountryField = SearchCountryField;
 	TooltipLabel = TooltipLabel;
@@ -51,9 +50,7 @@ export class DeskOrderComponent implements OnInit {
   columnsToDisplay: string[] = ['name', 'price', 'measurement'];
   cartColumnsToDisplay: string[] = ['name','quantity', 'price', 'measurement'];
 
-  // dataSource = this.auth.storeproducts;
-  dataSource = new MatTableDataSource(this.auth.storeproducts);
-  cart = new MatTableDataSource(this.auth.cart);
+
   filterOpen = false;
   loading: any;
   username: string;
@@ -65,7 +62,7 @@ export class DeskOrderComponent implements OnInit {
   aisle: any;
   categories: any;
   subcategories:any;
-  products:any = this.auth.storeproducts;
+  products:any = [];
   queryTxt:any;
   sort:any = 'none';
   minprice:any = null;
@@ -80,29 +77,13 @@ export class DeskOrderComponent implements OnInit {
   province:any;
   postal:any;
   country:any;
-  payment:any = true;
+  payment:any = "COD";
   time:any;
   error:any;
-  phone:any;
+  phone:any = ' ';
   remember:any = true;
+  placing:any = false;
 
-  // registerCredentials = { username: '', password: '' };
-  @ViewChild('storeSort', { read: MatSort, static: true }) storeSort: MatSort;
-  @ViewChild('cartSort', { read: MatSort, static: true }) cartSort: MatSort;
-  // @ViewChildren(MatSort) set matSort(s: QueryList<MatSort>) {
-  // const ref = this;
-  //   s.forEach((matSort: any, index: number) => {
-  //     const dataSource;
-  //     if (index == 0){
-  //       dataSource = ref['storeSort'];
-  //     }
-  //     else{
-  //       dataSource = ref['cartSort']
-  //     }
-  //
-  //     dataSource.sort = matSort;
-  //   });
-  // }
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
 
@@ -119,46 +100,19 @@ export class DeskOrderComponent implements OnInit {
   }
   getUTCTime(day:any){
     let time:any;
-    time = parseInt(this.time.split(':')[0])
+    time = parseInt(this.auth.time.split(':')[0])
     if (time<9){
       time = time + 12
 
     }
 
 
-    let mytime = this.day.ts + time*60*60*1000
+    let mytime = this.auth.day.ts + time*60*60*1000
     return mytime
   }
-  placeOrder(){
-    this.error = false
-    let temp = []
-    for (let i of this.auth.cart){
-      let ob = {name:i.name,quantity:i.quantity,measurement:i.measurement}
-      temp.push(ob)
-    }
-    let order:any = {
-      ts: this.getUTCTime(this.day),
-      custinfo: {
-        name: this.name || '',
-        email: this.email || '',
-        address1: this.address1 || '',
-        address2: this.address2 || '',
-        city: this.city || '',
-        province: this.province || '',
-        postal: this.postal || '',
-        country: this.country || '',
-        phone: this.phone || ''
-      },
-      cart: temp,
-      total: this.getTotalCost(),
-      additional:''
-    }
 
 
-    this.auth.post_order(order).then(result => {
-      console.log('yay')
-    })
-
+  formsValid(){
     if (this.amIWrong('name') ||
         (this.amIWrong('phone') && this.amIWrong('email')) ||
         this.amIWrong('address1') ||
@@ -166,32 +120,64 @@ export class DeskOrderComponent implements OnInit {
         this.amIWrong('province') ||
         this.amIWrong('postal') ||
         this.amIWrong('country') ||
-        !this.time ){
-      this.error = true
+        !this.auth.time ){
+      return false
     }
     else{
-      this.error = false
-      let order:any = {
-        ts: this.getUTCTime(this.day),
-        custinfo: {
-          name: this.name,
-          email: this.email,
-          address1: this.address1,
-          address2: this.address2,
-          city: this.city,
-          province: this.province,
-          postal: this.postal,
-          country: this.country,
-          phone: this.phone
-        },
-        cart: this.auth.cart
-      }
+      return true
+    }
+  }
+  placeOrder(){
 
+
+    // if (this.formsValid()){
+    //   this.error = true
+    // }
+    // else{
+      this.error = false
+
+      let temp = []
+      for (let i of this.auth.cart){
+        let ob = {name:i.name,quantity:i.quantity,measurement:i.measurement}
+        temp.push(ob)
+      }
+      let order:any = {
+        ts: this.getUTCTime(this.auth.day),
+        custinfo: {
+          name: this.name || '',
+          email: this.email || '',
+          address1: this.address1 || '',
+          address2: this.address2 || '',
+          city: this.city || '',
+          province: this.province || '',
+          postal: this.postal || '',
+          country: this.country || '',
+          phone: this.phoneForm.value.phone || ''
+        },
+        cart: temp,
+        total: this.getTotalCost(),
+        additional:''
+      }
+      this.auth.phone = this.phoneForm.value.phone
+      this.auth.email = this.email
+      this.placing = true
       this.auth.post_order(order).then(result => {
-        console.log('yay')
+        this.auth.placed = true
+        this.placing = false
+        this.auth.cart = []
+        for (let i of this.auth.storeproducts){
+          i.added = false
+        }
+        if (this.remember){
+          this.auth.saveUser(order.custinfo)
+        }
+        this.router.navigate(['/']);
+
+
+
       })
 
-    }
+    // }
     // if (this.error){
     //
     // }
@@ -210,18 +196,19 @@ export class DeskOrderComponent implements OnInit {
     }
   }
   amIWrong(item:any){
+    console.log(this)
     if (item == 'name'){
       if (!this.name || this.name.length == 0 || !this.name.match(/[a-zA-Z]+/g)){
         return true
       }
 
     }
-    if (item == 'phone'){
-      if (!this.phone || this.phone.number.length == 0 || !this.phone.number.match(/^(?=.*\d)[\d ]+$/)){
-        return true
-      }
-
-    }
+    // if (item == 'phone'){
+    //   if (!this.phoneForm || !this.phoneForm.value.phone || this.phoneForm.value.phone.number.length == 0 || !phoneForm.value.phone.number.match(/[\d -]+/g)){
+    //     return true
+    //   }
+    //
+    // }
     if (item == 'email'){
       if (!this.email || this.email.length == 0 || !this.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
         return true
@@ -314,35 +301,47 @@ export class DeskOrderComponent implements OnInit {
 
   }
   ngOnInit(){
-    let times = ['9:00','10:00','11:00','12:00','1:00','2:00','3:00','4:00','5:00']
-    let gsDayNames = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-    ];
-    let monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-    ];
-    let i = 1
-    while (i < 4){
-      let date = new Date()
 
-      date.setDate(date.getDate() + i)
-      date.setHours(0,0,0,0)
-      date = new Date(date)
-      let day = {times:times,ts:date.getTime(),name:gsDayNames[date.getDay()],date:monthNames[date.getMonth()] + ' ' + date.getDate()}
-      if (i == 1){
-        day.name = 'Tomorrow'
-      }
-      this.days.push(day)
-      i = i + 1
+    console.log(this.phoneForm)
+    let user = this.auth.retrieveUser()
+    if (user){
+      console.log(user)
+      this.name = user.name
+      this.email = user.email
+      this.address1 = user.address1
+      this.address2 = user.address2
+      this.city = user.city
+      this.province = user.province
+      this.postal = user.postal
+      this.country = user.country
+      this.phoneForm = new FormGroup({
+    		phone: new FormControl(null, [Validators.required])
+    	});
+      // this.phoneForm.setValue({
+      //   phone: {
+      //     countryCode:  user.phone.countryCode,
+      //     dialCode : user.phone.dialCode,
+      //     internationalNumber : user.phone.internationalNumber,
+      //     number : user.phone.number
+      //   }
+      //
+      // });
+      // // this.phoneForm.value.phone = user.phone
     }
-    this.day = this.days[0]
-    this.time = this.day.times[0]
+
+
+      this.phoneForm.controls.phone.setValue(user.phone.number);
+      // this.phoneForm.controls.phone.setValue({
+      //     countryCode:  user.phone.countryCode,
+      //     dialCode : user.phone.dialCode,
+      //     internationalNumber : user.phone.internationalNumber,
+      //     number : user.phone.number
+      //   });
+
+      this.cdRef.detectChanges();
+
+
+
 
   }
 
@@ -434,23 +433,9 @@ export class DeskOrderComponent implements OnInit {
       minprice = parseInt(this.auth.minprice)
     }
 
-    // this.products = _.filter(this.products, function(o){
-    //   console.log(minprice,maxprice,o.cheapest);
-    //   if (minprice <= o.cheapest <= maxprice){
-    //     return true
-    //   }
-    //   else{
-    //     return false
-    //   };
-    // })
     this.products = this.products.filter(function (o) {
       return minprice <= o.cheapest && o.cheapest <= maxprice;
     });
-    // this.products = this.products.filter(function (o) {
-    //
-    //   return minprice <= o.cheapest <= maxprice;
-    // });
-
 
     return this.products
 
@@ -524,47 +509,8 @@ export class DeskOrderComponent implements OnInit {
     return total
     // return this.cart.map(t => t.price*t.quantity).reduce((acc, value) => acc + value, 0);
   }
-  collapseall(){
-    for (let p of this.auth.storeproducts ){
-      p.expanded = false;
-      // p.quantity = 0
-    }
-  }
-  expandall(){
-    for (let p of this.auth.storeproducts ){
-      p.expanded = true;
-      // p.quantity = 0
-    }
-  }
-  collapseall1(){
-    for (let p of this.auth.cart ){
-      p.expanded = false;
-      // p.quantity = 0
-    }
-  }
-  expandall1(){
-    for (let p of this.auth.cart ){
-      p.expanded = true;
-      // p.quantity = 0
-    }
-  }
-  ngAfterViewInit (){
-      this.dataSource.sort = this.storeSort;
-      this.cart.sort = this.cartSort;
-// this.cdRef.detectChanges()
-//       for (let p of this.auth.storeproducts ){
-//         p.expanded = true;
-//         p.quantity = 0
-//       }
 
-    }
 
-    refreshTables(){
-      this.cart = new MatTableDataSource(this.auth.cart)
-      this.dataSource = new MatTableDataSource(this.auth.storeproducts);
-      this.dataSource.sort = this.storeSort;
-      this.cart.sort = this.cartSort;
-    }
     addToCart(product:any){
       // this.auth.storeproducts = this.auth.storeproducts.filter( el => el !== product )
       product.added = true
@@ -603,10 +549,7 @@ export class DeskOrderComponent implements OnInit {
 
   }
 
-  applyFilter1(event: any) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.cart.filter = filterValue.trim().toLowerCase();
-  }
+
 
   rememberme(){
     this.remember = !this.remember;
@@ -614,5 +557,4 @@ export class DeskOrderComponent implements OnInit {
   onMatSortChange(){
     console.log('here')
   }
-
 }

@@ -40,7 +40,7 @@ import * as _ from 'lodash';
     trigger('detailExpand', [ state('collapsed, void', style({ height: '0px' })), state('expanded', style({ height: '*' })), transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')), transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')) ])
   ],
 })
-export class DeskStorefrontComponent implements AfterViewInit{
+export class DeskStorefrontComponent implements OnInit{
   columnsToDisplay: string[] = ['name', 'price', 'measurement'];
   cartColumnsToDisplay: string[] = ['name','quantity', 'price', 'measurement'];
 
@@ -63,23 +63,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
   minprice:any = null;
   maxprice:any = null;
 
-  // registerCredentials = { username: '', password: '' };
-  @ViewChild('storeSort', { read: MatSort, static: true }) storeSort: MatSort;
-  @ViewChild('cartSort', { read: MatSort, static: true }) cartSort: MatSort;
-  // @ViewChildren(MatSort) set matSort(s: QueryList<MatSort>) {
-  // const ref = this;
-  //   s.forEach((matSort: any, index: number) => {
-  //     const dataSource;
-  //     if (index == 0){
-  //       dataSource = ref['storeSort'];
-  //     }
-  //     else{
-  //       dataSource = ref['cartSort']
-  //     }
-  //
-  //     dataSource.sort = matSort;
-  //   });
-  // }
+
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
 
@@ -91,11 +75,13 @@ export class DeskStorefrontComponent implements AfterViewInit{
     }
     console.log(this.numbers)
 
-
+    console.log(this.auth.cart.length)
 
   }
 
-
+  ngOnInit(){
+    console.log(this.auth.cart.length)
+  }
   updateFilters(){
     this.auth.category = this.auth.aisle.categories[0]
 
@@ -294,12 +280,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
   }
 
 
-    refreshTables(){
-      this.cart = new MatTableDataSource(this.auth.cart)
-      this.dataSource = new MatTableDataSource(this.auth.storeproducts);
-      this.dataSource.sort = this.storeSort;
-      this.cart.sort = this.cartSort;
-    }
+
     addToCart(product:any){
       // this.auth.storeproducts = this.auth.storeproducts.filter( el => el !== product )
       product.added = true
@@ -338,10 +319,7 @@ export class DeskStorefrontComponent implements AfterViewInit{
 
   }
 
-  applyFilter1(event: any) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.cart.filter = filterValue.trim().toLowerCase();
-  }
+
 
   rememberme(){
     this.remember = !this.remember;
@@ -349,7 +327,6 @@ export class DeskStorefrontComponent implements AfterViewInit{
   onMatSortChange(){
     console.log('here')
   }
-
 
 
 

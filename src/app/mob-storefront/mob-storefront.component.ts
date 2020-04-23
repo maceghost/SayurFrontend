@@ -40,13 +40,11 @@ import * as _ from 'lodash';
     trigger('detailExpand', [ state('collapsed, void', style({ height: '0px' })), state('expanded', style({ height: '*' })), transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')), transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')) ])
   ],
 })
-export class MobStorefrontComponent implements AfterViewInit{
+export class MobStorefrontComponent implements OnInit {
   columnsToDisplay: string[] = ['name', 'price', 'measurement'];
   cartColumnsToDisplay: string[] = ['name','quantity', 'price', 'measurement'];
 
-  // dataSource = this.auth.storeproducts;
-  dataSource = new MatTableDataSource(this.auth.storeproducts);
-  cart = new MatTableDataSource(this.auth.cart);
+
   filterOpen = false;
   loading: any;
   username: string;
@@ -59,29 +57,13 @@ export class MobStorefrontComponent implements AfterViewInit{
   aisle: any;
   categories: any;
   subcategories:any;
-  products:any = this.auth.storeproducts;
+  products:any = [];
   queryTxt:any;
   sort:any = 'none';
   minprice:any = null;
   maxprice:any = null;
 
-  // registerCredentials = { username: '', password: '' };
-  @ViewChild('storeSort', { read: MatSort, static: true }) storeSort: MatSort;
-  @ViewChild('cartSort', { read: MatSort, static: true }) cartSort: MatSort;
-  // @ViewChildren(MatSort) set matSort(s: QueryList<MatSort>) {
-  // const ref = this;
-  //   s.forEach((matSort: any, index: number) => {
-  //     const dataSource;
-  //     if (index == 0){
-  //       dataSource = ref['storeSort'];
-  //     }
-  //     else{
-  //       dataSource = ref['cartSort']
-  //     }
-  //
-  //     dataSource.sort = matSort;
-  //   });
-  // }
+
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
 
@@ -96,26 +78,10 @@ export class MobStorefrontComponent implements AfterViewInit{
 
 
   }
-  ngOnInit(){
-    // this.aisle = this.auth.aisles[0];
-    // for (let i of this.auth.storeproducts){
-    //   i.added = false
-    //   i.measurements = []
-    //   if (i.price_per_kg){
-    //     i.measurements.push('Kg')
-    //   }
-    //   if (i.price_per_unit){
-    //     i.measurements.push('Unit')
-    //   }
-    //   if (i.price_per_tied_bunch){
-    //     i.measurements.push('Tied Bunch')
-    //   }
-    //
-    //   i.measurement = i.measurements[0]
-    //   i.quantity = 1
-    // }
-  }
 
+ngOnInit(){
+  console.log(this.auth.phone)
+}
   updateFilters(){
     this.auth.category = this.auth.aisle.categories[0]
 
@@ -125,11 +91,8 @@ export class MobStorefrontComponent implements AfterViewInit{
 
   }
   getCategories(){
-    console.log(this.auth.aisle)
-    console.log(this.categories)
 
     this.categories = this.auth.aisle.categories
-    console.log(this.categories)
 
     if (this.categories.length > 0){
       return true
@@ -153,7 +116,6 @@ export class MobStorefrontComponent implements AfterViewInit{
 
 
   filterProducts(){
-    console.log(this.products)
 
     if (this.auth.aisle){
       if (this.auth.aisle.name == 'All'){
@@ -167,7 +129,6 @@ export class MobStorefrontComponent implements AfterViewInit{
     if (this.auth.category){
       if (this.auth.category.name == 'All'){
         this.products = _.filter(this.auth.storeproducts, {aisle: this.auth.aisle.name});
-        // this.products = this.auth.storeproducts
       }
       else{
         this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
@@ -177,28 +138,12 @@ export class MobStorefrontComponent implements AfterViewInit{
     if (this.auth.subcategory){
       if (this.auth.subcategory == 'All'){
         this.products = _.filter(this.auth.storeproducts, {category: this.auth.category.name});
-        // this.products = this.auth.storeproducts
       }
       else{
         this.products = _.filter(this.auth.storeproducts, {subcategory: this.auth.subcategory});
 
       }
     }
-
-    if (this.queryTxt){
-      let tmp = this.queryTxt
-      this.products = _.filter(this.products, function(o){
-        console.log(JSON.stringify(o));
-        return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
-      });
-    }
-    if (this.sort == 'pricelow'){
-      this.products = _.orderBy(this.products, ['cheapest'], ['asc']);
-    }
-    if (this.sort == 'pricehigh'){
-      this.products = _.orderBy(this.products, ['cheapest'], ['desc']);
-    }
-
     let maxprice = 1000000000
     let minprice = 0
     if (this.auth.maxprice){
@@ -208,27 +153,35 @@ export class MobStorefrontComponent implements AfterViewInit{
       minprice = parseInt(this.auth.minprice)
     }
 
-    // this.products = _.filter(this.products, function(o){
-    //   console.log(minprice,maxprice,o.cheapest);
-    //   if (minprice <= o.cheapest <= maxprice){
-    //     return true
-    //   }
-    //   else{
-    //     return false
-    //   };
-    // })
-    console.log(this.products)
-    this.products = this.products.filter(function (o) {
-      console.log(minprice,maxprice,o.cheapest);
-
-      return minprice <= o.cheapest && o.cheapest <= maxprice;
+    this.products = _.filter(this.products, function(o){
+      if (minprice <= o.cheapest && o.cheapest <= maxprice){
+        return true
+      }
+      else{
+        return false
+      }
     });
-    // this.products = this.products.filter(function (o) {
-    //
-    //   return minprice <= o.cheapest <= maxprice;
-    // });
 
 
+    // if (this.queryTxt){
+    //   let tmp = this.queryTxt
+    //   this.products = _.filter(this.products, function(o){
+    //     return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
+    //   });
+    // }
+
+
+    if (this.sort == 'pricelow'){
+      this.products = _.orderBy(this.products, ['cheapest'], ['asc']);
+    }
+    if (this.sort == 'pricehigh'){
+      this.products = _.orderBy(this.products, ['cheapest'], ['desc']);
+    }
+
+
+
+
+    // this.cdRef.detectChanges()
     return this.products
 
   }
@@ -282,10 +235,12 @@ export class MobStorefrontComponent implements AfterViewInit{
 
       cheapest.push(item.price_per_tied_bunch)
     }
-    item.cheapest = Math.min(cheapest)
+    item.cheapest = Math.min.apply(null, cheapest)
     return returntotal
 
   }
+
+
 
   checkout(){
     this.router.navigate(['checkout']);
@@ -323,27 +278,16 @@ export class MobStorefrontComponent implements AfterViewInit{
       // p.quantity = 0
     }
   }
-  ngAfterViewInit (){
-      this.dataSource.sort = this.storeSort;
-      this.cart.sort = this.cartSort;
-// this.cdRef.detectChanges()
-//       for (let p of this.auth.storeproducts ){
-//         p.expanded = true;
-//         p.quantity = 0
-//       }
 
-    }
 
-    refreshTables(){
-      this.cart = new MatTableDataSource(this.auth.cart)
-      this.dataSource = new MatTableDataSource(this.auth.storeproducts);
-      this.dataSource.sort = this.storeSort;
-      this.cart.sort = this.cartSort;
-    }
+
     addToCart(product:any){
       // this.auth.storeproducts = this.auth.storeproducts.filter( el => el !== product )
       product.added = true
       this.auth.cart.push(product)
+      // console.log(JSON.parse(JSON.stringify(this.auth.cart)))
+      this.auth.saveCart()
+
       // this.cart = new MatTableDataSource(this.auth.cart)
       // this.dataSource = new MatTableDataSource(this.auth.storeproducts);
       // this.refreshTables()
@@ -353,6 +297,7 @@ export class MobStorefrontComponent implements AfterViewInit{
       product.added = false
 
       this.auth.cart = this.auth.cart.filter( el => el !== product );
+      this.auth.saveCart()
       // this.auth.storeproducts.push(product)
       // this.cart = this.auth.cart
       // this.dataSource = this.auth.storeproducts
@@ -374,10 +319,7 @@ export class MobStorefrontComponent implements AfterViewInit{
 
   }
 
-  applyFilter1(event: any) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.cart.filter = filterValue.trim().toLowerCase();
-  }
+
 
   rememberme(){
     this.remember = !this.remember;
@@ -385,7 +327,6 @@ export class MobStorefrontComponent implements AfterViewInit{
   onMatSortChange(){
     console.log('here')
   }
-
 
 
 

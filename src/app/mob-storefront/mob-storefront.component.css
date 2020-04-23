@@ -4431,6 +4431,8 @@ figcaption {
 }
 
 .section-2 {
+  margin-bottom: 50px;
+  padding-bottom: 0px;
   background-color: transparent;
 }
 
@@ -4875,6 +4877,10 @@ figcaption {
   border-radius: 2px;
 }
 
+.cart-quantity-3 {
+  display: block;
+}
+
 .columns-3 {
   margin-right: 22px;
   -webkit-box-ordinal-group: 2;
@@ -4950,7 +4956,7 @@ figcaption {
 }
 
 .text-block-5-mobnonav {
-  width: 15vh;
+  width: 8vw;
   margin-right: 0px;
   padding-right: 0px;
   padding-bottom: 0px;
@@ -6435,6 +6441,7 @@ figcaption {
   width: 100%;
   margin-bottom: 20px;
   border-radius: 4px;
+  color: #fff;
   text-align: center;
 }
 
@@ -6561,11 +6568,11 @@ figcaption {
   left: 208px;
   top: 208px;
   right: 208px;
-  bottom: 208px;
+  bottom: auto;
   z-index: 4;
-  display: none;
+  display: block;
   padding: 26px;
-  border-radius: 4px;
+  border-radius: 11px;
   background-color: #eee;
 }
 
@@ -6674,6 +6681,7 @@ figcaption {
 
 .text-block-22 {
   padding-top: 25px;
+  padding-bottom: 25px;
   font-size: 20px;
 }
 
@@ -6866,6 +6874,7 @@ figcaption {
   width: 100%;
   margin-bottom: 20px;
   border-radius: 4px;
+  background-color: #a8b8c5;
   text-align: center;
 }
 
@@ -6987,6 +6996,74 @@ figcaption {
   padding: 4px 10px 0px 8px;
   background-color: #3898ec;
   color: #fff;
+}
+
+.text-block-30 {
+  display: none;
+  color: #ffba62;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.button-9 {
+  width: 10vw;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+}
+
+.submit-moborder {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+}
+
+.submit-moborder-copy {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+}
+
+.submit-desktop-inactive {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  background-color: #a8b8c5;
+  color: #fff;
+  text-align: center;
+}
+
+.div-block-46-mobile-copy {
+  position: fixed;
+  left: 208px;
+  top: 208px;
+  right: 208px;
+  bottom: 208px;
+  z-index: 4;
+  display: none;
+  padding: 26px;
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+.button-9-copy {
+  width: 10vw;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
 }
 
 @media screen and (max-width: 991px) {
@@ -8536,7 +8613,7 @@ figcaption {
     padding: 0px 0px 20px;
   }
   .div-block-8-mobhome {
-    overflow: visible;
+    overflow: auto;
     height: 100vh;
     padding-right: 15px;
     padding-left: 15px;
@@ -8728,7 +8805,7 @@ figcaption {
   .div-block-31-filtermobhome {
     position: absolute;
     z-index: 1000;
-    /* display: none; */
+    display: block;
     width: 100%;
     margin-top: 0px;
     margin-right: 0px;
@@ -8811,9 +8888,8 @@ figcaption {
     text-decoration: none;
   }
   .section-2-mobcart {
-    padding-top: 20px;
-    padding-right: 15px;
-    padding-left: 15px;
+    margin-bottom: 50px;
+    padding: 20px 15px 0px;
   }
   .text-block-10 {
     padding-right: 7px;
@@ -8961,8 +9037,17 @@ figcaption {
   .placeorder-deskcheck {
     position: static;
   }
+  .submit-deskcheck {
+    color: #fff;
+  }
   .text-block-14 {
     line-height: 20px;
+  }
+  .div-block-42 {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
   .div-block-46 {
     display: block;
@@ -9010,10 +9095,9 @@ figcaption {
     font-size: 20px;
   }
   .submit-mobile-inactive {
-    display: none;
+    display: block;
     border-style: solid;
     border-width: 1px;
-    border-color: #3898ec;
     background-color: #a8b8c5;
   }
   .heading-12 {
@@ -9101,6 +9185,52 @@ figcaption {
   }
   .div-block-60-mobhome {
     padding: 0px 5px;
+  }
+  .checkbox-label {
+    display: none;
+  }
+  .form-block-11 {
+    display: none;
+    width: 5vh;
+    margin-bottom: 0px;
+    font-size: 24px;
+  }
+  .checkbox {
+    width: 5vh;
+    height: 5vh;
+    margin-top: 0px;
+    margin-left: 0px;
+    font-size: 50vh;
+  }
+  .checkbox-field {
+    margin-bottom: 0px;
+    padding-left: 0px;
+  }
+  .submit-moborder {
+    color: #fff;
+  }
+  .submit-moborder-copy {
+    color: #fff;
+  }
+  .submit-desktop-inactive {
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #3898ec;
+    background-color: #a8b8c5;
+  }
+  .div-block-46-mobile-copy {
+    left: 0%;
+    top: auto;
+    right: 0%;
+    bottom: 0%;
+    z-index: 1000;
+    display: block;
+  }
+  .button-9-copy {
+    width: 100%;
+    margin-right: 0px;
+    color: #fff;
   }
 }
 

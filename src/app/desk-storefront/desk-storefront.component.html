@@ -1,6 +1,18 @@
 
 
  <body class="body">
+   <div *ngIf = "this.auth.placed" class="div-block-46">
+    <h3 class="heading-7">Order placed!</h3>
+    <div class="div-block-51">
+      <div class="text-block-20">We will send an order confirmation to:<br></div>
+      <div class="div-block-52">
+        <div class="text-block-21">{{this.auth.phone.internationalNumber || this.auth.email}}</div>
+      </div>
+    </div>
+    <div class="text-block-22">You can respond to confirmation with questions or order change requests</div>
+    <a (click) = "this.auth.placed = false" class="button-9 w-button">OK</a>
+   </div>
+   <div [ngClass]="{'dark':this.auth.placed}">
    <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar-deskhome w-nav">
      <div class="div-block-22-homedesk">
        <div class="menu-button-2-deskhome w-nav-button">
@@ -58,7 +70,9 @@
      </div>
    </div>
    <section id="cards-section" class="cards-section-deskhome">
-     <div class="div-block-8-deskhome">
+
+
+     <div  class="div-block-8-deskhome">
        <div class="div-block-4-deskhome">
          <div class="w-layout-grid grid-7-deskhome">
            <h4 class="test-deskhome">Shop</h4>
@@ -204,6 +218,7 @@
        </div>
      </div>
    </section>
+   </div>
    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89212b4fbaea4db21ed817" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
    <script src="js/webflow.js" type="text/javascript"></script>
  </body>

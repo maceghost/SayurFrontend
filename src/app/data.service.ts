@@ -113,7 +113,9 @@ export class DataService {
   subcategory:any = null;
   minprice:any = null;
   maxprice:any = null;
-
+  placed:any = false;
+  email:any;
+  phone:any;
   address:any = {
     'address':"",
     'optional':"",
@@ -371,6 +373,10 @@ export class DataService {
 {"name": "Zimbabwe", "code": "ZW"}
 ]
 
+  days:any = []
+  day:any = {times:[]};
+  time:any;
+
   constructor(
     public _http: HttpClient,
     // private ds:DataService,
@@ -472,6 +478,7 @@ export class DataService {
       this.products = myresult.products
       this.storeproducts = this.products
 
+      this.getDates(myresult.occupied)
 
       this.retrieveCart()
 
@@ -520,6 +527,78 @@ export class DataService {
   //   console.log('hello')
   //   console.log(localStorage.getItem("cart"));
   // }
+  getUTCTime(day:any,time:any){
+    let hour:any;
+    hour = parseInt(time.split(':')[0])
+    if (hour<9){
+      hour = hour + 12
+
+    }
+
+
+    let myts = day.ts + hour*60*60*1000
+    return myts
+  }
+  getDates(occupied:any){
+    occupied = [...new Set(occupied)]
+    let times = ['9:00','10:00','11:00','12:00','1:00','2:00','3:00','4:00','5:00']
+    let gsDayNames = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+    ];
+    let monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+    ];
+    let i = 1
+    while (i < 4){
+      let date = new Date()
+
+      date.setDate(date.getDate() + i)
+      date.setHours(0,0,0,0)
+      date = new Date(date)
+      let day = {times:['9:00','10:00','11:00','12:00','1:00','2:00','3:00','4:00','5:00'],ts:date.getTime(),name:gsDayNames[date.getDay()],date:monthNames[date.getMonth()] + ' ' + date.getDate()}
+
+
+
+      if (i == 1){
+        day.name = 'Tomorrow'
+      }
+      this.days.push(day)
+      i = i + 1
+    }
+
+
+    for (let j of occupied){
+
+      // day.times = day.times.filter(function(value, index, arr){
+      //   console.log(value,day)
+      //   return this.getUTCTime(day,value) != j*1000;
+      // });
+      for (let day of this.days){
+      for (let hour of times){
+        // console.log(this.getUTCTime(day,hour))
+
+        if (this.getUTCTime(day,hour) == j*1000){
+          console.log(j,day,hour)
+          console.log(day.times)
+          day.times.splice(day.times.indexOf(hour),1)
+          console.log(day.times)
+
+
+        }
+      }
+      }
+    }
+
+
+    this.day = this.days[0]
+    this.time = this.day.times[0]
+  }
 
   saveCart(){
 
@@ -533,26 +612,48 @@ export class DataService {
 
   }
 
-  retrieveCart(){
-    let cart = []
-    for (let i of JSON.parse(localStorage.getItem("cart"))){
-      console.log(i)
-      console.log(this.storeproducts)
-      for (let j of this.storeproducts){
-        if (j.name == i.name){
-          j.added = true
-          j.quantity = i.quantity
-          j.measurement = i.measurement
-          cart.push(j)
-          break
-        }
-      }
+
+  saveUser(object:any){
+
+    console.log(object)
+    localStorage.setItem("user", JSON.stringify(object));
+    console.log(localStorage.getItem("user"));
+
+  }
+  retrieveUser(){
 
 
+    if (localStorage.getItem("user")){
+      return JSON.parse(localStorage.getItem("user"))
 
     }
-    console.log(cart)
-    this.cart = cart
+    else{
+      return null
+    }
+  }
+
+  retrieveCart(){
+    let cart = []
+    if (localStorage.getItem("cart")){
+      for (let i of JSON.parse(localStorage.getItem("cart"))){
+        console.log(i)
+        console.log(this.storeproducts)
+        for (let j of this.storeproducts){
+          if (j.name == i.name){
+            j.added = true
+            j.quantity = i.quantity
+            j.measurement = i.measurement
+            cart.push(j)
+            break
+          }
+        }
+
+
+
+      }
+      this.cart = cart
+    }
+
   }
 
   get_products(){
