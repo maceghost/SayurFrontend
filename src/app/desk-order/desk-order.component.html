@@ -70,14 +70,14 @@
             <div class="w-form">
               <div id="email-form" name="email-form" data-name="Email Form" class="hello2">
                 <label for="name-5">Name *</label>
-                <input [(ngModel)] = "this.name" [ngClass]="{ 'error' : this.error && this.amIWrong('name') }" type="text" class="hello1 w-input" maxlength="256" name="name-5" data-name="Name 5" placeholder="" id="name-5">
-                <div *ngIf = "this.error && this.amIWrong('name')"style="font-size:12px;color:red"> Please enter a valid name</div>
+                <input [(ngModel)] = "this.name" [ngClass]="{ 'error' : this.touchmap.name && this.amIWrong('name') }" type="text" class="hello1 w-input" maxlength="256" name="name-5" data-name="Name 5" placeholder="" id="name-5">
+                <div *ngIf = "this.touchmap.name && this.amIWrong('name')"style="font-size:12px;color:red"> Please enter a valid name</div>
                 <label for="email-2">mobile number Or email*</label>
                 <label for="email-2">mobile</label>
-                <div [ngClass] = "{ 'error' : this.error && (this.amIWrong('phone') && this.amIWrong('email')) }">
+                <div [ngClass] = "{ 'error' : (this.phoneForm.controls.phone?.touched || this.touchmap.email) && (this.amIWrong('phone') && this.amIWrong('email')) }">
                   <form form #f="ngForm" [formGroup]="phoneForm" >
                 <ngx-intl-tel-input matInput
-                [cssClass]="{ 'error' : this.error && (this.amIWrong('phone') && this.amIWrong('email')) }"
+                [cssClass]="{ 'error' : (this.phoneForm.controls.phone?.touched || this.touchmap.email) && (this.amIWrong('phone') && this.amIWrong('email')) }"
                   [preferredCountries]="preferredCountries"
                   [enableAutoCountrySelect]="false"
                   [enablePlaceholder]="true"
@@ -93,8 +93,8 @@
                 </ngx-intl-tel-input></form>
                 </div>
                 <label for="email-2">email</label>
-                <input [ngClass]="{ 'error' : this.error && (this.amIWrong('phone') && this.amIWrong('email')) }" [(ngModel)] = "this.email" type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
-                <div *ngIf = "this.error && (this.amIWrong('phone') && this.amIWrong('email'))"style="font-size:12px;color:red"> Please either enter a valid email or phone</div>
+                <input (blur)="this.touchmap.email = true" [ngClass]="{ 'error' : (this.phoneForm.controls.phone?.touched || this.touchmap.email) && (this.amIWrong('phone') && this.amIWrong('email')) }" [(ngModel)] = "this.email" type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
+                <div *ngIf = "(this.phoneForm.controls.phone?.touched || this.touchmap.email) && (this.amIWrong('phone') && this.amIWrong('email'))"style="font-size:12px;color:red"> Please either enter a valid email or phone</div>
 
               </div>
 
@@ -108,28 +108,33 @@
             <div class="w-form">
               <div id="email-form" name="email-form" data-name="Email Form" class="hello2-copy">
                 <label for="email-2">Street Address *</label>
-                <input [ngClass]="{ 'error' : this.error && this.amIWrong('address1') }" [(ngModel)] = "this.address1" type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
+                <input (blur)="this.touchmap.address1 = true" [ngClass]="{ 'error' : this.touchmap.address1 && this.amIWrong('address1') }" [(ngModel)] = "this.address1" type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
                 <input [(ngModel)] = "this.address2" type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
 
                 <div class="w-commerce-commercecheckoutrow">
                   <div class="w-commerce-commercecheckoutcolumn">
-                    <label class="w-commerce-commercecheckoutlabel">City</label>
-                    <input [ngClass]="{ 'error' : this.error && this.amIWrong('city') }" [(ngModel)] = "this.city" type="text" name="address_city" required="" class="w-commerce-commercecheckoutshippingcity">
+                    <label class="w-commerce-commercecheckoutlabel">City *</label>
+                    <input (blur)="this.touchmap.city = true" [ngClass]="{ 'error' : this.touchmap.city && this.amIWrong('city') }" [(ngModel)] = "this.city" type="text" name="address_city" required="" class="w-commerce-commercecheckoutshippingcity">
 
                   </div>
-                  <div class="w-commerce-commercecheckoutcolumn">
+                  <!-- <div class="w-commerce-commercecheckoutcolumn">
                     <label class="w-commerce-commercecheckoutlabel">State/Province *</label>
                     <input [ngClass]="{ 'error' : this.error && this.amIWrong('province') }" [(ngModel)] = "this.province" type="text" name="address_state" class="w-commerce-commercecheckoutshippingstateprovince">
                   </div>
                   <div class="w-commerce-commercecheckoutcolumn">
                     <label class="w-commerce-commercecheckoutlabel">Zip/Postal Code *</label>
-                    <input [ngClass]="{ 'error' : this.error && this.amIWrong('postal') }" [(ngModel)] = "this.postal" type="text" name="address_zip" required="" class="w-commerce-commercecheckoutshippingzippostalcode"></div>
-                </div><label>Country *</label>
+                    <input [ngClass]="{ 'error' : this.error && this.amIWrong('postal') }" [(ngModel)] = "this.postal" type="text" name="address_zip" required="" class="w-commerce-commercecheckoutshippingzippostalcode">
+                  </div> -->
+                </div>
+                <!-- <label>Country *</label>
                 <select [ngClass]="{ 'error' : this.error && this.amIWrong('country') }" [(ngModel)] = "this.country" name="address_country" class="w-commerce-commercecheckoutshippingcountryselector">
                   <option *ngFor="let country of this.auth.countries" [value]="country.name">{{country.name}}</option>
 
-                </select>
-                <div *ngIf = "this.error && (this.amIWrong('country') || this.amIWrong('postal') || this.amIWrong('province') || this.amIWrong('city') || this.amIWrong('address1'))"style="font-size:12px;color:red"> Please give a valid address</div>
+                </select> -->
+                <!-- <div *ngIf = "(this.touchmap.address1 || this.touchmap.city) && (this.amIWrong('country') || this.amIWrong('postal') || this.amIWrong('province') || this.amIWrong('city') || this.amIWrong('address1'))"style="font-size:12px;color:red"> Please give a valid address</div> -->
+                <div *ngIf = "(this.touchmap.address1 && this.amIWrong('address1')) || (this.touchmap.city && this.amIWrong('city') )"style="font-size:12px;color:red">
+                  Please give a valid address
+                </div>
               </div>
 
             </div>

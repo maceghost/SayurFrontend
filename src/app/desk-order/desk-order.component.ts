@@ -83,6 +83,7 @@ export class DeskOrderComponent implements OnInit {
   phone:any = ' ';
   remember:any = true;
   placing:any = false;
+  touchmap:any = {name:false,phone:false,email:false,address1:false,city:false}
 
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
@@ -117,9 +118,9 @@ export class DeskOrderComponent implements OnInit {
         (this.amIWrong('phone') && this.amIWrong('email')) ||
         this.amIWrong('address1') ||
         this.amIWrong('city') ||
-        this.amIWrong('province') ||
-        this.amIWrong('postal') ||
-        this.amIWrong('country') ||
+        // this.amIWrong('province') ||
+        // this.amIWrong('postal') ||
+        // this.amIWrong('country') ||
         !this.auth.time ){
       return false
     }
@@ -130,11 +131,6 @@ export class DeskOrderComponent implements OnInit {
   placeOrder(){
 
 
-    // if (this.formsValid()){
-    //   this.error = true
-    // }
-    // else{
-      this.error = false
 
       let temp = []
       for (let i of this.auth.cart){

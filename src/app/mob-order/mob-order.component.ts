@@ -72,6 +72,7 @@ export class MobOrderComponent implements OnInit {
   phone:any = ' ';
   remember:any = true;
   placing:any = false;
+  touchmap:any = {name:false,phone:false,email:false,address1:false,city:false}
 
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
@@ -106,9 +107,9 @@ export class MobOrderComponent implements OnInit {
         (this.amIWrong('phone') && this.amIWrong('email')) ||
         this.amIWrong('address1') ||
         this.amIWrong('city') ||
-        this.amIWrong('province') ||
-        this.amIWrong('postal') ||
-        this.amIWrong('country') ||
+        // this.amIWrong('province') ||
+        // this.amIWrong('postal') ||
+        // this.amIWrong('country') ||
         !this.auth.time ){
       return false
     }
@@ -119,11 +120,6 @@ export class MobOrderComponent implements OnInit {
   placeOrder(){
 
 
-    // if (this.formsValid()){
-    //   this.error = true
-    // }
-    // else{
-      this.error = false
 
       let temp = []
       for (let i of this.auth.cart){
@@ -185,19 +181,29 @@ export class MobOrderComponent implements OnInit {
     }
   }
   amIWrong(item:any){
-    console.log(this)
     if (item == 'name'){
       if (!this.name || this.name.length == 0 || !this.name.match(/[a-zA-Z]+/g)){
         return true
       }
 
     }
-    // if (item == 'phone'){
-    //   if (!this.phoneForm || !this.phoneForm.value.phone || this.phoneForm.value.phone.number.length == 0 || !phoneForm.value.phone.number.match(/[\d -]+/g)){
-    //     return true
-    //   }
-    //
-    // }
+    if (item == 'phone'){
+      if (this.phoneForm.value){
+        if (this.phoneForm.value.phone){
+        if (this.phoneForm.value.phone.number){
+          if (this.phoneForm.value.phone.number.length == 0 || !this.phoneForm.value.phone.number.match(/[\d -]+/g)){
+            console.log('here')
+            return true
+          }
+        }else {return true }
+        }else {return true }
+      }
+      else{
+        return true
+      }
+
+
+    }
     if (item == 'email'){
       if (!this.email || this.email.length == 0 || !this.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
         return true
@@ -317,7 +323,6 @@ export class MobOrderComponent implements OnInit {
       // });
       // // this.phoneForm.value.phone = user.phone
     }
-
 
       this.phoneForm.controls.phone.setValue(user.phone.number);
       // this.phoneForm.controls.phone.setValue({
