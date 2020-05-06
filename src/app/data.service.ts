@@ -115,6 +115,8 @@ export class DataService {
 
   aisles:any;
   aisle:any = {name:"All",categories:[]};
+  categories:any = [];
+
   category:any = null;
   subcategory:any = null;
   minprice:any = null;
@@ -419,43 +421,29 @@ export class DataService {
 
 
     this.get_products().then(result => {
-      // console.log('location_config : ',result);
       let myresult:any = result
-      this.aisles = myresult.aisles
-      // for (let i of this.aisles){
-      //   console.log(i.categories)
-      //   for (let j of i.categories){
-      //     if (j.subcategories.length > 0){
-      //       j.subcategories.unshift('All')
-      //
-      //     }
-      //   }
-      //   if (i.categories.length > 0){
-      //     i.categories.unshift({name:'All',subcategories:[]})
-      //
-      //   }
-      //
-      // }
-      // this.aisles.unshift({name:'NONE',categories:[]})
+      console.log(myresult)
 
-      this.aisle = this.aisles[0]
-      this.aisle.categories.unshift({name:'All items',subcategories:[]})
+      this.categories = myresult.categories
 
-      console.log(this.aisles)
+
+      this.categories.unshift({name:'All items',subcategories:[]})
+      this.category = this.categories[0]
+
       for (let i of myresult.products){
         i.added = false
-        i.measurements = []
-        if (i.price_per_kg){
-          i.measurements.push('Kg')
-        }
-        if (i.price_per_unit){
-          i.measurements.push('Unit')
-        }
-        if (i.price_per_tied_bunch){
-          i.measurements.push('Tied Bunch')
-        }
-
-        i.measurement = i.measurements[0]
+        // i.measurements = []
+        // if (i.price_per_kg){
+        //   i.measurements.push('Kg')
+        // }
+        // if (i.price_per_unit){
+        //   i.measurements.push('Unit')
+        // }
+        // if (i.price_per_tied_bunch){
+        //   i.measurements.push('Tied Bunch')
+        // }
+        //
+        // i.measurement = i.measurements[0]
         i.quantity = 1
         if (i.image){
           i.image = this.urlBase + i.image
@@ -464,22 +452,22 @@ export class DataService {
         else{
           i.image = ''
         }
-        let cheapest = []
-
-        if (i.price_per_kg){
-
-          cheapest.push(i.price_per_kg)
-        }
-        if (i.price_per_unit){
-
-          cheapest.push(i.price_per_unit)
-        }
-        if (i.price_per_tied_bunch){
-
-          cheapest.push(i.price_per_tied_bunch)
-        }
-        let mycheap = Math.min.apply(null, cheapest);
-        i.cheapest = mycheap
+        // let cheapest = []
+        //
+        // if (i.price_per_kg){
+        //
+        //   cheapest.push(i.price_per_kg)
+        // }
+        // if (i.price_per_unit){
+        //
+        //   cheapest.push(i.price_per_unit)
+        // }
+        // if (i.price_per_tied_bunch){
+        //
+        //   cheapest.push(i.price_per_tied_bunch)
+        // }
+        // let mycheap = Math.min.apply(null, cheapest);
+        // i.cheapest = mycheap
       }
       this.products = myresult.products
       this.storeproducts = this.products

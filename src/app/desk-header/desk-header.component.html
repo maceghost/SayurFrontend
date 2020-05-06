@@ -14,7 +14,7 @@
           </div>
           <div [style.pointer-events]="this.shoplist ? 'auto' : 'none'" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" class="homecatlistdiv">
             <ul class = "homecatlist fade-in-bottom w-list-unstyled"[ngClass] = "{'homecatlist': !this.shoplist, 'homecatlist-hover': this.shoplist}" >
-              <li (mouseleave) ="cat.hover = false"(mouseenter) ="cat.hover = true"  (click) = "this.auth.catfilter = cat.name;this.auth.view = 'shop';this.shoplist = false" *ngFor = "let cat of this.auth.aisle.categories" class="catlistitem">
+              <li (mouseleave) ="cat.hover = false"(mouseenter) ="cat.hover = true"  (click) = "this.auth.catfilter = cat.name;this.auth.view = 'shop';this.shoplist = false" *ngFor = "let cat of this.auth.categories" class="catlistitem">
                 <div class="catlistitemdiv">
                   <div *ngIf = "cat.hover && cat.subcategories.length > 0" class="homesublistdiv">
                     <ul class="homesublist w-list-unstyled">
@@ -85,7 +85,7 @@
                     </div>
                   </div>
                   <div class="div-block-83">
-                    <mat-icon style = "width:3vh;height:3vh;display:flex;justify-content:center;align-items:center;font-size:32px" (click) = "this.viewitem = null">
+                    <mat-icon style = "width:3vh;height:3vh;display:flex;justify-content:center;align-items:center;font-size:32px" (click) = "this.removeFromCart(i)">
                         delete_outline
                     </mat-icon>
                   </div>

@@ -439,52 +439,14 @@ this.dataSource.data = TREE_DATA;
   }
 
   getPrice(item:any){
-    let total = 0
-    switch(item.measurement) {
-      case 'Kg':
-        total = item.price_per_kg
-        break;
-      case 'Unit':
-        total = item.price_per_unit
-        break;
-      case 'Tied Bunch':
-        total = item.price_per_tied_bunch
-        break;
-    }
-    total = total * item.quantity
+    let total = item.price * item.quantity
 
     let returntotal:string;
-    switch(this.currency) {
-      case 'Usd':
-        console.log(total / 16146.20)
-        returntotal = "$" + (total / 16146.20).toFixed(2).toString()
-        break;
-      case 'Rub':
-        returntotal = "₽" + (total / 214.26).toFixed(2).toString()
-        break;
-      default:
-        returntotal = "Rp" + total.toString()
-    }
-    let cheapest:any = []
+    returntotal = "Rp" + total.toString()
 
-    if (item.price_per_kg){
-
-      cheapest.push(item.price_per_kg)
-    }
-    if (item.price_per_unit){
-
-      cheapest.push(item.price_per_unit)
-    }
-    if (item.price_per_tied_bunch){
-
-      cheapest.push(item.price_per_tied_bunch)
-    }
-    item.cheapest = Math.min.apply(null, cheapest)
     return returntotal
 
   }
-
-
 
   checkout(){
     this.router.navigate(['checkout']);

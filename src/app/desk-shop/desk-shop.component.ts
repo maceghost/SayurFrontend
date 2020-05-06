@@ -188,7 +188,7 @@ this.dataSource.data = TREE_DATA;
       this.auth.subfilter = null
 
       this.auth.catfilter = cat.name
-      for (let i of this.auth.aisle.categories){
+      for (let i of this.auth.categories){
         if (i.name != cat.name){
           i.expanded = false
 
@@ -215,7 +215,7 @@ this.dataSource.data = TREE_DATA;
 
         this.auth.catfilter = cat.name
 
-        for (let i of this.auth.aisle.categories){
+        for (let i of this.auth.categories){
           if (i.name != cat.name){
             i.expanded = false
 
@@ -287,7 +287,7 @@ this.dataSource.data = TREE_DATA;
     return this.productslen
   }
   newFilterProducts(){
-    // console.log(this.auth.aisle.categories)
+    console.log(this.auth.storeproducts)
     if (this.auth.catfilter){
       if (this.auth.catfilter == 'All items'){
         this.products = this.auth.storeproducts
@@ -304,23 +304,7 @@ this.dataSource.data = TREE_DATA;
 
     }
 
-    let maxprice = 1000000000
-    let minprice = 0
-    if (this.auth.maxprice){
-      maxprice = parseInt(this.auth.maxprice)
-    }
-    if (this.auth.minprice){
-      minprice = parseInt(this.auth.minprice)
-    }
 
-    this.products = _.filter(this.products, function(o){
-      if (minprice <= o.cheapest && o.cheapest <= maxprice){
-        return true
-      }
-      else{
-        return false
-      }
-    });
 
 
     if (this.queryTxt){
@@ -332,10 +316,10 @@ this.dataSource.data = TREE_DATA;
 
 
     if (this.sort == 'pricelow'){
-      this.products = _.orderBy(this.products, ['cheapest'], ['asc']);
+      this.products = _.orderBy(this.products, ['price'], ['asc']);
     }
     if (this.sort == 'pricehigh'){
-      this.products = _.orderBy(this.products, ['cheapest'], ['desc']);
+      this.products = _.orderBy(this.products, ['price'], ['desc']);
     }
 
     this.productslen = this.products.length
@@ -426,7 +410,7 @@ this.dataSource.data = TREE_DATA;
     return true;
   }
 
-  getPrice(item:any){
+  getPriceFromMeasurements(item:any){
     let total = 0
     switch(item.measurement) {
       case 'Kg':
@@ -468,6 +452,17 @@ this.dataSource.data = TREE_DATA;
       cheapest.push(item.price_per_tied_bunch)
     }
     item.cheapest = Math.min.apply(null, cheapest)
+    return returntotal
+
+  }
+
+
+  getPrice(item:any){
+    let total = item.price * item.quantity
+
+    let returntotal:string;
+    returntotal = "Rp" + total.toString()
+
     return returntotal
 
   }

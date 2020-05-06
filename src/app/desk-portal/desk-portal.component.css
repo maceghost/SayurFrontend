@@ -244,10 +244,10 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .fade-in-bottom{
 
-  -webkit-transition: all .25s ease-in-out;
-    -moz-transition: all .25s ease-in-out;
-    -o-transition: all .25s ease-in-out;
-    transition: all .25s ease-in-out;
+  -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
 
 }
 
@@ -7296,7 +7296,7 @@ figcaption {
   bottom: auto;
   z-index: 2;
   padding: 4px 10px 0px 8px;
-  background-color: #3898ec;
+  background-color: #b2deff;
   color: #fff;
 }
 
@@ -8719,8 +8719,8 @@ figcaption {
   padding-top: 50px;
   padding-left: 0px;
   grid-auto-columns: 0vw;
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
   grid-template-columns: repeat(auto-fit, 14vw);
   -ms-grid-rows: auto;
   grid-template-rows: auto;
@@ -8735,10 +8735,11 @@ figcaption {
   border-color: #c9c9c9;
   border-radius: 10px;
   background-color: #fff;
-  -webkit-transition: box-shadow 200ms ease, -webkit-transform 200ms ease;
-  transition: box-shadow 200ms ease, -webkit-transform 200ms ease;
-  transition: box-shadow 200ms ease, transform 200ms ease;
-  transition: box-shadow 200ms ease, transform 200ms ease, -webkit-transform 200ms ease;
+  cursor:pointer;
+  -webkit-transition: box-shadow 800ms ease, -webkit-transform 800ms ease;
+  transition: box-shadow 800ms ease, -webkit-transform 800ms ease;
+  transition: box-shadow 800ms ease, transform 800ms ease;
+  transition: box-shadow 800ms ease, transform 800ms ease, -webkit-transform 800ms ease;
 }
 
 .productitem:hover {
@@ -8765,7 +8766,7 @@ figcaption {
   -ms-flex-align: center;
   align-items: center;
   border-radius: 4px;
-  background-color: #71c2ff;
+  background-color: #b2deff;
   cursor: pointer;
 }
 
@@ -9297,6 +9298,7 @@ figcaption {
   border: 1px solid #c9c9c9;
   border-radius: 0px;
   background-color: #fff;
+  margin-bottom:10px;
 }
 
 .shoplistitemimg {

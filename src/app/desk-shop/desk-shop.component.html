@@ -7,7 +7,7 @@
           <div class="div-block-108"></div>
         </div>
         <div class="catlist">
-          <div class="cat" *ngFor = "let i of this.auth.aisle.categories">
+          <div class="cat" *ngFor = "let i of this.auth.categories">
             <div class="cathead" [ngClass] = "{'cathead': this.auth.catfilter != i.name, 'cathead-blue': this.auth.catfilter == i.name}" (click) = "hitCat(i)">
               <div class="text-block-51">{{i.name}}</div>
               <div *ngIf = "i.subcategories.length > 0">
