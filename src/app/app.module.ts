@@ -24,7 +24,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableDataSource} from '@angular/material/table';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
+// import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
+import { DeskStorefrontComponent } from './desk-storefront1/desk-storefront.component';
+
 import { MobCartComponent } from './mob-cart/mob-cart.component';
 import { DeskCartComponent } from './desk-cart/desk-cart.component';
 import { DeskOrderComponent } from './desk-order/desk-order.component';
@@ -33,6 +35,13 @@ import { MobOrderComponent } from './mob-order/mob-order.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTreeModule} from '@angular/material/tree';
+import { DeskPortalComponent } from './desk-portal/desk-portal.component';
+import { DeskInfoComponent } from './desk-info/desk-info.component';
+import { DeskFooterComponent } from './desk-footer/desk-footer.component';
+import { DeskShopComponent } from './desk-shop/desk-shop.component';
+import { DeskHeaderComponent } from './desk-header/desk-header.component';
 
 // import 'hammerjs';
 
@@ -51,6 +60,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     DeskCartComponent,
     DeskOrderComponent,
     MobOrderComponent,
+    DeskPortalComponent,
+    DeskInfoComponent,
+    DeskFooterComponent,
+    DeskShopComponent,
+    DeskHeaderComponent,
 
   ],
 
@@ -67,6 +81,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     MatTableModule,
     // BsDropdownModule.forRoot(),
     NgxIntlTelInputModule,
+    MatSidenavModule,
+    MatTreeModule
 
   ],
   providers: [ApplicationStateService],

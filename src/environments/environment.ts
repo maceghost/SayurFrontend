@@ -31,8 +31,8 @@
 // Wurzbach
 export const environment = {
   production: false,
-  api_host: 'ec2-34-221-134-231.us-west-2.compute.amazonaws.com',
-  api_port: 8001,
+  api_host: 'sayurstall.com',
+  api_port: 8047,
   api_protocol: 'http:',
   key: false,
   sayur: true

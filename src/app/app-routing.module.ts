@@ -2,22 +2,27 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, Router, RouterModule, Routes } from '@angular/router';
 
 import { MobStorefrontComponent } from './mob-storefront/mob-storefront.component';
-import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
+import { DeskStorefrontComponent } from './desk-storefront1/desk-storefront.component';
 import { MobCartComponent } from './mob-cart/mob-cart.component';
 import { DeskCartComponent } from './desk-cart/desk-cart.component';
 import { DeskOrderComponent } from './desk-order/desk-order.component';
 import { MobOrderComponent } from './mob-order/mob-order.component';
 import { ApplicationStateService } from './application-state.service';
+import { DeskPortalComponent } from './desk-portal/desk-portal.component';
 
 
 const desktop_routes: Routes = [
+  {path: 'portal', component: DeskPortalComponent},
+
   {path: 'shop', component: DeskStorefrontComponent},
   {path: 'cart', component: DeskCartComponent},
   {path: 'order', component: DeskOrderComponent},
-  {path: '**', redirectTo: 'shop'}
+  {path: '**', redirectTo: 'portal'}
 ];
 
 const mobile_routes: Routes = [
+  // {path: 'portal', component: MobPortalComponent},
+
   {path: 'shop', component: MobStorefrontComponent},
   {path: 'cart', component: MobCartComponent},
   {path: 'order', component: MobOrderComponent},

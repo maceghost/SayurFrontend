@@ -1,0 +1,116 @@
+<div class="section-6">
+    <div class="navbar-deskhome-copy">
+      <div class="div-block-63">
+        <div class="div-block-118">
+          <a [ngClass] = "{'link-6-selected': this.auth.view == 'home','link-6': this.auth.view != 'home'}" (click) = "this.auth.view = 'home'">Home</a>
+
+        </div>
+        <div class="div-block-118">
+          <a  [ngClass] = "{'link-6-copy-selected': this.auth.view == 'shop','link-6-copy': this.auth.view != 'shop'}" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" (click) = "this.auth.view = 'shop'">Shop</a>
+          <div [style.pointer-events]="this.shoplist ? 'auto' : 'none'" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" class="homecatlistdiv">
+            <ul class = "homecatlist fade-in-bottom w-list-unstyled"[ngClass] = "{'homecatlist': !this.shoplist, 'homecatlist-hover': this.shoplist}" >
+              <li (mouseleave) ="cat.hover = false"(mouseenter) ="cat.hover = true"  (click) = "this.auth.catfilter = cat.name;this.auth.view = 'shop';this.shoplist = false" *ngFor = "let cat of this.auth.aisle.categories" class="catlistitem">
+                <div class="catlistitemdiv">
+                  <div *ngIf = "cat.hover && cat.subcategories.length > 0" class="homesublistdiv">
+                    <ul class="homesublist w-list-unstyled">
+                      <li (click) = "this.auth.subfilter = sub;this.auth.view = 'shop';this.shoplist = false" *ngFor = "let sub of cat.subcategories" class="catlistitem">
+                        <div class="catlistitemdiv">
+                          <div class="text-block-35">{{sub}}</div>
+                        </div>
+                      </li>
+
+                    </ul>
+                  </div>
+                  <div class="text-block-35">{{cat.name}}</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="div-block-118">
+          <a [ngClass] = "{'link-6-selected': this.auth.view == 'info','link-6': this.auth.view != 'info'}" (click) = "this.auth.view = 'info'">Info</a></div>
+
+        </div>
+      <a href="#" class="brand-deskhome-copy w-nav-brand">
+        <div class="text-block-5-mobnonav-copy">Sayur Stall</div>
+      </a>
+
+
+
+      <div  class="div-block-23-deskhome-copy">
+        <div  (mouseenter) ="this.carthover = true" (mouseleave) ="this.carthover = false"class="w-commerce-commercecartwrapper cart-3-deskhome-copy-copy">
+          <a class="w-commerce-commercecartopenlink cart-button-mobnonav-copy w-inline-block">
+            <svg class="w-commerce-commercecartopenlinkicon icon-2-copy" width="17px" height="17px" viewbox="0 0 17 17">
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <path d="M2.60592789,2 L0,2 L0,0 L4.39407211,0 L4.84288393,4 L16,4 L16,9.93844589 L3.76940945,12.3694378 L2.60592789,2 Z M15.5,17 C14.6715729,17 14,16.3284271 14,15.5 C14,14.6715729 14.6715729,14 15.5,14 C16.3284271,14 17,14.6715729 17,15.5 C17,16.3284271 16.3284271,17 15.5,17 Z M5.5,17 C4.67157288,17 4,16.3284271 4,15.5 C4,14.6715729 4.67157288,14 5.5,14 C6.32842712,14 7,14.6715729 7,15.5 C7,16.3284271 6.32842712,17 5.5,17 Z" fill="currentColor" fill-rule="nonzero">
+                </path>
+              </g>
+            </svg>
+            <div class="w-commerce-commercecartopenlinkcount cart-quantity-3-copy">{{this.auth.cart.length}}</div>
+          </a>
+
+        </div>
+        <div  (mouseenter) ="this.carthover = true" [style.pointer-events]="this.carthover ? 'auto' : 'none'" class="cartmodalanimatecontainer" >
+          <div (mouseenter) ="this.carthover = true"(mouseleave) ="this.carthover = false"class = "cartmodal fade-in-bottom"[ngClass] = "{'cartmodal': !this.carthover, 'cartmodal-hover': this.carthover}">
+            <ul *ngIf = "this.auth.cart.length > 1" class="list-4-copy w-list-unstyled">
+              <li *ngFor = "let i of this.auth.cart" class="list-item-7-copy">
+                <div class="cartmoditem">
+                  <div class="cartmodalimgdiv">
+                    <img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="image-3-copy"></div>
+                  <div class="div-block-82">
+                    <div class="text-block-36-copy">{{i.name}}</div>
+                    <div class="text-block-42">{{this.getPrice(i)}} x {{i.quantity}}</div>
+                  </div>
+                  <div class="cartmodquantcontainer">
+                    <div class="shoplistquantityformblock w-form">
+                      <form id="email-form" name="email-form" data-name="Email Form" class="pvquantityform">
+                        <input [(ngModel)]="i.quantity" type="text" class="pvquantityinput w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3"></form>
+
+                    </div>
+                    <div class="div-block-78-copy">
+                      <div (click) = "modQuant(i,1)" class="button-13-copy">
+                        <div class="text-block-39-copy">+</div>
+                      </div>
+                      <div (click) = "modQuant(i,-1)"class="button-13-copy">
+                        <div class="text-block-39-copy">-</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="div-block-83">
+                    <mat-icon style = "width:8vh;height:8vh;display:flex;justify-content:center;align-items:center;font-size:64px" (click) = "this.viewitem = null">
+                        delete_outline
+                    </mat-icon>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div *ngIf = "this.auth.cart.length == 0"class="div-block-117">
+              <div class="text-block-59">No items in cart.</div>
+            </div>
+            <div class="div-block-84">
+              <div class="text-block-43">TOTAL:</div>
+              <div class="div-block-85"></div>
+              <div class="text-block-44">{{this.getCartSubtotal()}}</div>
+            </div>
+            <div class="div-block-86">
+              <div>Delivery costs and discounts are calculated at checkout</div>
+            </div>
+            <div class="div-block-87"><a (click) = "this.auth.view = 'cart'" class="cartmodgotocart w-button">Go to Cart</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="div-block-66">
+      <form action="/search" class="search w-form"><input type="search" class="search-input w-input" maxlength="256" name="query" placeholder="Search…" id="search" required=""><input type="submit" value="Search" class="search-button w-button">
+        <div class="div-block-73">
+          <ul class="list-4 w-list-unstyled">
+            <li class="list-item-7">
+              <div class="div-block-74"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" alt="" class="image-3">
+                <div class="searchitemname">This is some text inside of a div block.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  </div>

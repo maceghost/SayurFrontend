@@ -1,0 +1,10 @@
+<body class="body">
+  <app-desk-header>  </app-desk-header>
+
+  <app-desk-storefront *ngIf = "this.auth.view == 'home'">  </app-desk-storefront>
+
+  <app-desk-shop *ngIf = "this.auth.view == 'shop'">  </app-desk-shop>
+  <app-desk-info *ngIf = "this.auth.view == 'info'"></app-desk-info>
+  <app-desk-footer></app-desk-footer>
+
+</body>

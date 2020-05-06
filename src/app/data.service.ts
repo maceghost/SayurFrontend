@@ -67,7 +67,7 @@ export class User {
 export class DataService {
 
   order:any = {};
-
+  view:any = 'home';
   authState = new BehaviorSubject(0);
   rootPage:any = 'LoginPage';
   user: any;
@@ -91,6 +91,12 @@ export class DataService {
   currentUrl:string;
   lastUrl:string;
   backButton:boolean = false;
+
+
+
+  catfilter = 'All items';
+  subfilter = null;
+
 
   id:number = 1220;
 
@@ -415,27 +421,27 @@ export class DataService {
     this.get_products().then(result => {
       // console.log('location_config : ',result);
       let myresult:any = result
-      console.log(myresult)
       this.aisles = myresult.aisles
-      for (let i of this.aisles){
-        console.log(i.categories)
-        for (let j of i.categories){
-          if (j.subcategories.length > 0){
-            j.subcategories.unshift('All')
-
-          }
-        }
-        if (i.categories.length > 0){
-          i.categories.unshift({name:'All',subcategories:[]})
-
-        }
-
-      }
-      this.aisles.unshift({name:'All',categories:[]})
+      // for (let i of this.aisles){
+      //   console.log(i.categories)
+      //   for (let j of i.categories){
+      //     if (j.subcategories.length > 0){
+      //       j.subcategories.unshift('All')
+      //
+      //     }
+      //   }
+      //   if (i.categories.length > 0){
+      //     i.categories.unshift({name:'All',subcategories:[]})
+      //
+      //   }
+      //
+      // }
+      // this.aisles.unshift({name:'NONE',categories:[]})
 
       this.aisle = this.aisles[0]
+      this.aisle.categories.unshift({name:'All items',subcategories:[]})
 
-
+      console.log(this.aisles)
       for (let i of myresult.products){
         i.added = false
         i.measurements = []
