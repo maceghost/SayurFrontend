@@ -6,7 +6,7 @@
 
         </div>
         <div class="div-block-118">
-          <a  [ngClass] = "{'link-6-copy-selected': this.auth.view == 'shop','link-6-copy': this.auth.view != 'shop'}" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" (click) = "this.auth.view = 'shop'">Shop</a>
+          <a  [ngClass] = "{'link-6-copy-selected': this.auth.view == 'shop','link-6-copy': this.auth.view != 'shop'}" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" (click) = "this.auth.view = 'shop';this.shoplist = false">Shop</a>
           <div [style.pointer-events]="this.shoplist ? 'auto' : 'none'" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" class="homecatlistdiv">
             <ul class = "homecatlist fade-in-bottom w-list-unstyled"[ngClass] = "{'homecatlist': !this.shoplist, 'homecatlist-hover': this.shoplist}" >
               <li (mouseleave) ="cat.hover = false"(mouseenter) ="cat.hover = true"  (click) = "this.auth.catfilter = cat.name;this.auth.view = 'shop';this.shoplist = false" *ngFor = "let cat of this.auth.aisle.categories" class="catlistitem">
@@ -52,7 +52,7 @@
         </div>
         <div  (mouseenter) ="this.carthover = true" [style.pointer-events]="this.carthover ? 'auto' : 'none'" class="cartmodalanimatecontainer" >
           <div (mouseenter) ="this.carthover = true"(mouseleave) ="this.carthover = false"class = "cartmodal fade-in-bottom"[ngClass] = "{'cartmodal': !this.carthover, 'cartmodal-hover': this.carthover}">
-            <ul *ngIf = "this.auth.cart.length > 1" class="list-4-copy w-list-unstyled">
+            <ul *ngIf = "this.auth.cart.length > 0" class="list-4-copy w-list-unstyled">
               <li *ngFor = "let i of this.auth.cart" class="list-item-7-copy">
                 <div class="cartmoditem">
                   <div class="cartmodalimgdiv">
@@ -77,7 +77,7 @@
                     </div>
                   </div>
                   <div class="div-block-83">
-                    <mat-icon style = "width:8vh;height:8vh;display:flex;justify-content:center;align-items:center;font-size:64px" (click) = "this.viewitem = null">
+                    <mat-icon style = "width:3vh;height:3vh;display:flex;justify-content:center;align-items:center;font-size:32px" (click) = "this.viewitem = null">
                         delete_outline
                     </mat-icon>
                   </div>

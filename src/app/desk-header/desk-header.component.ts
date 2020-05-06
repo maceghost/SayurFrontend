@@ -259,6 +259,7 @@ this.dataSource.data = TREE_DATA;
 
   ngOnInit(){
     this.newFilterProducts()
+    console.log(this.auth.cart)
   }
   updateFilters(){
     this.auth.category = this.auth.aisle.categories[0]
@@ -489,6 +490,7 @@ this.dataSource.data = TREE_DATA;
     this.router.navigate(['checkout']);
   }
   getCartSubtotal() {
+    console.log(this.auth.cart)
     let total = 0
     for (let i of this.auth.cart){
       console.log(i)

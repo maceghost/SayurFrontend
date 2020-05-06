@@ -66,7 +66,7 @@ input[type="search"]::-webkit-search-cancel-button {
   font-weight: 700;
   text-align: center;
   text-decoration: none;
-  cursor: default;
+  cursor: pointer;
   color: #b2deff !important;
 
 }
@@ -88,7 +88,7 @@ input[type="search"]::-webkit-search-cancel-button {
   font-weight: 700;
   text-align: center;
   text-decoration: none;
-  cursor: default;
+  cursor: pointer;
   color: #b2deff !important;
   position: absolute;
   z-index: 1000;
@@ -224,9 +224,9 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 6px;
   background-color: #fff;
   box-shadow: 1px 1px 14px 0 #7c7c7c;
-  -webkit-transform: translate(0px, 62px);
-  -ms-transform: translate(0px, 62px);
-  transform: translate(0px, 62px);
+  -webkit-transform: translate(0px, 40px);
+  -ms-transform: translate(0px, 40px);
+  transform: translate(0px, 40px);
 
 }
 
@@ -8330,6 +8330,7 @@ figcaption {
 .text-block-36-copy {
   padding: 0px;
   font-weight: 500;
+  cursor:pointer;
 }
 
 .text-block-36-copy:hover {
@@ -8360,9 +8361,15 @@ figcaption {
 .div-block-83 {
   width: 4vh;
   height: 4vh;
+  padding-top:8px;
+  padding-right:8px;
   padding-bottom: 0px;
   padding-left: 0px;
   border: 1px none #000;
+}
+.div-block-83:hover {
+  color: #b2deff;
+  cursor:pointer;
 }
 
 .div-block-84 {
@@ -9142,6 +9149,7 @@ figcaption {
   border-color: #cacaca;
   border-radius: 2px;
   font-weight: 400;
+  cursor:pointer;
 }
 
 .button-13-copy {
@@ -9756,9 +9764,9 @@ figcaption {
 .cartmodal:hover {
   max-height: 1001px;
   opacity: 1;
-  -webkit-transform: translate(0px, 62px);
-  -ms-transform: translate(0px, 62px);
-  transform: translate(0px, 62px);
+  -webkit-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
 }
 
 @media screen and (max-width: 991px) {
