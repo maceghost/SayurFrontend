@@ -1,12 +1,17 @@
 <div class="section-6">
     <div class="navbar-deskhome-copy">
       <div class="div-block-63">
-        <div class="div-block-118">
+        <div class="linkrelparent">
+          <div class = linkabsolutecontainer>
+
           <a [ngClass] = "{'link-6-selected': this.auth.view == 'home','link-6': this.auth.view != 'home'}" (click) = "this.auth.view = 'home'">Home</a>
+        </div>
 
         </div>
-        <div class="div-block-118">
-          <a  [ngClass] = "{'link-6-copy-selected': this.auth.view == 'shop','link-6-copy': this.auth.view != 'shop'}" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" (click) = "this.auth.view = 'shop';this.shoplist = false">Shop</a>
+        <div class="linkrelparent">
+          <div class = linkabsolutecontainer>
+          <a  [ngClass] = "{'link-6-selected': this.auth.view == 'shop','link-6': this.auth.view != 'shop'}" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" (click) = "this.auth.view = 'shop';this.shoplist = false">Shop</a>
+          </div>
           <div [style.pointer-events]="this.shoplist ? 'auto' : 'none'" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" class="homecatlistdiv">
             <ul class = "homecatlist fade-in-bottom w-list-unstyled"[ngClass] = "{'homecatlist': !this.shoplist, 'homecatlist-hover': this.shoplist}" >
               <li (mouseleave) ="cat.hover = false"(mouseenter) ="cat.hover = true"  (click) = "this.auth.catfilter = cat.name;this.auth.view = 'shop';this.shoplist = false" *ngFor = "let cat of this.auth.aisle.categories" class="catlistitem">
@@ -27,8 +32,11 @@
             </ul>
           </div>
         </div>
-        <div class="div-block-118">
+        <div class="linkrelparent">
+          <div class = linkabsolutecontainer>
+
           <a [ngClass] = "{'link-6-selected': this.auth.view == 'info','link-6': this.auth.view != 'info'}" (click) = "this.auth.view = 'info'">Info</a></div>
+        </div>
 
         </div>
       <a href="#" class="brand-deskhome-copy w-nav-brand">
