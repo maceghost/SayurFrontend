@@ -183,6 +183,7 @@ this.dataSource.data = TREE_DATA;
     }
   }
   hitCat(cat:any){
+    this.viewitem = null;
     if (cat.subcategories.length == 0){
       this.auth.subfilter = null
 
@@ -234,6 +235,8 @@ this.dataSource.data = TREE_DATA;
   }
 
   subHit(sub:any){
+    this.viewitem = null;
+
     this.auth.subfilter = sub
     this.auth.catfilter = null
     this.newFilterProducts()

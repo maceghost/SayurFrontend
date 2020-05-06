@@ -268,10 +268,33 @@ input[type="search"]::-webkit-search-cancel-button {
 
   cursor:pointer
 }
-
-
-.div-block-97-selected {
+.backarrow {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 5vh;
+  height: 5vh;
+  margin-right: 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
   background-color: #f3ebd8;
+  cursor: pointer;
+}
+
+.backarrow:hover {
+  background-color: #d8ccb3;
+}
+
+.viewchangebutt-selected {
+  background-color: #d8ccb3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -290,6 +313,7 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 4px;
   cursor: default;
 }
+
 
 
 
@@ -8648,7 +8672,7 @@ figcaption {
   align-items: center;
 }
 
-.div-block-97 {
+.viewchangebutt {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -8665,12 +8689,12 @@ figcaption {
   -ms-flex-align: center;
   align-items: center;
   border-radius: 4px;
-  background-color: #d8ccb3;
+  background-color: #f3ebd8;
   cursor: pointer;
 }
 
-.div-block-97:hover {
-  background-color: #f3ebd8;
+.viewchangebutt:hover {
+  background-color:#d8ccb3;
 }
 
 .text-block-47 {
