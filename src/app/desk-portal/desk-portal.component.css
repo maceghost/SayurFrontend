@@ -3276,7 +3276,7 @@ figcaption {
   -ms-flex-align: center;
   align-items: center;
   background-color: #f4f4f4;
-  /* background-image: url('../images/portfolio-2---wide.svg'); */
+  background-image: url('../images/portfolio-2---wide.svg');
   background-position: 0px 0px;
   background-size: cover;
   color: #fff;
@@ -3630,14 +3630,14 @@ figcaption {
   -ms-flex-align: center;
   align-items: center;
   background-color: #f4f4f4;
-  /* background-image: url('../images/portfolio-1---wide.svg'); */
+  background-image: url('../images/portfolio-1---wide.svg');
   background-position: 50% 50%;
   background-size: cover;
   color: #fff;
 }
 
 .project-overview-header.cc-project-2-header {
-  /* background-image: url('../images/portfolio-2---wide.svg'); */
+  background-image: url('../images/portfolio-2---wide.svg');
   background-position: 50% 50%;
 }
 
@@ -7497,9 +7497,30 @@ figcaption {
   text-decoration: none;
 }
 
+.link-6 {
+  position: static;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  z-index: 1000;
+  display: inline-block;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .link-6:hover {
-  color: #b2deff !important;
+  color: #b2deff;
 }
 
 .link-7 {
@@ -7546,14 +7567,12 @@ figcaption {
   flex: 0 auto;
 }
 
-.cart-3-deskhome-copy-copy{
+.cart-3-deskhome-copy-copy {
   padding-left: 0px;
-  position:absolute;
 }
 
 .cart-3-deskhome-copy-copy:hover {
   color: #b2deff;
-
 }
 
 .cart-button-mobnonav-copy {
@@ -7566,8 +7585,8 @@ figcaption {
   box-shadow: 1px 1px 3px 0 #b4b4b4;
   color: #000;
 }
-.cart-button-mobnonav-copy:hover {
 
+.cart-button-mobnonav-copy:hover {
   color: #b2deff;
 }
 
@@ -7990,9 +8009,7 @@ figcaption {
 }
 
 .text-block-35:hover {
-
-  color: white;
-
+  color: #fff;
 }
 
 .div-block-72 {
@@ -8025,13 +8042,16 @@ figcaption {
   z-index: 5;
   display: block;
   width: 35vw;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  border-left: 1px solid #bbb;
   border-radius: 6px;
   background-color: #fff;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.03);
 }
 
 .list-4 {
+  overflow: auto;
+  max-height: 300px;
   margin-top: 0px;
   margin-bottom: 0px;
   padding-left: 0px;
@@ -8060,6 +8080,7 @@ figcaption {
 
 .image-3 {
   width: 10vh;
+  height: 10vh;
 }
 
 .shoplistitemname {
@@ -8265,7 +8286,7 @@ figcaption {
   display: flex;
   width: 35vw;
   margin-top: 15px;
-  margin-right: 4vw;
+  margin-right: 3vw;
   margin-left: 0vw;
   padding: 15px;
   -webkit-box-pack: center;
@@ -8281,6 +8302,7 @@ figcaption {
 
 .list-4-copy {
   overflow: auto;
+  height: 20vw;
   margin-top: 0px;
   margin-bottom: 0px;
   padding: 0px;
@@ -8323,7 +8345,7 @@ figcaption {
 .text-block-36-copy {
   padding: 0px;
   font-weight: 500;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .text-block-36-copy:hover {
@@ -8354,15 +8376,8 @@ figcaption {
 .div-block-83 {
   width: 4vh;
   height: 4vh;
-  padding-top:8px;
-  padding-right:8px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  padding: 8px 8px 0px 0px;
   border: 1px none #000;
-}
-.div-block-83:hover {
-  color: #b2deff;
-  cursor:pointer;
 }
 
 .div-block-84 {
@@ -8694,7 +8709,7 @@ figcaption {
 }
 
 .viewchangebutt:hover {
-  background-color:#d8ccb3;
+  background-color: #d8ccb3;
 }
 
 .text-block-47 {
@@ -8727,7 +8742,7 @@ figcaption {
 }
 
 .productitem {
-  position:relative;
+  position: relative;
   width: 14vw;
   padding: 1vw;
   border-style: solid;
@@ -8735,11 +8750,11 @@ figcaption {
   border-color: #c9c9c9;
   border-radius: 10px;
   background-color: #fff;
-  cursor:pointer;
-  -webkit-transition: box-shadow 800ms ease, -webkit-transform 800ms ease;
-  transition: box-shadow 800ms ease, -webkit-transform 800ms ease;
-  transition: box-shadow 800ms ease, transform 800ms ease;
-  transition: box-shadow 800ms ease, transform 800ms ease, -webkit-transform 800ms ease;
+  -webkit-transition: box-shadow 200ms ease, -webkit-transform 200ms ease;
+  transition: box-shadow 200ms ease, -webkit-transform 200ms ease;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+  transition: box-shadow 200ms ease, transform 200ms ease, -webkit-transform 200ms ease;
+  cursor: pointer;
 }
 
 .productitem:hover {
@@ -9143,7 +9158,7 @@ figcaption {
   border-color: #cacaca;
   border-radius: 2px;
   font-weight: 400;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .button-13-copy {
@@ -9279,6 +9294,7 @@ figcaption {
 .shoplistitem {
   display: -ms-grid;
   display: grid;
+  margin-bottom: 10px;
   padding: 10px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
@@ -9298,7 +9314,6 @@ figcaption {
   border: 1px solid #c9c9c9;
   border-radius: 0px;
   background-color: #fff;
-  margin-bottom:10px;
 }
 
 .shoplistitemimg {
@@ -9379,14 +9394,13 @@ figcaption {
 }
 
 .searchitemname {
-  max-width: 200px;
-  padding: 0px 0px 0px 15px;
+  padding: 0px;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
   line-height: 20px;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -9426,7 +9440,8 @@ figcaption {
 }
 
 .pvback {
-  padding-right: 20px;
+  display: block;
+  padding-right: 10px;
   background-color: transparent;
 }
 
@@ -9435,8 +9450,8 @@ figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 8vh;
-  height: 8vh;
+  width: 5vh;
+  height: 5vh;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -9591,22 +9606,6 @@ figcaption {
   align-items: center;
 }
 
-.linkabsolutecontainer {
-  position: absolute;
-  left: 0%;
-  top: 0%;
-  right: 0%;
-  bottom: auto;
-  z-index: 1000;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
 .linkrelparent {
   position: relative;
   width: 7vw;
@@ -9724,7 +9723,28 @@ figcaption {
   box-shadow: 1px 1px 3px 0 #b6b6b6;
 }
 
+.link-6-copy {
+  position: static;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  z-index: 10000;
+  margin-right: 0px;
+  padding-right: 0vw;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
 
+.link-6-copy:hover {
+  color: #b2deff;
+}
 
 .cartmodal {
   position: static;
@@ -9754,9 +9774,87 @@ figcaption {
 .cartmodal:hover {
   max-height: 1001px;
   opacity: 1;
-  -webkit-transform: translate(0px, 0px);
-  -ms-transform: translate(0px, 0px);
-  transform: translate(0px, 0px);
+  -webkit-transform: translate(0px, 40px);
+  -ms-transform: translate(0px, 40px);
+  transform: translate(0px, 40px);
+}
+
+.div-block-119 {
+  position: relative;
+}
+
+.linkabsolutecontainer {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  z-index: 1000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.backarrow {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 5vh;
+  height: 5vh;
+  margin-right: 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #f3ebd8;
+  cursor: pointer;
+}
+
+.backarrow:hover {
+  background-color: #d8ccb3;
+}
+
+.div-block-120 {
+  height: 20px;
+  margin-bottom: 10px;
+  background-color: #e6e6e6;
+}
+
+.searchloadingfill {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px 15px 5px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+.div-block-121 {
+  padding-left: 25px;
+}
+
+.searchitemprice {
+  color: #68be65;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 991px) {

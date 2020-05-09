@@ -76,7 +76,7 @@
             <img style = "width:12vw;min-height: 12vw;
  max-height: 12vw;max-width:12vw;"src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="productimg">
             <div class="productname">{{i.name}}</div>
-            <div class="productprice">{{this.getPrice(i)}}</div>
+            <div class="productprice">{{this.auth.getPrice(i)}}</div>
           </div>
           <div></div>
         </div>

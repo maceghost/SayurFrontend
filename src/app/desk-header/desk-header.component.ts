@@ -452,10 +452,8 @@ this.dataSource.data = TREE_DATA;
     this.router.navigate(['checkout']);
   }
   getCartSubtotal() {
-    console.log(this.auth.cart)
     let total = 0
     for (let i of this.auth.cart){
-      console.log(i)
       total = total + i.quantity*i.price
     }
     return total

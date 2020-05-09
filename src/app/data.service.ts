@@ -32,6 +32,8 @@ const USER_TIMEOUT = 3 * 60 * 1000;
 const PROVISION_STATE = 0;
 const LOGIN_STATE = 1;
 const AUTH_STATE = 2;
+import * as _ from 'lodash';
+
 
 // import { Chart } from 'chart.js';
 
@@ -385,6 +387,12 @@ export class DataService {
   day:any = {times:[]};
   time:any;
 
+
+  searching = false;
+  searchTxt = '';
+  searchitems = []
+  searchTouched = false;
+
   constructor(
     public _http: HttpClient,
     // private ds:DataService,
@@ -521,6 +529,101 @@ export class DataService {
   //   console.log('hello')
   //   console.log(localStorage.getItem("cart"));
   // }
+
+  searchClick(){
+    this.searchTouched = !this.searchTouched
+    // if (this.searchitems.length == 0){
+    //
+    //   this.searching = true
+    //
+    //   let i = 0
+    //   while (i < 4){
+    //     let item = this.storeproducts[Math.floor(Math.random() * this.storeproducts)];
+    //     this.searchitems.push(item)
+    //     i = i + 1
+    //   }
+    //   setTimeout(() =>
+    //       {
+    //
+    //         this.searching = false
+    //       },
+    //       1000)
+    //
+    //
+    // }
+
+  }
+
+  getPrice(item:any){
+    let total = item.price * item.quantity
+
+    let returntotal:string;
+    returntotal = "Rp" + total.toString()
+
+    return returntotal
+
+  }
+  async search(x:any){
+    if (this.searchTxt == ""){
+      this.searchitems = []
+    }
+    else{
+      let tmp = this.searchTxt
+      this.searchitems = await _.filter(this.storeproducts, function(o){
+        return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
+      });
+    }
+
+  }
+
+  async search1(x:any){
+    console.log(this.searchTxt)
+
+    if (this.searchTxt == ""){
+      this.searchitems = []
+      this.searching = true
+
+      let i = 0
+      while (i < 4){
+        let item = this.storeproducts[Math.floor(Math.random() * this.storeproducts)];
+        this.searchitems.push(item)
+        i = i + 1
+      }
+      // setTimeout(() =>
+      //     {
+      //
+      //       this.searching = false
+      //     },
+      //     1500)
+
+    }
+    else{
+      this.searching = true
+
+      let tmp = this.searchTxt
+      this.searchitems = await _.filter(this.storeproducts, function(o){
+        return JSON.stringify(o).toLowerCase().indexOf(tmp.toLowerCase()) > -1;
+      });
+      console.log(this.searchitems)
+      if (this.searchitems.length == 0){
+
+        let i = 0
+        while (i < 4){
+          let item = this.storeproducts[Math.floor(Math.random() * this.storeproducts)];
+          this.searchitems.push(item)
+          i = i + 1
+        }
+        this.searching = false
+
+      }
+      else{
+        this.searching = false
+
+      }
+    }
+
+  }
+
   getUTCTime(day:any,time:any){
     let hour:any;
     hour = parseInt(time.split(':')[0])
