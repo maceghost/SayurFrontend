@@ -58,7 +58,7 @@
           </a>
 
         </div>
-        <div  (mouseenter) ="this.carthover = true" [style.pointer-events]="this.carthover ? 'auto' : 'none'" class="cartmodalanimatecontainer" >
+        <div  (mouseenter) ="this.carthover = true" (mouseleave) ="this.carthover = false"[style.pointer-events]="this.carthover ? 'auto' : 'none'" class="cartmodalanimatecontainer" >
           <div (mouseenter) ="this.carthover = true"(mouseleave) ="this.carthover = false"class = "cartmodal fade-in-bottom"[ngClass] = "{'cartmodal': !this.carthover, 'cartmodal-hover': this.carthover}">
             <ul *ngIf = "this.auth.cart.length > 0" class="list-4-copy w-list-unstyled">
               <li *ngFor = "let i of this.auth.cart" class="list-item-7-copy">

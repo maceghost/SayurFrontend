@@ -39,7 +39,7 @@
           </mat-icon >
         </div>
       </div>
-      <div class="div-block-114" *ngIf = "!this.viewitem">
+      <div class="div-block-114" *ngIf = "!this.auth.viewitem">
         <div class="div-block-96" >
           <div (click) = "this.productview = 'grid'" class="viewchangebutt"[ngClass] = "{'viewchangebutt-selected': this.productview == 'grid','viewchangebutt': this.productview != 'grid'}">
             <mat-icon aria-hidden="false" aria-label="Example home icon" >
@@ -68,7 +68,7 @@
           </div>
         </div>
         <div *ngIf = "this.productview == 'grid'" class ="shopgrid">
-          <div (click) = "this.viewitem = i" class="productitem" style = "padding:1vw"*ngFor = "let i of this.products">
+          <div (click) = "this.auth.viewitem = i" class="productitem" style = "padding:1vw"*ngFor = "let i of this.products">
             <div *ngIf = i.added class="div-block-60">
               <div class="text-block-29">{{i.quantity}} in cart</div>
              </div>
@@ -85,7 +85,7 @@
             <div class="shoplistitemimgdiv"><img style = "width:7vh;min-height: 7vh;
  max-height: 7vh;max-width:7vh;"src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="shoplistitemimg">
             </div>
-            <div (click) = "this.viewitem = i" class="shoplistitemname">{{i.name}}</div>
+            <div (click) = "this.auth.viewitem = i" class="shoplistitemname">{{i.name}}</div>
             <div class="shoplistitemprice">{{this.getPrice(i)}}</div>
             <div class="shoplistquantity">
               <div class="qtystring">QTY:</div>
@@ -111,9 +111,9 @@
         </div>
 
       </div>
-      <div *ngIf = "this.viewitem" class="productview">
+      <div *ngIf = "this.auth.viewitem" class="productview">
         <div class="pvback" style = "padding-right:20px;">
-          <div (click) = "this.viewitem = null" class = "backarrow">
+          <div (click) = "this.auth.viewitem = null" class = "backarrow">
           <mat-icon >
               arrow_back
           </mat-icon>
@@ -123,36 +123,36 @@
           <div class="pvcard">
             <div class="div-block-113">
               <img style = "border-radius:20px;width:40vh;min-height: 40vh;
-  max-height: 40vh;max-width:40vh;"src="{{this.viewitem.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="pvimg">
+  max-height: 40vh;max-width:40vh;"src="{{this.auth.viewitem.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="pvimg">
             </div>
             <div class="pvdetail">
-              <div class="pvdetailtitle">{{this.viewitem.name}}</div>
-              <div class="text-block-54">{{getPrice(this.viewitem)}}</div>
+              <div class="pvdetailtitle">{{this.auth.viewitem.name}}</div>
+              <div class="text-block-54">{{getPrice(this.auth.viewitem)}}</div>
               <div class="pvcheckoutrow">
                 <div class="text-block-55">QTY:</div>
                 <div class="pvquanity">
                   <div class="pvquantityformblock w-form">
                     <form id="email-form" name="email-form" data-name="Email Form" class="pvquantityform">
-                      <input [(ngModel)]="this.viewitem.quantity" type="text" class="pvquantityinput w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
+                      <input [(ngModel)]="this.auth.viewitem.quantity" type="text" class="pvquantityinput w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
                     </form>
 
                   </div>
                   <div class="div-block-78-copy">
-                    <div (click) = "modQuant(this.viewitem,1)" class="button-13-copy">
+                    <div (click) = "modQuant(this.auth.viewitem,1)" class="button-13-copy">
                       <div class="text-block-39-copy">+</div>
                     </div>
-                    <div (click) = "modQuant(this.viewitem,-1)"class="button-13-copy">
+                    <div (click) = "modQuant(this.auth.viewitem,-1)"class="button-13-copy">
                       <div class="text-block-39-copy">-</div>
                     </div>
                   </div>
                 </div>
-                <a *ngIf = "!this.viewitem.added" (click) = this.addToCart(this.viewitem) class="pvcheckout w-button">Add to cart</a>
-                <a *ngIf = "this.viewitem.added" (click) = this.removeFromCart(this.viewitem) class="pvcheckout w-button">Remove from cart</a>
+                <a *ngIf = "!this.auth.viewitem.added" (click) = this.addToCart(this.auth.viewitem) class="pvcheckout w-button">Add to cart</a>
+                <a *ngIf = "this.auth.viewitem.added" (click) = this.removeFromCart(this.auth.viewitem) class="pvcheckout w-button">Remove from cart</a>
               </div>
               <div class="pvfieldlist">
                 <div class="text-block-58">Categories: </div>
-                <div (click) = "this.goToCategory('cat')" class="pvtag">{{this.viewitem.category}}</div>
-                <div (click) = "this.goToCategory('sub')" class="pvtag">{{this.viewitem.subcategory}}</div>
+                <div (click) = "this.goToCategory('cat')" class="pvtag">{{this.auth.viewitem.category}}</div>
+                <div (click) = "this.goToCategory('sub')" class="pvtag">{{this.auth.viewitem.subcategory}}</div>
 
               </div>
             </div>
@@ -163,7 +163,7 @@
           <div class="description">
             <div class="gendesc">
               <div class="text-block-57">General Description:</div>
-              <div>{{this.viewitem.description}}</div>
+              <div>{{this.auth.viewitem.description}}</div>
             </div>
           </div>
         </div>

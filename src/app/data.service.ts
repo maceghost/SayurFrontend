@@ -93,6 +93,7 @@ export class DataService {
   currentUrl:string;
   lastUrl:string;
   backButton:boolean = false;
+  viewitem = null;
 
 
 

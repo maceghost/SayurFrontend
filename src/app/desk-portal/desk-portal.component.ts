@@ -134,7 +134,6 @@ export class DeskPortalComponent implements OnInit{
   catexpanded = true;
   productview:any = 'grid'
   productslen:any = 0
-  viewitem = null;
 
 
 
@@ -161,15 +160,15 @@ this.dataSource.data = TREE_DATA;
   goToCategory(type:any){
 
     if (type == 'cat'){
-      this.catfilter = this.viewitem.category
+      this.catfilter = this.auth.viewitem.category
       this.subfilter = null
     }
     else{
-      this.subfilter = this.viewitem.subcategory
+      this.subfilter = this.auth.viewitem.subcategory
       this.catfilter = null
 
     }
-    this.viewitem = null
+    this.auth.viewitem = null
 
   }
   modQuant(item:any, number:number){

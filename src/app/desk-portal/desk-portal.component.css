@@ -8852,10 +8852,10 @@ figcaption {
   border-color: #c9c9c9;
   border-radius: 10px;
   background-color: #fff;
-  -webkit-transition: box-shadow 200ms ease, -webkit-transform 200ms ease;
-  transition: box-shadow 200ms ease, -webkit-transform 200ms ease;
-  transition: box-shadow 200ms ease, transform 200ms ease;
-  transition: box-shadow 200ms ease, transform 200ms ease, -webkit-transform 200ms ease;
+  -webkit-transition: box-shadow 1000ms ease, -webkit-transform 1000ms ease;
+  transition: box-shadow 1000ms ease, -webkit-transform 1000ms ease;
+  transition: box-shadow 1000ms ease, transform 1000ms ease;
+  transition: box-shadow 1000ms ease, transform 1000ms ease, -webkit-transform 1000ms ease;
   cursor: pointer;
 }
 
