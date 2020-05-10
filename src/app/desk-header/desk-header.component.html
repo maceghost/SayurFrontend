@@ -116,8 +116,10 @@
         <div *ngIf = "this.auth.searchTouched && this.auth.searchitems.length > 0" class="div-block-73">
           <ul role="list" *ngIf = "this.auth.searchitems.length > 0" class="list-4 w-list-unstyled">
             <li class="list-item-7" *ngFor = "let i of this.auth.searchitems">
-              <div class="div-block-74">
+              <div class="div-block-74" (click) = "this.chooseSearchItem(i)">
+                <div>
                 <img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="image-3">
+                </div>
                 <div class="div-block-121">
                   <div class="searchitemname">{{i.name}}</div>
                   <div class="searchitemprice">{{this.auth.getPrice(i)}}</div>

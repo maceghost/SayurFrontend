@@ -448,6 +448,12 @@ this.dataSource.data = TREE_DATA;
 
   }
 
+  chooseSearchItem(item:any){
+    this.auth.viewitem = item
+    this.auth.searchTouched = false;
+
+  }
+
   checkout(){
     this.router.navigate(['checkout']);
   }

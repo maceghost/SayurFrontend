@@ -320,6 +320,97 @@ input[type="search"]::-webkit-search-cancel-button {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .w-layout-grid {
   display: -ms-grid;
   display: grid;
@@ -8062,25 +8153,36 @@ figcaption {
 }
 
 .div-block-74 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 10px;
+  display: -ms-grid;
+  display: grid;
+  padding: 15px;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  -ms-grid-columns: -webkit-max-content 1fr;
+  -ms-grid-columns: max-content 1fr;
+  grid-template-columns: -webkit-max-content 1fr;
+  grid-template-columns: max-content 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
   border-style: solid solid none;
   border-width: 0.5px;
   border-color: rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  -webkit-filter: brightness(96%);
+  filter: brightness(96%);
+  cursor: pointer;
 }
 
 .div-block-74:hover {
-  -webkit-filter: brightness(90%);
-  filter: brightness(90%);
+  -webkit-filter: brightness(100%);
+  filter: brightness(100%);
 }
 
 .image-3 {
   width: 10vh;
   height: 10vh;
+  border-radius:8px;
 }
 
 .shoplistitemname {
@@ -9394,11 +9496,8 @@ figcaption {
 }
 
 .searchitemname {
+  height: 5vh;
   padding: 0px;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  -ms-grid-row-align: center;
-  align-self: center;
   line-height: 20px;
   font-weight: 500;
   cursor: pointer;
@@ -9848,13 +9947,37 @@ figcaption {
 }
 
 .div-block-121 {
-  padding-left: 25px;
+  display: block;
+  padding-left: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
 }
 
 .searchitemprice {
   color: #68be65;
   font-size: 18px;
   font-weight: 600;
+}
+
+.div-block-122 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 @media screen and (max-width: 991px) {
