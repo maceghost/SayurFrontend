@@ -7480,9 +7480,10 @@ figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  height: 6vh;
   min-width: auto;
   padding-right: 0px;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
   padding-left: 0vw;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -7632,13 +7633,13 @@ figcaption {
 }
 
 .div-block-23-deskhome-copy {
-  position: relative;
+  position: static;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   padding-right: 6vw;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
   padding-left: 0px;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
@@ -7660,6 +7661,7 @@ figcaption {
 
 .cart-3-deskhome-copy-copy {
   padding-left: 0px;
+  cursor: pointer;
 }
 
 .cart-3-deskhome-copy-copy:hover {
@@ -8169,8 +8171,8 @@ figcaption {
   border-width: 0.5px;
   border-color: rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  -webkit-filter: brightness(96%);
-  filter: brightness(96%);
+  -webkit-filter: brightness(90%);
+  filter: brightness(90%);
   cursor: pointer;
 }
 
@@ -8182,7 +8184,7 @@ figcaption {
 .image-3 {
   width: 10vh;
   height: 10vh;
-  border-radius:8px;
+  border-radius: 8px;
 }
 
 .shoplistitemname {
@@ -8381,7 +8383,7 @@ figcaption {
   top: 0%;
   right: 0%;
   bottom: auto;
-  z-index: 100;
+  z-index: 3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -8476,10 +8478,26 @@ figcaption {
 }
 
 .div-block-83 {
-  width: 4vh;
-  height: 4vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 3vh;
+  height: 3vh;
   padding: 8px 8px 0px 0px;
-  border: 1px none #000;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.div-block-83:hover {
+  color: #b2deff;
 }
 
 .div-block-84 {
@@ -9708,7 +9726,7 @@ figcaption {
 .linkrelparent {
   position: relative;
   width: 7vw;
-  height: 8vh;
+  height: 4vh;
   margin-top: 0px;
   margin-right: 0px;
   margin-left: 0px;
@@ -9887,7 +9905,7 @@ figcaption {
   left: 0%;
   top: 0%;
   right: 0%;
-  bottom: auto;
+  bottom: 0%;
   z-index: 1000;
   display: -webkit-box;
   display: -webkit-flex;
@@ -9978,6 +9996,57 @@ figcaption {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+}
+
+.cart-button-mobnonav-copy-copy {
+  margin-right: 0px;
+  border-style: none;
+  border-width: 1px;
+  border-color: #8d8d8d;
+  border-radius: 2px;
+  background-color: #b2deff;
+  box-shadow: 1px 1px 3px 0 #b4b4b4;
+  color: #000;
+}
+
+.cart-button-mobnonav-copy-copy:hover {
+  color: #b2deff;
+}
+
+.cartbuttondesk {
+  width: 80px;
+  height: 5vh;
+  margin-right: 0px;
+  border-style: none;
+  border-width: 1px;
+  border-color: #8d8d8d;
+  border-radius: 2px;
+  background-color: #b2deff;
+  box-shadow: 1px 1px 3px 0 #b4b4b4;
+  color: #000;
+}
+
+.cartbuttondesk:hover {
+  color: #b2deff;
+}
+
+.div-block-123 {
+  position: absolute;
+  left: auto;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  z-index: 4;
+}
+
+.div-block-124 {
+  position: relative;
+}
+
+.div-block-125 {
+  position: relative;
+  width: 80px;
+  height: 5vh;
 }
 
 @media screen and (max-width: 991px) {
@@ -12293,6 +12362,42 @@ figcaption {
   }
   .footer-heading {
     margin-top: 20px;
+  }
+  .cart-button-mobnonav-copy-copy {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 20vw;
+    height: 9vw;
+    padding: 0px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 2px;
+  }
+  .cartbuttondesk {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 20vw;
+    height: 9vw;
+    padding: 0px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 2px;
   }
 }
 
