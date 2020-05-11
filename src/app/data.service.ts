@@ -555,6 +555,13 @@ export class DataService {
 
   }
 
+  goToItem(item:any){
+    this.viewitem = item
+    this.searchTouched = false;
+    this.view = 'shop'
+
+  }
+
   getPrice(item:any){
     let total = item.price * item.quantity
 
