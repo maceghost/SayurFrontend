@@ -137,7 +137,7 @@ export class DeskStorefrontComponent implements OnInit, AfterViewInit{
   viewitem = null;
   s1Animated = false;
   s2Animated = true;
-
+  cats:any;
 
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
@@ -163,7 +163,7 @@ this.dataSource.data = TREE_DATA;
   // }
 
   ngAfterViewInit(){
-    
+
     if (this.auth.slidechange){
       this.auth.s2Animated = false
       // this.auth.s2Animated = true;
@@ -187,6 +187,7 @@ this.dataSource.data = TREE_DATA;
 
     }
 
+    this.cats = this.auth.randCats()
 
   }
   animate(){

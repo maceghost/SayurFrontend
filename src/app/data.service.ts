@@ -124,7 +124,7 @@ export class DataService {
   aisles:any;
   aisle:any = {name:"All",categories:[]};
   categories:any = [];
-
+  randcats:any;
   category:any = null;
   subcategory:any = null;
   minprice:any = null;
@@ -534,7 +534,67 @@ export class DataService {
   // ngOnInit(){
   //   console.log('hello')
   //   console.log(localStorage.getItem("cart"));
+
+
   // }
+  getProduce(){
+    let temp = [];
+    let i = 0;
+    while (i<4){
+      for (let i of this.storeproducts){
+        if (i.category == 'Fruits and Vegetables'){
+          temp.push(i)
+          i = i + 1
+        }
+      }
+      break;
+    }
+    return temp
+
+  }
+
+  randCats(){
+    // console.log()
+    // if (this.categories){
+    //   let i = 0
+    //   let temp = _.clone(this.categories);
+    //   console.log(this.categories)
+    //
+    //   console.log(temp)
+    //   this.randcats = []
+    //   while (i < 8){
+    //
+    //     let item = this.categories[Math.floor(Math.random() * this.categories)];
+    //     this.randcats.push(item)
+    //     i = i + 1
+    //   }
+    //   return true
+    // }
+    // else{
+    //   return false
+    // }
+
+
+
+    // if (this.categories){
+    //   let i = 0
+    //   let temp = _.clone(this.categories);
+    //   console.log(this.categories)
+    //
+    //   console.log(temp)
+    //   let newarr = []
+    //   while (i < 8){
+    //
+    //     let item = temp.splice(Math.floor(Math.random() * temp),1);
+    //     console.log(item[0])
+    //     newarr.push(item[0])
+    //     i = i + 1
+    //   }
+    //   console.log(newarr)
+    //   return newarr
+    // }
+
+  }
 
   searchClick(){
     this.searchTouched = !this.searchTouched
