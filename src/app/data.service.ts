@@ -572,6 +572,9 @@ export class DataService {
 
   }
   async search(x:any){
+    if (!this.searchTouched){
+      this.searchTouched = true
+    }
     if (this.searchTxt == ""){
       this.searchitems = []
     }
