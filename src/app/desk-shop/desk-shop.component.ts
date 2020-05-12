@@ -183,50 +183,57 @@ this.dataSource.data = TREE_DATA;
     }
   }
   hitCat(cat:any){
-    this.viewitem = null;
-    if (cat.subcategories.length == 0){
-      this.auth.subfilter = null
 
-      this.auth.catfilter = cat.name
-      for (let i of this.auth.categories){
-        if (i.name != cat.name){
-          i.expanded = false
-
-        }
+    let mysub = false
+    for (let i of cat.subcategories){
+      if (this.auth.subfilter == i){
+        mysub = true
       }
-    }
-    else if (this.auth.catfilter == cat.name){
-      cat.expanded = !cat.expanded
 
     }
-    else{
-      if (cat.expanded){
-        // if (this.auth.catfilter == cat.name){
-        //
-        //   // cat.expanded = false
-        // }
-        // else{
-        //   this.auth.subfilter = null
-        //
-        //   this.auth.catfilter = cat.name
-        //
-        // }
+    // if (mysub){
+    //   cat.expanded = !cat.expanded
+    //
+    // }
+    // else{
+      this.viewitem = null;
+      if (cat.subcategories.length == 0){
         this.auth.subfilter = null
 
         this.auth.catfilter = cat.name
-
         for (let i of this.auth.categories){
           if (i.name != cat.name){
             i.expanded = false
 
           }
         }
+      }
+      else if (this.auth.catfilter == cat.name){
+        cat.expanded = !cat.expanded
 
       }
       else{
-        cat.expanded = true
+        if (cat.expanded){
+
+          this.auth.subfilter = null
+
+          this.auth.catfilter = cat.name
+
+          for (let i of this.auth.categories){
+            if (i.name != cat.name){
+              i.expanded = false
+
+            }
+          }
+
+        }
+        else{
+          cat.expanded = true
+        }
       }
-    }
+
+    // }
+
 
 
 

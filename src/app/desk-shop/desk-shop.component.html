@@ -20,7 +20,7 @@
               </div>
             </div>
             <div *ngIf = "i.expanded">
-            <div (click) = "subHit(j)"[ngClass] = "{'subcat': this.subfilter != j, 'subcat-selected': this.subfilter == j}" class="subcat" *ngFor = "let j of i.subcategories">
+            <div (click) = "subHit(j)"[ngClass] = "{'subcat': this.auth.subfilter != j, 'subcat-selected': this.auth.subfilter == j}" class="subcat" *ngFor = "let j of i.subcategories">
               <div class="text-block-50">-</div>
               <div class="text-block-52">{{j}}</div>
             </div>
@@ -151,7 +151,7 @@
               </div>
               <div class="pvfieldlist">
                 <div class="text-block-58">Categories: </div>
-                <div (click) = "this.goToCategory('cat')" class="pvtag">{{this.auth.viewitem.category}}</div>
+                <div (click) = "this.goToCategory('cat')" class="pvtag">{{this.auth.viewitem.category}},</div>
                 <div (click) = "this.goToCategory('sub')" class="pvtag">{{this.auth.viewitem.subcategory}}</div>
 
               </div>

@@ -84,7 +84,7 @@ import * as _ from 'lodash';
     trigger('detailExpand', [ state('collapsed, void', style({ height: '0px' })), state('expanded', style({ height: '*' })), transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')), transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')) ])
   ],
 })
-export class DeskStorefrontComponent implements OnInit{
+export class DeskStorefrontComponent implements OnInit, AfterViewInit{
 
   private _transformer = (node: FoodNode, level: number) => {
     return {
@@ -135,7 +135,7 @@ export class DeskStorefrontComponent implements OnInit{
   productview:any = 'grid'
   productslen:any = 0
   viewitem = null;
-
+  s1t1Animated = false;
 
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
@@ -157,7 +157,35 @@ this.dataSource.data = TREE_DATA;
   //   let retlist = []
   //   for (let i of item.categories)
   //
+
   // }
+  // ngOnInit(){
+  //     setTimeout(() =>
+  //         {
+  //
+  //           this.s1t1Animated = false;
+  //         },
+  //         1000)
+  //
+  //
+  //
+  //
+  // }
+  ngAfterViewInit(){
+    setTimeout(() =>
+        {
+
+          this.s1t1Animated = true;
+        },
+        1000)
+
+
+  }
+  animate(){
+    this.s1t1Animated = !this.s1t1Animated;
+
+  }
+
   goToCategory(type:any){
 
     if (type == 'cat'){
@@ -170,7 +198,7 @@ this.dataSource.data = TREE_DATA;
 
     }
     this.viewitem = null
-    
+
   }
   modQuant(item:any, number:number){
     console.log(number)

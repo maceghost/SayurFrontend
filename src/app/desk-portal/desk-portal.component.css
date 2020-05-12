@@ -295,8 +295,65 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 
+.slider {
+  z-index: 1;
+  height: 70vh;
+  margin-top: 0px;
+  padding: 50px 50px 0px;
+  background-image: url('../images/kumiko-shimizu-lNxMcE8mvIM-unsplash.jpg');
+
+}
 
 
+.slide1t1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: auto;
+  height: 7vh;
+  margin-left: 1500px;
+  padding-top: 0px;
+  padding-right: 0vw;
+  padding-left: 4vw;
+
+
+  font-family: Montserrat, sans-serif;
+  color: #b2deff;
+  font-size: 48px;
+  line-height: 7vh;
+  font-weight: 800;
+}
+
+.slide1t1-done {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: auto;
+  height: 7vh;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0vw;
+  padding-left: 4vw;
+  /* -webkit-transform: translate(-1500px, 0px);
+  -ms-transform: translate(-1500px, 0px);
+  transform: translate(-1500px, 0px); */
+
+  font-family: Montserrat, sans-serif;
+  color: #b2deff;
+  font-size: 48px;
+  line-height: 7vh;
+  font-weight: 800;
+}
+
+.fade-in-right{
+  -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+
+}
 
 
 
@@ -7915,22 +7972,57 @@ figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 92px;
+  overflow: auto;
+  height: 7vh;
+  margin-left: 1500px;
+  padding-top: 0px;
   padding-right: 0vw;
   padding-left: 4vw;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+
+
   font-family: Montserrat, sans-serif;
   color: #b2deff;
   font-size: 48px;
-  line-height: 45px;
+  line-height: 7vh;
   font-weight: 800;
 }
 
+.slide1t1-done {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: auto;
+  height: 7vh;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0vw;
+  padding-left: 4vw;
+  /* -webkit-transform: translate(-1500px, 0px);
+  -ms-transform: translate(-1500px, 0px);
+  transform: translate(-1500px, 0px); */
+
+  font-family: Montserrat, sans-serif;
+  color: #b2deff;
+  font-size: 48px;
+  line-height: 7vh;
+  font-weight: 800;
+}
 .button-10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 7vh;
   margin-right: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 4px;
   background-color: #fff;
   box-shadow: 1px 1px 6px 0 #636262;
@@ -7943,6 +8035,7 @@ figcaption {
 
 .button-10:hover {
   color: #b2deff;
+  text-decoration: none;
 }
 
 .s2bdiv {
@@ -7968,7 +8061,7 @@ figcaption {
   padding-top: 0px;
   padding-left: 4vw;
   font-family: Montserrat, sans-serif;
-  color: #555a5e;
+  color: #fff;
   font-size: 32px;
   line-height: 45px;
   font-style: normal;
@@ -8154,13 +8247,14 @@ figcaption {
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
+  color: #555a5e;
   line-height: 20px;
   font-weight: 700;
   cursor: pointer;
 }
 
 .shoplistitemname:hover {
-  color: #598edd;
+  color: #b2deff;
 }
 
 .div-block-75 {
@@ -9065,6 +9159,8 @@ figcaption {
 }
 
 .text-block-51 {
+  width: 15vw;
+  padding-right: 0px;
   padding-bottom: 0px;
   font-weight: 600;
 }
@@ -9174,8 +9270,17 @@ figcaption {
 }
 
 .pvcheckout {
+  width: 15vh;
   height: 6vh;
   border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px 0 #b6b6b6;
+  color: #555a5e;
+}
+
+.pvcheckout:hover {
+  -webkit-filter: brightness(95%);
+  filter: brightness(95%);
 }
 
 .pvquanity {
@@ -9388,8 +9493,8 @@ figcaption {
   grid-auto-columns: 1fr;
   grid-column-gap: 16px;
   grid-row-gap: 16px;
-  -ms-grid-columns: 0.5fr 1.5fr 1fr 0.75fr 0.5fr;
-  grid-template-columns: 0.5fr 1.5fr 1fr 0.75fr 0.5fr;
+  -ms-grid-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr;
   -ms-grid-rows: auto;
   grid-template-rows: auto;
   border: 1px solid #c9c9c9;
@@ -9449,6 +9554,15 @@ figcaption {
   margin-right: 0px;
   padding-right: 15px;
   border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px 0 #b6b6b6;
+  color: #555a5e;
+}
+
+.shoplistcartadd:hover {
+  opacity: 1;
+  -webkit-filter: brightness(95%);
+  filter: brightness(95%);
 }
 
 .shoplistitemimgdiv {
@@ -9598,9 +9712,7 @@ figcaption {
 }
 
 .slide {
-  background-image: url('https://d3e54v103j8qbb.cloudfront.net/img/example-bg.png');
-  background-position: 0px 0px;
-  background-size: 125px;
+  padding-top: 90px;
 }
 
 .left-arrow {
@@ -10066,11 +10178,10 @@ figcaption {
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: transparent;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#def1ff), to(#c3e5ff));
-  background-image: linear-gradient(180deg, #def1ff, #c3e5ff);
+  background-color: #fff;
+  box-shadow: 1px 1px 3px 0 #000;
   opacity: 1;
-  color: #000;
+  color: #555a5e;
   font-size: 16px;
   text-align: center;
   -o-object-fit: fill;
@@ -10078,8 +10189,8 @@ figcaption {
 }
 
 .checkoutcartdesk:hover {
-  -webkit-filter: brightness(95%);
-  filter: brightness(95%);
+  background-color: #b2deff;
+  color: #000;
 }
 
 .smalltrash {
@@ -10139,6 +10250,37 @@ figcaption {
   color: #68be65;
   font-size: 18px;
   font-weight: 600;
+}
+
+.div-block-126 {
+  position: absolute;
+  left: 0%;
+  top: auto;
+  right: 0%;
+  bottom: 2%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.div-block-127 {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 0px;
+  border-radius: 20px;
+  background-color: #ececec;
+  cursor: pointer;
+}
+
+.div-block-127:hover {
+  background-color: #fff;
 }
 
 @media screen and (max-width: 991px) {

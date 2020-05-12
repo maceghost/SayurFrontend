@@ -2,23 +2,30 @@
     <div data-animation="slide" data-duration="500" data-infinite="1" class="slider w-slider">
       <div class="w-slider-mask">
         <div class="slide w-slide">
-          <div class="slide1t1">Welcome to Sayur Stall!</div>
+          <div class="slide1t1 fade-in-right" [ngClass] = "{'slide1t1': !this.s1t1Animated, 'slide1t1-done': this.s1t1Animated}" >Welcome to Sayur Stall!</div>
           <div class="slide1t2">We deliver fresh, local groceries to you doorstep.<br>Locally owned, locally run.</div>
           <div class="s1bdiv"><a href="#" class="button-10 w-button">Shop now</a></div>
+          <div class="div-block-126">
+            <div class="div-block-127"></div>
+            <div class="div-block-127"></div>
+          </div>
         </div>
         <div class="w-slide">
           <div class="slide2t1">The freshest ingredients.</div>
           <div class="slide2t2">Delivered right to your doorstep.</div>
           <div class="s2bdiv"><a href="#" class="button-10 w-button">Shop now</a></div>
         </div>
+
       </div>
-      <div class="left-arrow w-slider-arrow-left">
+      <div (click) = "animate()"class="left-arrow w-slider-arrow-left">
         <div class="w-icon-slider-left"></div>
       </div>
       <div class="rightarrow w-slider-arrow-right">
         <div class="w-icon-slider-right"></div>
       </div>
-      <div class="w-slider-nav w-round"></div>
+      <div class="w-slider-nav w-round">
+      </div>
+
     </div>
     <div class="section-7">
       <h3 class="heading-13">Products</h3>
