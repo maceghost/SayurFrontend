@@ -135,7 +135,9 @@ export class DeskStorefrontComponent implements OnInit, AfterViewInit{
   productview:any = 'grid'
   productslen:any = 0
   viewitem = null;
-  s1t1Animated = false;
+  s1Animated = false;
+  s2Animated = true;
+
 
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
@@ -159,30 +161,56 @@ this.dataSource.data = TREE_DATA;
   //
 
   // }
-  // ngOnInit(){
-  //     setTimeout(() =>
-  //         {
-  //
-  //           this.s1t1Animated = false;
-  //         },
-  //         1000)
-  //
-  //
-  //
-  //
-  // }
-  ngAfterViewInit(){
-    setTimeout(() =>
-        {
 
-          this.s1t1Animated = true;
-        },
-        1000)
+  ngAfterViewInit(){
+    
+    if (this.auth.slidechange){
+      this.auth.s2Animated = false
+      // this.auth.s2Animated = true;
+      setTimeout(() =>
+          {
+
+            this.auth.s2Animated = true;
+          },
+          1)
+
+
+    }
+    else{
+      this.auth.s1Animated = false
+      setTimeout(() =>
+          {
+
+            this.auth.s1Animated = true;
+          },
+          1)
+
+    }
 
 
   }
   animate(){
-    this.s1t1Animated = !this.s1t1Animated;
+    this.auth.slidechange = !this.auth.slidechange;
+    if (this.auth.s1Animated){
+      this.auth.s1Animated = false;
+      setTimeout(() =>
+          {
+
+            this.auth.s2Animated = !this.auth.s2Animated;
+          },
+          1000)
+    }
+    else{
+      this.auth.s2Animated = false;
+      setTimeout(() =>
+          {
+
+            this.auth.s1Animated = !this.auth.s1Animated;
+          },
+          1000)
+    }
+
+
 
   }
 
@@ -273,6 +301,16 @@ this.dataSource.data = TREE_DATA;
 
   ngOnInit(){
     this.newFilterProducts()
+    // setTimeout(() =>
+    //       {
+    //
+    //         this.auth.s1Animated = true;
+    //       },
+    //       1)
+
+    // this.auth.s1Animated = true;
+
+
   }
   updateFilters(){
     this.auth.category = this.auth.aisle.categories[0]

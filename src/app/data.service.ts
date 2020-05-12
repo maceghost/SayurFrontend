@@ -68,6 +68,11 @@ export class User {
 
 export class DataService {
 
+
+  s1Animated = false;
+  s2Animated = false;
+
+  slidechange = false;
   order:any = {};
   view:any = 'home';
   authState = new BehaviorSubject(0);

@@ -1,30 +1,36 @@
 <div class="home">
-    <div data-animation="slide" data-duration="500" data-infinite="1" class="slider w-slider">
+    <div data-animation="slide" data-duration="500" data-infinite="1" class="slider w-slider fade-in-slider" [ngClass] = "{'slider': !this.auth.slidechange, 'slider1': this.auth.slidechange}">
       <div class="w-slider-mask">
         <div class="slide w-slide">
-          <div class="slide1t1 fade-in-right" [ngClass] = "{'slide1t1': !this.s1t1Animated, 'slide1t1-done': this.s1t1Animated}" >Welcome to Sayur Stall!</div>
-          <div class="slide1t2">We deliver fresh, local groceries to you doorstep.<br>Locally owned, locally run.</div>
-          <div class="s1bdiv"><a href="#" class="button-10 w-button">Shop now</a></div>
+          <div class="slide1t1 fade-in-slider" [ngClass] = "{'slide1t1': !this.auth.s1Animated, 'slide1t1-done': this.auth.s1Animated}" >Welcome to Sayur Stall!</div>
+          <div class="slide2t1 fade-in-slider" [ngClass] = "{'slide2t1': !this.auth.s2Animated, 'slide2t1-done': this.auth.s2Animated}">The freshest ingredients.</div>
+
+          <div class="slide1t2 fade-in-slider" [ngClass] = "{'slide1t2': !this.auth.s1Animated, 'slide1t2-done': this.auth.s1Animated}">We deliver fresh, local groceries to you doorstep.<br>Locally owned, locally run.</div>
+          <div class="slide2t2 fade-in-slider" [ngClass] = "{'slide2t2': !this.auth.s2Animated, 'slide2t2-done': this.auth.s2Animated}">Delivered right to your doorstep.</div>
+
+          <div class="s1bdiv fade-in-slider" [ngClass] = "{'s1bdiv': !this.auth.s1Animated, 's1bdiv-done': this.auth.s1Animated}">
+            <a (click) = "this.auth.view = 'shop'" class="button-10 w-button fade-in-slider" [ngClass] = "{'button-10': !this.auth.s1Animated, 'button-10-done': this.auth.s1Animated}">Shop Now</a>
+          </div>
+          <div class="s2bdiv fade-in-slider" [ngClass] = "{'s2bdiv': !this.auth.s2Animated, 's2bdiv-done': this.auth.s2Animated}">
+            <a (click) = "this.auth.view = 'shop'" class="button-10 w-button fade-in-slider" [ngClass] = "{'button-10': !this.auth.s2Animated, 'button-10-done': this.auth.s2Animated}">Shop Now</a>
+          </div>
           <div class="div-block-126">
-            <div class="div-block-127"></div>
-            <div class="div-block-127"></div>
+            <div (click) = "this.auth.slidechange && animate()" [ngClass] = "{'div-block-127': this.auth.slidechange, 'div-block-127-selected': !this.auth.slidechange}"></div>
+            <div (click) = "!this.auth.slidechange && animate()" [ngClass] = "{'div-block-127': !this.auth.slidechange, 'div-block-127-selected': this.auth.slidechange}"></div>
           </div>
         </div>
-        <div class="w-slide">
-          <div class="slide2t1">The freshest ingredients.</div>
-          <div class="slide2t2">Delivered right to your doorstep.</div>
-          <div class="s2bdiv"><a href="#" class="button-10 w-button">Shop now</a></div>
-        </div>
+        <!-- <div class="w-slide">
+
+        </div> -->
 
       </div>
       <div (click) = "animate()"class="left-arrow w-slider-arrow-left">
         <div class="w-icon-slider-left"></div>
       </div>
-      <div class="rightarrow w-slider-arrow-right">
+      <div (click) = "animate()"class="rightarrow w-slider-arrow-right">
         <div class="w-icon-slider-right"></div>
       </div>
-      <div class="w-slider-nav w-round">
-      </div>
+
 
     </div>
     <div class="section-7">
