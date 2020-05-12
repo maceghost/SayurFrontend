@@ -10,7 +10,7 @@
         </div>
         <div class="linkrelparent">
           <div class = linkabsolutecontainer>
-          <a  [ngClass] = "{'link-6-selected': this.auth.view == 'shop','link-6': this.auth.view != 'shop'}" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" (click) = "this.auth.view = 'shop';this.shoplist = false">Shop</a>
+          <a  [ngClass] = "{'link-6-selected': this.auth.view == 'shop','link-6': this.auth.view != 'shop'}" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" (click) = "this.auth.view = 'shop';this.shoplist = false;this.auth.viewitem = null">Shop</a>
           </div>
           <div [style.pointer-events]="this.shoplist ? 'auto' : 'none'" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" class="homecatlistdiv">
             <ul class = "homecatlist fade-in-bottom w-list-unstyled"[ngClass] = "{'homecatlist': !this.shoplist, 'homecatlist-hover': this.shoplist}" >
@@ -48,7 +48,7 @@
       <div  class="div-block-23-deskhome-copy">
         <div class = "div-block-125">
           <div class="div-block-123">
-            <div  (mouseenter) ="this.carthover = true" (mouseleave) ="this.carthover = false"class="w-commerce-commercecartwrapper cart-3-deskhome-copy-copy">
+            <div (click) = "this.auth.view = 'cart';this.carthover = false" (mouseenter) ="this.carthover = true" (mouseleave) ="this.carthover = false"class="w-commerce-commercecartwrapper cart-3-deskhome-copy-copy">
               <a class="w-commerce-commercecartopenlink cartbuttondesk w-inline-block">
                 <svg class="w-commerce-commercecartopenlinkicon icon-2-copy" width="17px" height="17px" viewbox="0 0 17 17">
                   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -69,7 +69,7 @@
                     <div class="cartmodalimgdiv">
                       <img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="image-3-copy"></div>
                     <div class="div-block-82">
-                      <div (click) = "this.auth.goToItem(i)" class="text-block-36-copy">{{i.name}}</div>
+                      <div (click) = "this.auth.goToItem(i);this.carthover=false" class="text-block-36-copy">{{i.name}}</div>
                       <div class="text-block-42">{{this.getPrice(i)}} x {{i.quantity}}</div>
                     </div>
                     <div class="cartmodquantcontainer">
@@ -87,8 +87,8 @@
                         </div>
                       </div>
                     </div>
-                    <div class="div-block-83">
-                      <mat-icon style = "width:3vh;height:3vh;display:flex;justify-content:center;align-items:center;font-size:32px" (click) = "this.removeFromCart(i)">
+                    <div class="smalltrash">
+                      <mat-icon  (click) = "this.removeFromCart(i)">
                           delete_outline
                       </mat-icon>
                     </div>
@@ -106,7 +106,7 @@
               <div class="div-block-86">
                 <div>Delivery costs and discounts are calculated at checkout</div>
               </div>
-              <div class="div-block-87"><a (click) = "this.auth.view = 'cart'" class="cartmodgotocart w-button">Go to Cart</a></div>
+              <div class="div-block-87"><a (click) = "this.auth.view = 'cart';this.carthover = false" class="cartmodgotocart w-button">Go to Cart</a></div>
             </div>
           </div>
         </div>
@@ -115,11 +115,12 @@
       </div>
     </div>
     <div class="div-block-66">
+      <div appSearchOffCLick (offClick) ="this.auth.searchTouched = !this.auth.searchTouched">
       <form autocomplete="off" action="/search" class="search w-form">
         <input  (click) = "this.auth.searchClick()" [(ngModel)]="this.auth.searchTxt" (ngModelChange)="this.auth.search($event)" type="search" class="search-input w-input" maxlength="256" name="query" placeholder="Search…" id="search" required="">
 
 
-        <div *ngIf = "this.auth.searchTouched && this.auth.searchitems.length > 0" class="div-block-73">
+        <div  *ngIf = "this.auth.searchTouched && this.auth.searchitems.length > 0" class="div-block-73">
           <ul role="list" *ngIf = "this.auth.searchitems.length > 0" class="list-4 w-list-unstyled">
             <li class="list-item-7" *ngFor = "let i of this.auth.searchitems">
               <div class="div-block-74" (click) = "this.auth.goToItem(i)">
@@ -140,5 +141,6 @@
           </div>
         </div>
       </form>
+      </div>
     </div>
   </div>

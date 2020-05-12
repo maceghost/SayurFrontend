@@ -86,6 +86,7 @@ import * as _ from 'lodash';
 })
 export class DeskPortalComponent implements OnInit{
 
+
   private _transformer = (node: FoodNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
@@ -134,6 +135,8 @@ export class DeskPortalComponent implements OnInit{
   catexpanded = true;
   productview:any = 'grid'
   productslen:any = 0
+  @ViewChild('container') container;
+  @ViewChild('dropdown') dropdown;
 
 
 
@@ -148,9 +151,14 @@ this.dataSource.data = TREE_DATA;
     console.log(this.numbers)
 
     console.log(this.auth.cart.length)
+    // document.addEventListener('click', this.offClickHandler.bind(this));
 
   }
-
+  offClickHandler(event:any) {
+      if (!this.container.nativeElement.contains(event.target)) { // check click origin
+          console.log('yessssssss')
+      }
+  }
   // getTags(item:any){
   //
   //   let retlist = []

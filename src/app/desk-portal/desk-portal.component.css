@@ -173,7 +173,13 @@ input[type="search"]::-webkit-search-cancel-button {
 
 }
 
-
+/* .cartmodal:hover {
+  max-height: 1001px;
+  opacity: 1;
+  -webkit-transform: translate(0px, 40px);
+  -ms-transform: translate(0px, 40px);
+  transform: translate(0px, 40px);
+} */
 
 
 
@@ -4106,6 +4112,7 @@ figcaption {
   bottom: 0%;
   width: 100%;
   height: 100%;
+  border-radius: 4px;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: 50% 50%;
@@ -4842,6 +4849,7 @@ figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  padding-bottom: 15px;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
@@ -4850,7 +4858,7 @@ figcaption {
 }
 
 .div-block-14 {
-  width: 20vw;
+  width: 30vw;
   height: 100%;
   margin-bottom: 0px;
   margin-left: 3vw;
@@ -4867,7 +4875,7 @@ figcaption {
 .div-block-15 {
   display: block;
   margin-top: 0px;
-  padding-left: 10px;
+  padding-left: 45px;
 }
 
 .cards-image-mask-copy {
@@ -4909,7 +4917,12 @@ figcaption {
   max-height: 2em;
   margin-top: 0px;
   margin-bottom: 0px;
-  color: #0066c0;
+  color: #000;
+  cursor: pointer;
+}
+
+.heading-2-copy:hover {
+  color: #b2deff;
 }
 
 .div-block-7-copy {
@@ -5030,6 +5043,7 @@ figcaption {
   margin-right: 0px;
   margin-bottom: 0px;
   padding-right: 0px;
+  padding-bottom: 0px;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
@@ -5038,7 +5052,8 @@ figcaption {
   -webkit-flex: 0 auto;
   -ms-flex: 0 auto;
   flex: 0 auto;
-  color: #b12704;
+  color: #68be65;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -6466,7 +6481,8 @@ figcaption {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  color: #b12704;
+  color: #68be65;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -6753,6 +6769,7 @@ figcaption {
 .heading-4-deskcart {
   margin-top: 0px;
   margin-bottom: 0px;
+  padding-bottom: 15px;
 }
 
 .select-field-5-copy-mobcart {
@@ -8145,7 +8162,6 @@ figcaption {
   border-width: 0.5px;
   border-color: rgba(0, 0, 0, 0.1);
   background-color: #fff;
-
   cursor: pointer;
 }
 
@@ -8450,14 +8466,14 @@ figcaption {
   padding-right: 0px;
 }
 
-.div-block-83 {
+.bigtrash {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 3vh;
-  height: 3vh;
-  padding: 8px 8px 0px 0px;
+  width: 6vh;
+  height: 6vh;
+  padding: 0px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -8469,7 +8485,7 @@ figcaption {
   cursor: pointer;
 }
 
-.div-block-83:hover {
+.bigtrash:hover {
   color: #b2deff;
 }
 
@@ -9196,7 +9212,7 @@ figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 50px;
+  padding-right: 40px;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
@@ -9222,6 +9238,7 @@ figcaption {
   width: 8vh;
   height: 6vh;
   border-radius: 2px;
+  cursor: default;
 }
 
 .div-block-78-copy {
@@ -9315,7 +9332,7 @@ figcaption {
 }
 
 .text-block-55 {
-  padding-right: 25px;
+  padding-right: 30px;
   font-weight: 600;
 }
 
@@ -9422,6 +9439,7 @@ figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  padding-top: 25px;
   padding-bottom: 0px;
   padding-left: 0px;
   -webkit-box-align: center;
@@ -9861,13 +9879,13 @@ figcaption {
   transition: max-height 200ms ease, transform 200ms ease, opacity 200ms ease, -webkit-transform 200ms ease;
 }
 
-/* .cartmodal:hover {
+.cartmodal:hover {
   max-height: 1001px;
   opacity: 1;
   -webkit-transform: translate(0px, 40px);
   -ms-transform: translate(0px, 40px);
   transform: translate(0px, 40px);
-} */
+}
 
 .div-block-119 {
   position: relative;
@@ -10020,6 +10038,130 @@ figcaption {
   position: relative;
   width: 80px;
   height: 5vh;
+}
+
+.cartdesk {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10vw;
+  background-color: #fff;
+}
+
+.text-block-9-copy {
+  padding-top: 9px;
+  padding-bottom: 15px;
+  font-size: 16px;
+  line-height: 20px;
+  font-style: italic;
+}
+
+.list-item-5-copy {
+  display: block;
+  margin-bottom: 0px;
+  padding-top: 15px;
+  padding-bottom: 0px;
+}
+
+.div-block-17-copy {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 25vh;
+  margin-bottom: 20px;
+  padding-bottom: 0px;
+}
+
+.checkoutcartdesk {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  margin: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#def1ff), to(#c3e5ff));
+  background-image: linear-gradient(180deg, #def1ff, #c3e5ff);
+  opacity: 1;
+  color: #000;
+  font-size: 16px;
+  text-align: center;
+  -o-object-fit: fill;
+  object-fit: fill;
+}
+
+.checkoutcartdesk:hover {
+  -webkit-filter: brightness(95%);
+  filter: brightness(95%);
+}
+
+.smalltrash {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 3vh;
+  height: 3vh;
+  padding: 8px 8px 0px 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.smalltrash:hover {
+  color: #b2deff;
+}
+
+.cartquantityrow {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 25px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.pvquanity-copy {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 80px;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
 }
 
 @media screen and (max-width: 991px) {

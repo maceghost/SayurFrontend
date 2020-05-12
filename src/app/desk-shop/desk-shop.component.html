@@ -52,7 +52,7 @@
             </mat-icon >
           </div>
           <div class="text-block-47">There are {{this.newFilterProducts()}} products</div>
-          <form class="search-2 w-form">
+          <form autocomplete="off" class="search-2 w-form">
             <input [(ngModel)]="this.queryTxt"  type="search" class="search-input-2 w-input" maxlength="256" name="query" placeholder="Search…" id="search-2" required="">
           </form>
           <div class="div-block-98" style="margin-right: 0"></div>
@@ -68,14 +68,14 @@
           </div>
         </div>
         <div *ngIf = "this.productview == 'grid'" class ="shopgrid">
-          <div (click) = "this.auth.viewitem = i" class="productitem" style = "padding:1vw"*ngFor = "let i of this.products">
+          <div  class="productitem" style = "padding:1vw"*ngFor = "let i of this.products">
             <div *ngIf = i.added class="div-block-60">
               <div class="text-block-29">{{i.quantity}} in cart</div>
              </div>
 
             <img style = "width:12vw;min-height: 12vw;
  max-height: 12vw;max-width:12vw;"src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="productimg">
-            <div class="productname">{{i.name}}</div>
+            <div (click) = "this.auth.viewitem = i" class="productname">{{i.name}}</div>
             <div class="productprice">{{this.auth.getPrice(i)}}</div>
           </div>
           <div></div>

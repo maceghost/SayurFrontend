@@ -25,7 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableDataSource} from '@angular/material/table';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 // import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
-import { DeskStorefrontComponent } from './desk-storefront1/desk-storefront.component';
+import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
 
 import { MobCartComponent } from './mob-cart/mob-cart.component';
 import { DeskCartComponent } from './desk-cart/desk-cart.component';
@@ -41,7 +41,9 @@ import { DeskPortalComponent } from './desk-portal/desk-portal.component';
 import { DeskInfoComponent } from './desk-info/desk-info.component';
 import { DeskFooterComponent } from './desk-footer/desk-footer.component';
 import { DeskShopComponent } from './desk-shop/desk-shop.component';
+
 import { DeskHeaderComponent } from './desk-header/desk-header.component';
+import { SearchOffCLickDirective } from './search-off-click.directive';
 
 // import 'hammerjs';
 
@@ -64,7 +66,10 @@ import { DeskHeaderComponent } from './desk-header/desk-header.component';
     DeskInfoComponent,
     DeskFooterComponent,
     DeskShopComponent,
+    // DeskShop1Component,
+
     DeskHeaderComponent,
+    SearchOffCLickDirective,
 
   ],
 

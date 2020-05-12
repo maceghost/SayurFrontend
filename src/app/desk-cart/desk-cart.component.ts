@@ -33,7 +33,7 @@ import * as _ from 'lodash';
 @Component({
   selector: 'app-desk-cart',
   templateUrl: './desk-cart.component.html',
-  styleUrls: ['../css/webflow.css','../css/normalize.css','./desk-cart.component.css']
+  styleUrls: [  '../css/webflow.css','../css/normalize.css','../desk-portal/desk-portal.component.css'],
 })
 export class DeskCartComponent implements OnInit {
 
@@ -111,7 +111,16 @@ export class DeskCartComponent implements OnInit {
     //   i.quantity = 1
     // }
   }
+  modQuant(item:any, number:number){
+    console.log(number)
+    if (number == -1 && item.quantity == 1 ){
+      return
 
+    }
+    else{
+      item.quantity = item.quantity + number
+    }
+  }
   updateFilters(){
     this.auth.category = this.auth.aisle.categories[0]
 

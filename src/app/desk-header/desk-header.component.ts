@@ -137,7 +137,8 @@ export class DeskHeaderComponent implements OnInit{
   viewitem = null;
   timer:any;
   carthover:any = false;
-
+  @ViewChild('container') container;
+  @ViewChild('dropdown') dropdown;
 
   constructor(private cdRef: ChangeDetectorRef,private router: Router,public auth: DataService) {
 this.dataSource.data = TREE_DATA;
@@ -150,6 +151,17 @@ this.dataSource.data = TREE_DATA;
     console.log(this.numbers)
 
     console.log(this.auth.cart.length)
+    // document.addEventListener('click', this.offClickHandler.bind(this));
+
+  }
+  offClickHandler(event:any) {
+      if (!this.container.nativeElement.contains(event.target)) { // check click origin
+          console.log('yessssssss')
+      }
+  }
+
+  test(){
+    console.log('yessssssss')
 
   }
 
@@ -448,7 +460,7 @@ this.dataSource.data = TREE_DATA;
 
   }
 
-  
+
 
   checkout(){
     this.router.navigate(['checkout']);

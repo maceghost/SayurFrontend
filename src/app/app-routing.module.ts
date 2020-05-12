@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, Router, RouterModule, Routes } from '@angular/router';
 
 import { MobStorefrontComponent } from './mob-storefront/mob-storefront.component';
-import { DeskStorefrontComponent } from './desk-storefront1/desk-storefront.component';
+import { DeskStorefrontComponent } from './desk-storefront/desk-storefront.component';
 import { MobCartComponent } from './mob-cart/mob-cart.component';
 import { DeskCartComponent } from './desk-cart/desk-cart.component';
 import { DeskOrderComponent } from './desk-order/desk-order.component';
