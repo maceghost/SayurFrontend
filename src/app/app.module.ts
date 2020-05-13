@@ -44,6 +44,8 @@ import { DeskShopComponent } from './desk-shop/desk-shop.component';
 
 import { DeskHeaderComponent } from './desk-header/desk-header.component';
 import { SearchOffCLickDirective } from './search-off-click.directive';
+import { ShareButtonModule } from '@ngx-share/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // import 'hammerjs';
 
@@ -87,7 +89,10 @@ import { SearchOffCLickDirective } from './search-off-click.directive';
     // BsDropdownModule.forRoot(),
     NgxIntlTelInputModule,
     MatSidenavModule,
-    MatTreeModule
+    MatTreeModule,
+    FontAwesomeModule,
+    ShareButtonModule
+
 
   ],
   providers: [ApplicationStateService],
