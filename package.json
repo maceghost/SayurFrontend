@@ -28,7 +28,7 @@
     "@ngx-share/button": "^7.1.4",
     "@ngx-share/buttons": "^7.1.4",
     "@ngx-share/core": "^7.1.4",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.3.1",
     "google-libphonenumber": "^3.2.8",
     "intl-tel-input": "^14.1.0",
     "lodash": "^4.17.15",
