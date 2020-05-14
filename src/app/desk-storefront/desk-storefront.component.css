@@ -78,7 +78,7 @@
   display: block;
 
   padding-top: 0px;
-  padding-left: 4vw;
+  /* padding-left: 4vw; */
   font-family: Montserrat, sans-serif;
   color: white;
   font-size: 32px;
@@ -90,7 +90,7 @@
   overflow: hidden;
   opacity:0;
   width:75vw !important;
-  max-height:12vh;
+  max-height:15vh;
 
 
 }
@@ -99,7 +99,7 @@
   display: block;
 
   padding-top: 0px;
-  padding-left: 4vw;
+  /* padding-left: 4vw; */
   margin-left: 0px;
   font-family: Montserrat, sans-serif;
   color: white;
@@ -107,11 +107,11 @@
   line-height: 6vh;
   font-style: normal;
   font-weight: 700;
-  height:12vh !important;
+  height:15vh !important;
   overflow:hidden;
   opacity:1;
   width:75vw !important;
-  max-height:12vh;
+  max-height:15vh;
 
 
 

@@ -297,7 +297,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .slider {
   z-index: 1;
-  height: 70vh;
+  height: 75vh;
   margin-top: 0px;
   padding: 50px 50px 0px;
   background-image: url('../images/90703414_112607237044589_180592439810064384_o.jpg');
@@ -307,7 +307,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .slider1 {
   z-index: 1;
-  height: 70vh;
+  height: 75vh;
   margin-top: 0px;
   padding: 50px 50px 0px;
   background-image: url('../images/kumiko-shimizu-lNxMcE8mvIM-unsplash.jpg');
@@ -10065,7 +10065,7 @@ figcaption {
 
 .slide {
   padding-top: 30vh;
-  padding-left: 9vw;
+  /* padding-left: 9vw; */
 }
 
 .left-arrow {
@@ -10889,8 +10889,13 @@ figcaption {
 }
 
 .text-block-63 {
-  display: inline-block;
-  background-color: rgba(14, 152, 255, 0.24);
+  /* display: inline-block; */
+  /* background-color: rgba(14, 152, 255, 0.24); */
+  /* border-radius: 20px; */
+  color:#555a5e;
+  line-height:4vh;
+  padding-bottom: 1vh
+
 }
 
 @media screen and (max-width: 991px) {
