@@ -4,7 +4,7 @@
 // import { IonicModule, ModalController } from '@ionic/angular';
 
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable,ElementRef } from '@angular/core';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/do'
 // import { map } from 'rxjs/operators'
@@ -411,7 +411,8 @@ export class DataService {
     // private storage: Storage,
     private router:Router,
     // private modalCtrl: ModalController,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) document,
+    private elem: ElementRef
 
   )
   {
@@ -548,9 +549,17 @@ export class DataService {
     window.open("https://www.facebook.com/Sayur-Stall-112595227045790/", "_blank");
   }
   openMessenger(){
-    window.open("https://api.whatsapp.com/send?phone=6281236157648", "_blank");
+    let temp = document.getElementById('fb-root');
+    var children = temp.childNodes;
+    function allDescendants (node) {
+      for (var i = 0; i < node.childNodes.length; i++) {
+        var child = node.childNodes[i];
+        allDescendants(child);
+        child.click();
+      }
+    }
+    allDescendants(temp)
   }
-
   openWhatsapp(){
     window.open("https://api.whatsapp.com/send?phone=6281236157648", "_blank");
   }
