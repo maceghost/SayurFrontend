@@ -8,6 +8,10 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatTable} from '@angular/material/table';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons/faFacebookMessenger';
+import { ShareButtonModule } from '@ngx-share/button';
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons/faFacebookF';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons/faWhatsapp';
 
 interface FoodNode {
   name: string;
@@ -86,6 +90,9 @@ import * as _ from 'lodash';
 })
 export class DeskInfoComponent implements OnInit{
 
+  faFacebookMessenger = faFacebookMessenger
+  faFacebookF = faFacebookF
+  faWhatsapp = faWhatsapp
   private _transformer = (node: FoodNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,

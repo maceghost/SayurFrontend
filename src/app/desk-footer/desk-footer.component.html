@@ -4,24 +4,25 @@
 
 
   <div class="section-10">
-    <a href = "#" class="footer-logo-link w-inline-block">
-    <img src="app/images/vegetable-1784595-1516294.png" alt="" class="footer-image">
-  </a>
+    <div (click) = "this.auth.changeView('home')" class="div-block-129">
+      <img src="app/images/90400725_112596650378981_668296348616884224_o.jpg" alt="" class="image-5">
+    </div>
+
   <div class="div-block-89">
     <div class="text-block-45">Information</div>
-    <div (click) = "this.auth.view = 'home';" class="footlink">Home</div>
-    <div (click) = "this.auth.view = 'shop';this.shoplist = false;this.auth.viewitem = null" class="footlink">Shop</div>
-    <div (click) = "this.auth.view = 'info';" class="footlink">Info</div>
+    <div (click) = "this.auth.changeView('home');" class="footlink">Home</div>
+    <div (click) = "this.auth.changeView('shop');" class="footlink">Shop</div>
+    <div (click) = "this.auth.changeView('info');" class="footlink">Info</div>
   </div>
     <div class="div-block-89">
       <div class="text-block-45">Contact</div>
       <div class="div-block-94">
-        <div class="div-block-128">
+        <div (click) = "this.auth.openWhatsapp()" class="div-block-128">
           <mat-icon style="    display: flex;
 width: 3vw;
 height: 3vw;
 padding: 0px;
-justify-content: center;
+justify-content: start;
 align-items: center;color:#82c91e;font-size:24px" >
             call
           </mat-icon>
@@ -32,17 +33,17 @@ align-items: center;color:#82c91e;font-size:24px" >
     <div class="div-block-89">
       <div class="text-block-45">Social</div>
       <div class="div-block-90">
-        <div class="div-block-91" style="    display: flex;
+        <div (click) = "this.auth.openFacebook()" class="div-block-91" style="    display: flex;
 width: 3vw;
 height: 3vw;
 padding: 0px;
-justify-content: center;
+justify-content: start;
 align-items: center;">
           <fa-icon style="    display: flex;
 width: 3vw;
 height: 3vw;
 padding: 0px;
-justify-content: center;
+justify-content: start;
 align-items: center;color:#4267b2;font-size:24px" [icon]="faFacebookF"></fa-icon></div>
 
       </div>
@@ -50,32 +51,32 @@ align-items: center;color:#4267b2;font-size:24px" [icon]="faFacebookF"></fa-icon
     <div class="div-block-89">
       <div class="text-block-45">Message Us!</div>
       <div class="div-block-93">
-        <div class="div-block-92" style="    display: flex;
+        <div (click) = "this.auth.openMessenger()" class="div-block-92" style="    display: flex;
 width: 5vw;
 height: 5vw;
 padding: 0px;
-justify-content: center;
+justify-content: start;
 align-items: center;font-size:52px">
           <fa-icon style="    display: flex;
 width: 5vw;
 height: 5vw;
 padding: 0px;
-justify-content: center;
+justify-content: start;
 align-items: center;font-size:52px;color:#4267b2;"[icon]="faFacebookMessenger"></fa-icon>
 
 
         </div>
-        <div class="div-block-92" style="    display: flex;
+        <div (click) = "this.auth.openWhatsapp()" class="div-block-92" style="    display: flex;
 width: 5vw;
 height: 5vw;
 padding: 0px;
-justify-content: center;
+justify-content: start;
 align-items: center;font-size:52px">
           <fa-icon style="    display: flex;
 width: 5vw;
 height: 5vw;
 padding: 0px;
-justify-content: center;
+justify-content: start;
 align-items: center;font-size:52px;color:#82c91e;"[icon]="faWhatsapp"></fa-icon>
       </div>
       </div>

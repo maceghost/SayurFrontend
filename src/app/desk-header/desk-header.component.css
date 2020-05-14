@@ -1,0 +1,11 @@
+.div-block-73 {
+  position: absolute;
+  z-index: 5;
+  display: block;
+  width: 35vw;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  border-left: 1px solid #bbb;
+  border-radius: 6px;
+  background-color: #fff;
+}

@@ -1,27 +1,28 @@
 <div class="home">
     <div data-animation="slide" data-duration="500" data-infinite="1" class="slider w-slider fade-in-slider" [ngClass] = "{'slider': !this.auth.slidechange, 'slider1': this.auth.slidechange}">
       <div class="w-slider-mask">
-        <div class="slide w-slide">
+        <div class="slide w-slide fade-in-slider" [ngClass] = "{'slide': !this.auth.slidechange, 'slide-2': this.auth.slidechange}">
           <div class="slide1t1 fade-in-slider" [ngClass] = "{'slide1t1': !this.auth.s1Animated, 'slide1t1-done': this.auth.s1Animated}" >Welcome to Sayur Stall!</div>
           <div class="slide2t1 fade-in-slider" [ngClass] = "{'slide2t1': !this.auth.s2Animated, 'slide2t1-done': this.auth.s2Animated}">The freshest ingredients.</div>
 
-          <div class="slide1t2 fade-in-slider" [ngClass] = "{'slide1t2': !this.auth.s1Animated, 'slide1t2-done': this.auth.s1Animated}">We deliver fresh, local groceries to you doorstep.<br>Locally owned, locally run.</div>
-          <div class="slide2t2 fade-in-slider" [ngClass] = "{'slide2t2': !this.auth.s2Animated, 'slide2t2-done': this.auth.s2Animated}">Delivered right to your doorstep.</div>
+          <div class="slide1t2 fade-in-slider" [ngClass] = "{'slide1t2': !this.auth.s1Animated, 'slide1t2-done': this.auth.s1Animated}">
+            <div class = "text-block-63">We deliver fresh, local groceries to you doorstep.</div>
+            <div class = "text-block-63">  Locally owned, locally run.</div>
+            </div>
+          <div class="slide2t2 fade-in-slider" [ngClass] = "{'slide2t2': !this.auth.s2Animated, 'slide2t2-done': this.auth.s2Animated}">
+            Delivered right to your doorstep.</div>
 
           <div class="s1bdiv fade-in-slider" [ngClass] = "{'s1bdiv': !this.auth.s1Animated, 's1bdiv-done': this.auth.s1Animated}">
-            <a (click) = "this.auth.view = 'shop'" class="button-10 w-button fade-in-slider" [ngClass] = "{'button-10': !this.auth.s1Animated, 'button-10-done': this.auth.s1Animated}">Shop Now</a>
+            <a (click) = "this.auth.changeView('shop')" class="button-10 w-button fade-in-slider" [ngClass] = "{'button-10': !this.auth.s1Animated, 'button-10-done': this.auth.s1Animated}">Shop Now</a>
           </div>
           <div class="s2bdiv fade-in-slider" [ngClass] = "{'s2bdiv': !this.auth.s2Animated, 's2bdiv-done': this.auth.s2Animated}">
-            <a (click) = "this.auth.view = 'shop'" class="button-10 w-button fade-in-slider" [ngClass] = "{'button-10': !this.auth.s2Animated, 'button-10-done': this.auth.s2Animated}">Shop Now</a>
+            <a (click) = "this.auth.changeView('shop')" class="button-10 w-button fade-in-slider" [ngClass] = "{'button-10': !this.auth.s2Animated, 'button-10-done': this.auth.s2Animated}">Shop Now</a>
           </div>
           <div class="div-block-126">
             <div (click) = "this.auth.slidechange && animate()" [ngClass] = "{'div-block-127': this.auth.slidechange, 'div-block-127-selected': !this.auth.slidechange}"></div>
             <div (click) = "!this.auth.slidechange && animate()" [ngClass] = "{'div-block-127': !this.auth.slidechange, 'div-block-127-selected': this.auth.slidechange}"></div>
           </div>
         </div>
-        <!-- <div class="w-slide">
-
-        </div> -->
 
       </div>
       <div (click) = "animate()"class="left-arrow w-slider-arrow-left">
@@ -40,9 +41,7 @@
           <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" alt="" class="catimg">
           <div class="cattext">{{i.name}}</div>
         </div>
-        <!-- <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div> -->
+
       </div>
     </div>
     <div class="section-7-copy">
@@ -55,12 +54,12 @@
 
           <img style = "width:12vw;min-height: 12vw;
 max-height: 12vw;max-width:12vw;"src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="productimg">
-          <div (click) = "this.auth.viewitem = i" class="productname">{{i.name}}</div>
+          <div (click) = "this.auth.viewitem = i;this.auth.changeView('shop')" class="productname">{{i.name}}</div>
           <div class="productprice">{{this.auth.getPrice(i)}}</div>
         </div>
       </div>
     </div>
-    <div class="section-7-copy-copy">
+    <div class="section-7-copy-copy" style = "display:none">
       <h3 class="heading-13">Our Process</h3>
       <div class="w-layout-grid processgrid">
         <div class="processitem"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" alt="" class="processimg">
@@ -74,7 +73,7 @@ max-height: 12vw;max-width:12vw;"src="{{i.image || 'https://uploads-ssl.webflow.
         </div>
       </div>
     </div>
-    <div class="section-8">
+    <div class="section-8" style = "display:none">
       <div>
         <div class="text-block-33">GET 10% OFF YOUR FIRST ORDER</div>
         <div class="text-block-34">Register now and we&#x27;ll send you an <br>email with a 10% off coupon!</div>

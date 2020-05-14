@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"style = "overflow-x: hidden;">
+<html lang="en"style = "overflow-x: hidden;height:100%;overflow:auto;">
 <head>
   <meta charset="utf-8">
   <title>Mobsayur</title>
@@ -13,7 +13,32 @@
   <script type="text/javascript">WebFont.load({  google: {    families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"]  }});</script>
 
 </head>
-<body style = "margin:0;overflow-x: hidden;position:relative">
+<body style = "margin:0;overflow-x: hidden;position:relative;height: 100%;">
+  <!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v7.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your customer chat code -->
+      <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="112595227045790">
+      </div>
   <app-root></app-root>
+
+
 </body>
 </html>

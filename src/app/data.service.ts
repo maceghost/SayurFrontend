@@ -51,6 +51,8 @@ import * as _ from 'lodash';
 var siteKey;
 var siteSecretKey;
 var self;
+import { Inject} from "@angular/core";
+import { DOCUMENT } from '@angular/common';
 
 export class User {
   name: string;
@@ -398,6 +400,9 @@ export class DataService {
   searchTxt = '';
   searchitems = []
   searchTouched = false;
+  private _navItemSource = new BehaviorSubject<any>(0);
+  // Observable navItem stream
+  navItem$ = this._navItemSource.asObservable();
 
   constructor(
     public _http: HttpClient,
@@ -406,6 +411,7 @@ export class DataService {
     // private storage: Storage,
     private router:Router,
     // private modalCtrl: ModalController,
+    @Inject(DOCUMENT) private document: Document
 
   )
   {
@@ -537,6 +543,59 @@ export class DataService {
 
 
   // }
+
+  openFacebook(){
+    window.open("https://www.facebook.com/Sayur-Stall-112595227045790/", "_blank");
+  }
+  openMessenger(){
+    window.open("https://api.whatsapp.com/send?phone=6281236157648", "_blank");
+  }
+
+  openWhatsapp(){
+    window.open("https://api.whatsapp.com/send?phone=6281236157648", "_blank");
+  }
+
+
+  changeView(view:string){
+    this._navItemSource.next(view);
+    if (this.view == 'shop '&& view == 'shop'){
+      this.viewitem = null
+    }
+    this.view = view
+
+
+
+  }
+
+  isOffline(){
+    let date = new Date()
+    let baliTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Shanghai"});
+    let time = new Date(baliTime)
+    let hour = time.getHours()
+    return hour < 9 || hour > 17
+
+
+
+  }
+
+  addToCart(product:any){
+    // this.auth.storeproducts = this.auth.storeproducts.filter( el => el !== product )
+    if (product.added){
+      product.quantity = product.quantity * 2
+    }
+    else{
+      product.added = true
+      this.cart.push(product)
+      this.saveCart()
+    }
+
+
+    // this.cart = new MatTableDataSource(this.auth.cart)
+    // this.dataSource = new MatTableDataSource(this.auth.storeproducts);
+    // this.refreshTables()
+
+  }
+
   getProduce(){
     let temp = [];
     let i = 0;

@@ -10,15 +10,15 @@
         </div>
         <div class="linkrelparent">
           <div class = linkabsolutecontainer>
-          <a  [ngClass] = "{'link-6-selected': this.auth.view == 'shop','link-6': this.auth.view != 'shop'}" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" (click) = "this.auth.view = 'shop';this.shoplist = false;this.auth.viewitem = null">Shop</a>
+          <a  [ngClass] = "{'link-6-selected': this.auth.view == 'shop','link-6': this.auth.view != 'shop'}" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" (click) = "this.auth.changeView('shop');this.shoplist = false">Shop</a>
           </div>
           <div [style.pointer-events]="this.shoplist ? 'auto' : 'none'" (mouseleave) ="this.shoplist = false" (mouseenter) ="this.shoplist = true" class="homecatlistdiv">
             <ul class = "homecatlist fade-in-bottom w-list-unstyled"[ngClass] = "{'homecatlist': !this.shoplist, 'homecatlist-hover': this.shoplist}" >
-              <li (mouseleave) ="cat.hover = false"(mouseenter) ="cat.hover = true"  (click) = "this.auth.catfilter = cat.name;this.auth.view = 'shop';this.shoplist = false" *ngFor = "let cat of this.auth.categories" class="catlistitem">
+              <li (mouseleave) ="cat.hover = false"(mouseenter) ="cat.hover = true"  (click) = "this.auth.catfilter = cat.name;this.auth.changeView('shop');this.shoplist = false" *ngFor = "let cat of this.auth.categories" class="catlistitem">
                 <div class="catlistitemdiv">
                   <div *ngIf = "cat.hover && cat.subcategories.length > 0" class="homesublistdiv">
                     <ul class="homesublist w-list-unstyled">
-                      <li (click) = "this.auth.subfilter = sub;this.auth.view = 'shop';this.shoplist = false" *ngFor = "let sub of cat.subcategories" class="catlistitem">
+                      <li (click) = "this.auth.subfilter = sub;this.auth.changeView('shop');this.shoplist = false" *ngFor = "let sub of cat.subcategories" class="catlistitem">
                         <div class="catlistitemdiv">
                           <div class="text-block-35">{{sub}}</div>
                         </div>
@@ -35,11 +35,14 @@
         <div class="linkrelparent">
           <div class = linkabsolutecontainer>
 
-          <a [ngClass] = "{'link-6-selected': this.auth.view == 'info','link-6': this.auth.view != 'info'}" (click) = "this.auth.view = 'info'">Info</a></div>
+          <a [ngClass] = "{'link-6-selected': this.auth.view == 'info','link-6': this.auth.view != 'info'}" (click) = "this.auth.changeView('info')">Info</a></div>
         </div>
 
         </div>
-      <a href="#" class="brand-deskhome-copy w-nav-brand">
+        <div class = "div-block-130">
+          <img class = "image-6" src="app/images/90400725_112596650378981_668296348616884224_o.jpg">
+          </div>
+      <a style = "display:none" href="#" class="brand-deskhome-copy w-nav-brand">
         <div class="text-block-5-mobnonav-copy">Sayur Stall</div>
       </a>
 
@@ -48,7 +51,7 @@
       <div  class="div-block-23-deskhome-copy">
         <div class = "div-block-125">
           <div class="div-block-123">
-            <div (click) = "this.auth.view = 'cart';this.carthover = false" (mouseenter) ="this.carthover = true" (mouseleave) ="this.carthover = false"class="w-commerce-commercecartwrapper cart-3-deskhome-copy-copy">
+            <div (click) = "this.auth.changeView('cart');this.carthover = false" (mouseenter) ="this.carthover = true" (mouseleave) ="this.carthover = false"class="w-commerce-commercecartwrapper cart-3-deskhome-copy-copy">
               <a class="w-commerce-commercecartopenlink cartbuttondesk w-inline-block">
                 <svg class="w-commerce-commercecartopenlinkicon icon-2-copy" width="17px" height="17px" viewbox="0 0 17 17">
                   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -106,7 +109,7 @@
               <div class="div-block-86">
                 <div>Delivery costs and discounts are calculated at checkout</div>
               </div>
-              <div class="div-block-87"><a (click) = "this.auth.view = 'cart';this.carthover = false" class="cartmodgotocart w-button">Go to Cart</a></div>
+              <div class="div-block-87"><a (click) = "this.auth.changeView('cart');this.carthover = false" class="cartmodgotocart w-button">Go to Cart</a></div>
             </div>
           </div>
         </div>
@@ -141,6 +144,13 @@
           </div>
         </div>
       </form>
+      </div>
+      <div *ngIf = " this.auth.view == 'home'"class="div-block-135-copy">
+        <div class="div-block-133-copy">
+          <div class="text-block-61">Online Status</div>
+          <div *ngIf = "this.auth.isOffline()"class="text-block-62">Offline Now</div>
+          <div *ngIf = "!this.auth.isOffline()"class="text-block-62-copy">Currently Online</div>
+        </div>
       </div>
     </div>
   </div>

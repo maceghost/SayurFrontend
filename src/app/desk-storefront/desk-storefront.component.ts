@@ -154,40 +154,9 @@ this.dataSource.data = TREE_DATA;
 
   }
 
-  // getTags(item:any){
-  //
-  //   let retlist = []
-  //   for (let i of item.categories)
-  //
-
-  // }
 
   ngAfterViewInit(){
 
-    if (this.auth.slidechange){
-      this.auth.s2Animated = false
-      // this.auth.s2Animated = true;
-      setTimeout(() =>
-          {
-
-            this.auth.s2Animated = true;
-          },
-          1)
-
-
-    }
-    else{
-      this.auth.s1Animated = false
-      setTimeout(() =>
-          {
-
-            this.auth.s1Animated = true;
-          },
-          1)
-
-    }
-
-    this.cats = this.auth.randCats()
 
   }
   animate(){
@@ -302,14 +271,30 @@ this.dataSource.data = TREE_DATA;
 
   ngOnInit(){
     this.newFilterProducts()
-    // setTimeout(() =>
-    //       {
-    //
-    //         this.auth.s1Animated = true;
-    //       },
-    //       1)
+    if (this.auth.slidechange){
+      this.auth.s2Animated = false
+      // this.auth.s2Animated = true;
+      setTimeout(() =>
+          {
 
-    // this.auth.s1Animated = true;
+            this.auth.s2Animated = true;
+          },
+          1)
+
+
+    }
+    else{
+      this.auth.s1Animated = false
+      setTimeout(() =>
+          {
+
+            this.auth.s1Animated = true;
+          },
+          1)
+
+    }
+
+    this.cats = this.auth.randCats()
 
 
   }

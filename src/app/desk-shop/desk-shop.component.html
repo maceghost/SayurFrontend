@@ -104,8 +104,8 @@
                 </div>
               </div>
             </div>
-            <a *ngIf = "!i.added" (click) = this.addToCart(i) class="shoplistcartadd w-button">Add to cart</a>
-            <a *ngIf = "i.added" (click) = this.removeFromCart(i) class="shoplistcartadd w-button">Remove from cart</a>
+            <a (click) = this.auth.addToCart(i) class="shoplistcartadd w-button">Add to Cart</a>
+            <!-- <a *ngIf = "i.added" (click) = this.removeFromCart(i) class="shoplistcartadd w-button">Remove from cart</a> -->
 
           </div>
         </div>
@@ -146,8 +146,8 @@
                     </div>
                   </div>
                 </div>
-                <a *ngIf = "!this.auth.viewitem.added" (click) = this.addToCart(this.auth.viewitem) class="pvcheckout w-button">Add to cart</a>
-                <a *ngIf = "this.auth.viewitem.added" (click) = this.removeFromCart(this.auth.viewitem) class="pvcheckout w-button">Remove from cart</a>
+                <a (click) = this.auth.addToCart(this.auth.viewitem) class="pvcheckout w-button">Add to Cart</a>
+                <!-- <a *ngIf = "this.auth.viewitem.added" (click) = this.removeFromCart(this.auth.viewitem) class="pvcheckout w-button">Remove from cart</a> -->
               </div>
               <div class="pvfieldlist">
                 <div class="text-block-58">Categories: </div>
