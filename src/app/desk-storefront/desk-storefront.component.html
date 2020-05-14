@@ -37,8 +37,8 @@
     <div class="section-7">
       <h3 class="heading-13">Products</h3>
       <div  class="w-layout-grid catgrud">
-        <div *ngFor = "let i of this.auth.categories.slice(1,9)" class="category">
-          <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" alt="" class="catimg">
+        <div (click) = "this.auth.hitCat(i);this.auth.changeView('shop');" *ngFor = "let i of this.auth.categories.slice(1,9)" class="category">
+          <img src="{{ i.image || 'https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg'}}" alt="" class="catimg">
           <div class="cattext">{{i.name}}</div>
         </div>
 

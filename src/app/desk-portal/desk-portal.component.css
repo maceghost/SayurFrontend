@@ -9404,8 +9404,10 @@ figcaption {
 }
 
 .catimg {
-  width: 100%;
-  border-radius: 10px;
+  width: 15vw;
+  height: 15vw;
+
+  /* border-radius: 10px; */
 }
 
 .vegimg {

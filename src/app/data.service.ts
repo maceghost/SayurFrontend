@@ -4,7 +4,7 @@
 // import { IonicModule, ModalController } from '@ionic/angular';
 
 import { HttpClient } from '@angular/common/http';
-import { Injectable,ElementRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/do'
 // import { map } from 'rxjs/operators'
@@ -412,7 +412,6 @@ export class DataService {
     private router:Router,
     // private modalCtrl: ModalController,
     @Inject(DOCUMENT) document,
-    private elem: ElementRef
 
   )
   {
@@ -447,8 +446,19 @@ export class DataService {
 
       this.categories = myresult.categories
 
+      console.log(this.categories)
+      this.categories.unshift({name:'All items',subcategories:[],image:null})
+      for (let i of this.categories){
 
-      this.categories.unshift({name:'All items',subcategories:[]})
+        if (i.image){
+          i.image = this.urlBase + i.image
+
+        }
+        else{
+          i.image = ''
+        }
+
+      }
       this.category = this.categories[0]
 
       for (let i of myresult.products){
@@ -544,7 +554,57 @@ export class DataService {
 
 
   // }
+  hitCat(cat:any){
+    console.log(cat)
+    this.catfilter = cat.name
+    for (let i of this.categories){
+      if (i.name != cat.name){
+        i.expanded = false
 
+      }
+    }
+    cat.expanded = true
+
+    // if (cat.subcategories.length == 0){
+    //   this.subfilter = null
+    //
+    //   this.catfilter = cat.name
+    //   for (let i of this.categories){
+    //     if (i.name != cat.name){
+    //       i.expanded = false
+    //
+    //     }
+    //   }
+    // }
+    // else if (this.catfilter == cat.name){
+    //   cat.expanded = !cat.expanded
+    //
+    // }
+    // else{
+    //   if (cat.expanded){
+    //
+    //     this.subfilter = null
+    //
+    //     this.catfilter = cat.name
+    //
+    //     for (let i of this.categories){
+    //       if (i.name != cat.name){
+    //         i.expanded = false
+    //
+    //       }
+    //     }
+    //
+    //   }
+    //   else{
+    //     cat.expanded = true
+    //   }
+    // }
+
+
+
+
+
+  }
   openFacebook(){
     window.open("https://www.facebook.com/Sayur-Stall-112595227045790/", "_blank");
   }
