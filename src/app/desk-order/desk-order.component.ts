@@ -34,7 +34,7 @@ import * as _ from 'lodash';
 @Component({
   selector: 'app-desk-order',
   templateUrl: './desk-order.component.html',
-  styleUrls: ['../css/webflow.css','../css/normalize.css','./desk-order.component.css']
+  styleUrls: ['../css/webflow.css','../css/normalize.css','../desk-portal/desk-portal.component.css','./desk-order.component.css']
 })
 export class DeskOrderComponent implements OnInit {
 
@@ -323,10 +323,11 @@ export class DeskOrderComponent implements OnInit {
       //
       // });
       // // this.phoneForm.value.phone = user.phone
+      this.phoneForm.controls.phone.setValue(user.phone.number);
+
     }
 
 
-      this.phoneForm.controls.phone.setValue(user.phone.number);
       // this.phoneForm.controls.phone.setValue({
       //     countryCode:  user.phone.countryCode,
       //     dialCode : user.phone.dialCode,
