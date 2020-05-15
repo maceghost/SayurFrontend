@@ -1,4 +1,27 @@
-<body class="body">
+<body class="body" >
+  <div *ngIf = "this.auth.placing"class="div-block-46">
+    <h3 class="heading-7">We are currently placing your order...</h3>
+    <div class="div-block-51">
+      <div class="text-block-20">We will send an order confirmation to:<br></div>
+      <div class="div-block-52">
+        <div class="text-block-21">{{this.auth.internationalNumber || this.email}}</div>
+      </div>
+    </div>
+    <div class="text-block-22">You can respond to confirmation with questions or order change requests</div>
+  </div>
+  <div *ngIf = "this.auth.placed" class="div-block-46">
+   <h3 class="heading-7">Order placed!</h3>
+   <div class="div-block-51">
+     <div class="text-block-20">We will send an order confirmation to:<br></div>
+     <div class="div-block-52">
+       <div class="text-block-21">{{this.auth.internationalNumber || this.auth.email}}</div>
+     </div>
+   </div>
+   <div class="text-block-22">You can respond to confirmation with questions or order change requests</div>
+   <a (click) = "this.auth.placed = false" class="button-9 w-button">OK</a>
+  </div>
+  <div [ngClass]="{'dark':this.auth.placing || this.auth.placed}">
+
   <app-desk-header>  </app-desk-header>
 
   <app-desk-storefront *ngIf = "this.auth.view == 'home'">  </app-desk-storefront>
@@ -8,5 +31,6 @@
   <app-desk-order *ngIf = "this.auth.view == 'order'"></app-desk-order>
 
   <app-desk-footer></app-desk-footer>
+  </div>
 
 </body>

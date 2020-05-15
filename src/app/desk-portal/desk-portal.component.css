@@ -7306,10 +7306,10 @@ figcaption {
   right: 208px;
   bottom: auto;
   z-index: 4;
-  display: none;
+  /* display: none; */
   padding: 26px;
   border-radius: 11px;
-  background-color: #eee;
+  background-color: #fff;
 }
 
 .container-4 {

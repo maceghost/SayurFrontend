@@ -155,19 +155,24 @@ export class DeskOrderComponent implements OnInit {
         additional:''
       }
       this.auth.phone = this.phoneForm.value.phone
+      if (this.auth.phone){
+        this.auth.internationalNumber = this.auth.phone.internationalNumber
+
+      }
       this.auth.email = this.email
-      this.placing = true
+      this.auth.placing = true
+      if (this.remember){
+        this.auth.saveUser(order.custinfo)
+      }
       this.auth.post_order(order).then(result => {
         this.auth.placed = true
-        this.placing = false
+        this.auth.placing = false
         this.auth.cart = []
         for (let i of this.auth.storeproducts){
           i.added = false
         }
-        if (this.remember){
-          this.auth.saveUser(order.custinfo)
-        }
-        this.router.navigate(['/']);
+
+        this.auth.changeView('home');
 
 
 
@@ -192,7 +197,6 @@ export class DeskOrderComponent implements OnInit {
     }
   }
   amIWrong(item:any){
-    console.log(this)
     if (item == 'name'){
       if (!this.name || this.name.length == 0 || !this.name.match(/[a-zA-Z]+/g)){
         return true

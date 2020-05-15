@@ -1,16 +1,6 @@
 <div class="order">
 
-  <div *ngIf = "this.placing"class="div-block-46">
-    <h3 class="heading-7">We are currently placing your order...</h3>
-    <div class="div-block-51">
-      <div class="text-block-20">We will send an order confirmation to:<br></div>
-      <div class="div-block-52">
-        <div class="text-block-21">{{this.auth.phone.internationalNumber || this.email}}</div>
-      </div>
-    </div>
-    <div class="text-block-22">You can respond to confirmation with questions or order change requests</div>
-  </div>
-  <div [ngClass]="{'dark':this.placing}">
+
 
     <div class="checkout">
       <div class="w-container"><div (click) = "this.auth.changeView('cart')" class="link-5">Back to Cart</div></div>
@@ -179,6 +169,5 @@
         </div>
       </div>
     </div>
-  </div>
 
 </div>
