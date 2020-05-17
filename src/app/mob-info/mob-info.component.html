@@ -1,0 +1,77 @@
+<div class="info">
+  <div class="section-9">
+    <h1 class="heading-17">Need help?<br></h1>
+    <div class="div-block-132 w-clearfix">
+      <div id="w-node-03ab5625a2fb-ba21957d" class="div-block-133">
+        <div class="text-block-61">Online Status</div>
+        <div *ngIf = "this.auth.isOffline()"class="text-block-62">Offline Now</div>
+        <div *ngIf = "!this.auth.isOffline()"class="text-block-62-copy">Currently Online</div>
+      </div>
+      <div class="div-block-133">
+        <div class="text-block-61">Hours of Business</div>
+        <div class="text-block-62-copy-copy">Mon - Sun<br>9am - 5pm</div>
+      </div>
+      <!-- <div class="div-block-133">
+        <div class="text-block-61">Contact Us</div>
+        <div class="icontextrow">
+          <div class="div-block-134"></div>
+          <div class="phonerow">Facebook<br></div>
+        </div>
+        <div class="icontextrow">
+          <div class="div-block-134"></div>
+          <div class="phonerow">WhatsApp<br></div>
+        </div>
+        <div class="icontextrow">
+          <div class="div-block-134"></div>
+          <div class="phonerow-copy">+62 812-3615-7648<br></div>
+        </div>
+      </div> -->
+      <div class="div-block-133">
+        <div class="text-block-61">Contact Us</div>
+        <div class="icontextrow">
+          <div class="div-block-134" (click) = "this.auth.openMessenger()"  style="    display: flex;
+  width: 7vh;
+  height: 7vh;
+  padding: 0px;
+  justify-content: center;
+  align-items: center;font-size:52px">
+            <fa-icon style="    display: flex;
+  width: 7vh;
+  height: 7vh;
+  padding: 0px;
+  justify-content: center;
+  align-items: center;font-size:52px;color:#4267b2;"[icon]="faFacebookMessenger"></fa-icon></div>
+          <div (click) = "this.auth.openFacebook()" class="phonerow">Facebook<br></div>
+        </div>
+        <div class="icontextrow">
+          <div class="div-block-134" (click) = "this.auth.openWhatsapp()" style="    display: flex;
+  width: 7vh;
+  height: 7vh;
+  padding: 0px;
+  font-size:52px;align-items:center;justify-content:center">
+            <fa-icon style="    display: flex;
+  width: 7vh;
+  height: 7vh;
+  padding: 0px;
+  font-size:52px;color:#82c91e;align-items:center;justify-content:center"[icon]="faWhatsapp"></fa-icon></div>
+          <div (click) = "this.auth.openWhatsapp()" class="phonerow">WhatsApp<br></div>
+        </div>
+        <div class="icontextrow">
+          <div class="div-block-134" style="    display: flex;
+  width: 7vh;
+  height: 7vh;
+  padding: 0px;
+  justify-content: center;
+  align-items: center;font-size:52px;cursor:default">
+            <mat-icon style="    display: flex;
+  width: 7vh;
+  height: 7vh;
+  padding: 0px;
+  justify-content: center;
+  align-items: center;font-size:52px;color:black;">phone</mat-icon></div>
+          <div class="phonerow-copy">+62 812-3615-7648<br></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

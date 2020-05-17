@@ -1,0 +1,156 @@
+
+
+<body class="body">
+
+  <div class="orderplaced fade-in-shop" [ngClass] = "{'orderplaced': !this.auth.placed, 'orderplaced-done': this.auth.placed}">
+    <h3 class="heading-7">Order placed!</h3>
+    <div class="div-block-51-mobile">
+      <div class="text-block-20-mobile">We will send an order confirmation to:<br></div>
+      <div class="div-block-52">
+        <div class="text-block-21">{{this.auth.internationalNumber || this.auth.email}}</div>
+      </div>
+    </div>
+    <div class="text-block-22">You can respond to confirmation with questions or order change requests</div>
+    <a (click) = "this.auth.placed = false" class="button-9-copy w-button">OK</a>
+  </div>
+
+  <div class="placingorder fade-in-shop" [ngClass] = "{'placingorder': !this.auth.placing, 'placingorder-done': this.auth.placing}">
+      <h3 class="heading-7">We are currently placing your order...</h3>
+      <div class="div-block-51-mobile">
+        <div class="text-block-20-mobile">We will send an order confirmation to:<br></div>
+        <div class="div-block-52">
+          <div class="text-block-21">{{this.auth.internationalNumber || this.auth.email}}</div>
+        </div>
+      </div>
+      <div class="text-block-22">You can respond to confirmation with questions or order change requests</div>
+    </div>
+
+  <div (click) = "this.auth.shopcatselect = false; this.auth.placing = false;this.auth.placed = false;" class = "catselectmobmask" *ngIf = "this.auth.shopcatselect || this.auth.placing || this.auth.placed"></div>
+
+  <div class="div-block-151 fade-in-shop" [ngClass] = "{'div-block-151': !this.auth.shopcatselect, 'div-block-151-done': this.auth.shopcatselect}">
+    <div class="text-block-71">Category: {{this.auth.catfilter}}</div>
+    <!-- <div class="text-block-71">Choose a Category</div> -->
+    <div class="div-block-152">
+      <div (click) = "this.auth.mobilecathit(i)" [ngClass] = "{'mobcatselected':this.auth.category == i}" *ngFor="let i of this.auth.categories" class="div-block-153">
+        <div class="div-block-154" >
+          <img src="{{ i.image || 'https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg'}}" alt="" class="image-7">
+        </div>
+        <div class="text-block-72">{{i.name}}</div>
+      </div>
+    </div>
+    <div *ngIf = "this.auth.category && this.auth.category.subcategories.length > 0">
+    <div *ngIf ="!this.auth.subcategory" class="text-block-71">Choose a Subcategory</div>
+    <div *ngIf = "this.auth.subcategory" class="text-block-71">Subcategory: {{this.auth.subcategory}}</div>
+    <div class="div-block-152">
+      <div (click) = "this.auth.mobilesubhit(i)" *ngFor="let i of this.auth.category.subcategories" class="div-block-153" [ngClass] = "{'mobcatselected':this.auth.subcategory == i}">
+        <div class="div-block-154">
+          <img src="{{ i.image || 'https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg'}}" alt="" class="image-7"></div>
+        <div class="text-block-72">{{i}}</div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div [ngClass]="{'dark':this.auth.placing || this.auth.placed || this.auth.shopcatselect} ">
+    <div class="div-block-150">
+      <div class = "div-block-143 fade-in-menu "[ngClass] = "{'div-block-143': !this.auth.openmenu, 'div-block-143-open': this.auth.openmenu}">
+        <div (click) = "this.auth.openmenu = false" class="div-block-144">
+          <div class="text-block-70">Main Menu</div>
+          <div class="div-block-145">
+            <mat-icon>clear</mat-icon>
+          </div>
+        </div>
+        <div class="div-block-149">
+          <div class="div-block-146 fade-in-menu" [ngClass] = "{'div-block-146': !this.auth.opencats, 'div-block-146-open': this.auth.opencats}" >
+
+            <div (click) = "this.auth.changeView('home');this.auth.openmenu = false" class="div-block-144-copy">
+              <div class="text-block-70-copy">Home</div>
+            </div>
+            <div class="div-block-144-copy" (click) = 'this.auth.opencats = true'>
+              <div class="text-block-70-copy">Shop</div>
+              <div class="div-block-145">
+                <mat-icon>arrow_forward_ios</mat-icon>
+
+              </div>
+            </div>
+            <div (click) = "this.auth.changeView('info');this.auth.openmenu = false" class="div-block-144-copy">
+              <div class="text-block-70-copy">Info</div>
+            </div>
+          </div>
+          <div class="catmoblist fade-in-menu" [ngClass] = "{'catmoblist': this.auth.opensubs == null, 'catmoblist-open': this.auth.opensubs != null}">
+            <div (click) = "this.auth.opencats = false" class="div-block-144-copy-copy">
+              <div class="div-block-148">
+                <div class="div-block-145">
+                  <mat-icon>arrow_back_ios</mat-icon>
+
+                </div>
+              </div>
+              <div class="text-block-70-copy-copy">Main Menu</div>
+            </div>
+            <div class="listheader" >
+
+              <div class="listheadertxt">Products</div>
+            </div>
+
+            <div class="catmob" (click) = "this.auth.sidepanelcathit(i)"*ngFor = "let i of this.auth.categories">
+              <div class="catmobilelist">{{i.name}}</div>
+              <div class="div-block-147">
+                <div *ngIf = "i.subcategories.length > 0" class="div-block-145">
+                  <mat-icon>arrow_forward_ios</mat-icon>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="submoblist">
+            <div *ngIf = "this.auth.opensubs">
+
+
+              <div (click) = "this.auth.opensubs = null" class="div-block-144-copy-copy">
+                <div class="div-block-148">
+                  <div class="div-block-145">
+                    <mat-icon>arrow_back_ios</mat-icon>
+
+                  </div>
+                </div>
+                <div  class="text-block-70-copy-copy">Products</div>
+              </div>
+
+              <div class = "listheader" (click) = "this.auth.catfilter = this.auth.opensubs.name;this.auth.openmenu = false;this.auth.opensubs = null;this.auth.opencats=false;this.auth.changeView('shop')" >
+
+                <div class="listheadertxt">{{this.auth.opensubs.name}}</div>
+              </div>
+
+              <div (click) = "this.auth.subfilter = j;this.auth.openmenu = false;this.auth.opensubs = null;this.auth.opencats=false;this.auth.changeView('shop')"
+              *ngFor = "let j of this.auth.opensubs.subcategories" class="catmob">
+                <div class="catmobilelist">{{j}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf = "this.auth.openmenu" (click) = "this.auth.openmenu = false" class = "div-block-157">
+      </div>
+      <div  [ngClass]="{'dark':this.auth.openmenu}" class="div-block-142 fade-in-menu "[ngClass] = "{'div-block-142': !this.auth.openmenu, 'div-block-142-closed dark': this.auth.openmenu}">
+        <app-mob-header></app-mob-header>
+
+
+        <app-mob-home *ngIf = "this.auth.view == 'home'">  </app-mob-home>
+        <app-mob-mycart *ngIf = "this.auth.view == 'cart'"></app-mob-mycart>
+        <app-mob-shop *ngIf = "this.auth.view == 'shop'"></app-mob-shop>
+        <app-mob-info *ngIf = "this.auth.view == 'info'"></app-mob-info>
+        <app-mob-checkout *ngIf = "this.auth.view == 'order'"></app-mob-checkout>
+
+
+        <app-mob-footer></app-mob-footer>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89212b4fbaea4db21ed817" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="js/webflow.js" type="text/javascript"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+</body>

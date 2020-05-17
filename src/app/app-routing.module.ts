@@ -9,6 +9,7 @@ import { DeskOrderComponent } from './desk-order/desk-order.component';
 import { MobOrderComponent } from './mob-order/mob-order.component';
 import { ApplicationStateService } from './application-state.service';
 import { DeskPortalComponent } from './desk-portal/desk-portal.component';
+import { MobPortalComponent } from './mob-portal/mob-portal.component';
 
 
 const desktop_routes: Routes = [
@@ -21,12 +22,12 @@ const desktop_routes: Routes = [
 ];
 
 const mobile_routes: Routes = [
-  // {path: 'portal', component: MobPortalComponent},
+  {path: 'portal', component: MobPortalComponent},
 
   {path: 'shop', component: MobStorefrontComponent},
   {path: 'cart', component: MobCartComponent},
   {path: 'order', component: MobOrderComponent},
-  {path: '**', redirectTo: 'shop'}
+  {path: '**', redirectTo: 'portal'}
 ];
 
 @NgModule({

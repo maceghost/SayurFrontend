@@ -70,7 +70,7 @@ export class User {
 
 export class DataService {
 
-
+  numbers = [];
   s1Animated = false;
   s2Animated = false;
 
@@ -102,7 +102,7 @@ export class DataService {
   backButton:boolean = false;
   viewitem = null;
 
-
+  shopcatselect:any=false;
 
   catfilter = 'All items';
   subfilter = null;
@@ -116,19 +116,22 @@ export class DataService {
   port: any;
   protocol: any;
   key: any;
-
+placing:any = false;
   urlBase: string;
   apiUrl:  string;
   products :any;
   storeproducts:any = [];
   cart:any = [];
-
+  opensubs:any = null;
+  opencats:any = false;
   aisles:any;
   aisle:any = {name:"All",categories:[]};
   categories:any = [];
   randcats:any;
   category:any = null;
   subcategory:any = null;
+  mobselectcat:any = null;
+  mobselectsub:any = null;
   minprice:any = null;
   maxprice:any = null;
   placed:any = false;
@@ -390,7 +393,7 @@ export class DataService {
 {"name": "Zambia", "code": "ZM"},
 {"name": "Zimbabwe", "code": "ZW"}
 ]
-
+  openmenu:any = false;
   days:any = []
   day:any = {times:[]};
   time:any;
@@ -415,7 +418,12 @@ export class DataService {
 
   )
   {
+    let i: number = 1;
 
+    while (i < 101) {
+        this.numbers.push(i);
+        i++;
+    }
     self = this;
     this.http = _http;
     // if (0) {
@@ -554,6 +562,59 @@ export class DataService {
 
 
   // }
+
+  sidepanelcathit(cat:any){
+    if (cat.subcategories.length == 0){
+      this.catfilter = cat.name;
+      this.openmenu = false;
+      this.opensubs = null;
+      this.opencats=false;
+      this.changeView('shop')
+
+    }
+    else{
+      this.opensubs = cat;
+
+    }
+
+  }
+  mobilecathit(cat:any){
+    this.subcategory=null
+    this.category = cat;
+    this.catfilter = cat.name;
+
+
+    if (cat.subcategories.length == 0){
+      this.shopcatselect = false
+      this.changeView('shop')
+
+    }
+
+
+  }
+  mobilesubhit(sub:any){
+    this.subcategory=sub
+
+    this.shopcatselect = false
+    this.changeView('shop')
+    this.subfilter = sub
+
+
+  }
+
+
+  closemenu(){
+    console.log('hkhgjhgjhgj')
+    if (this.openmenu){
+      this.openmenu = false;
+    }
+  }
+
+  test(){
+    console.log('ggggggggg')
+
+  }
+
   hitCat(cat:any){
     console.log(cat)
     this.catfilter = cat.name

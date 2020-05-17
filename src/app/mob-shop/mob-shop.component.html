@@ -1,0 +1,142 @@
+<div class="shop">
+  <div class="section-11">
+    <div *ngIf = "this.auth.viewitem" class="productview">
+      <div (click) = "this.auth.viewitem = null" class="pvback">
+        <div class="backarrow">
+          <mat-icon >
+              arrow_back
+          </mat-icon>
+        </div>
+        <div class="text-block-68"> Back</div>
+      </div>
+      <div class="mainpv">
+        <div class="pvdetailtitle">{{this.auth.viewitem.name}}</div>
+        <div class="pvcard">
+          <div class="div-block-113">
+            <img src="{{this.auth.viewitem.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="pvimg"></div>
+          <div class="div-block-140">
+            <div class="text-block-69">Price: </div>
+            <div class="text-block-54">{{this.auth.getPrice(this.auth.viewitem)}}</div>
+          </div>
+          <div class="div-block-141"></div>
+          <div class="pvcheckoutrow">
+            <div class="text-block-55">QTY:</div>
+            <div class="form-block-13 w-form">
+              <form [(ngModel)]="this.auth.viewitem.quantity" id="email-form-2" name="email-form-2" data-name="Email Form 2">
+                <select id="field" name="field" class="select-field-7 w-select">
+                  <option *ngFor="let number of this.auth.numbers" [value]="number">{{number}}</option>
+
+                </select>
+              </form>
+
+            </div>
+          </div>
+          <a (click) = this.auth.addToCart(this.auth.viewitem) class="pvcheckout w-button">Add to Cart</a>
+
+          <div class="pvfieldlist">
+            <div class="text-block-58">Tags:</div>
+            <div (click) = "this.goToCategory('cat')" class="pvtag">{{this.auth.viewitem.category}},</div>
+            <div (click) = "this.goToCategory('sub')" class="pvtag">{{this.auth.viewitem.subcategory}}</div>
+
+          </div>
+        </div>
+        <div class="descselect">
+          <div class="text-block-56">DESCRIPTION</div>
+        </div>
+        <div class="description">
+          <div class="gendesc">
+            <div class="text-block-57">General Description:</div>
+            <div>{{this.auth.viewitem.description}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="productselect" *ngIf = "!this.auth.viewitem">
+
+      <div class="div-block-114" >
+
+        <div class="text-block-67">Choose categories:</div>
+        <div class="div-block-96-copy-copy">
+          <div class="text-block-67-copy">{{this.auth.subfilter || this.auth.catfilter}}</div>
+          <div (click)="this.auth.shopcatselect = !this.auth.shopcatselect"class="div-block-139">
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          </div>
+        </div>
+
+        <div class="div-block-96" >
+          <div (click) = "this.productview = 'grid'" class="viewchangebutt"[ngClass] = "{'viewchangebutt-selected': this.productview == 'grid','viewchangebutt': this.productview != 'grid'}">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" >
+              view_module
+            </mat-icon >
+          </div>
+          <div (click) = "this.productview = 'list'" class="viewchangebutt"[ngClass] = "{'viewchangebutt-selected': this.productview == 'list','viewchangebutt': this.productview != 'list'}">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" >
+              view_stream
+            </mat-icon >
+          </div>
+          <div class="text-block-47">{{this.newFilterProducts()}} products</div>
+
+          <div class="div-block-98" style="margin-right: 0"></div>
+          <div class="div-block-103" >
+            <form style = "position:relative;"id="email-form-5" name="email-form-5" data-name="Email Form 5">
+              <!-- <div style = "position: absolute;
+        top: 8;
+        bottom: 8;
+
+        right: 8;
+        width: 15vw;
+        height: 50%;
+        background: linear-gradient(to right, transparent, #f3f3f3);
+        pointer-events: none;"></div> -->
+
+              <select style = "border-radius: 20px;"[(ngModel)] = "this.sort" matNativeControl  id="field-6" name="field-6" class="select-field-5 w-select">
+                <option value="none">Sort by none</option>
+                <option value="pricelow">Sort by price: low to high</option>
+                <option value="pricehigh">Sort by price: high to low</option>
+              </select>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- <div class="div-block-96">
+          <div class="viewchangebutt"></div>
+          <div class="viewchangebutt"></div>
+          <div class="text-block-47">114 products</div>
+          <div class="div-block-98"></div>
+          <div class="div-block-103"></div>
+        </div> -->
+        <div class="div-block-96-copy">
+          <form autocomplete="off" class="search-2 w-form">
+            <input [(ngModel)]="this.queryTxt"  type="search" class="search-input-2 w-input" maxlength="256" name="query" placeholder="Filter" id="search-2" required="">
+          </form>
+          <!-- <form action="/search" class="search-2 w-form"><input type="search" class="search-input-2 w-input" maxlength="256" name="query" placeholder="Search…" id="search-2" required=""><input type="submit" value="Search" class="search-button-2 w-button"></form> -->
+        </div>
+
+        <div *ngIf = "this.productview == 'grid'" class="shopgrid">
+          <div class="productitem-copy-copy" *ngFor = "let i of this.products">
+            <div class="div-block-138">
+              <img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" style="height:32vw;width:32vw;"class="productimg-copy"></div>
+            <div (click) = "this.auth.viewitem = i" class="productname-copy" style="display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;">{{i.name}}</div>
+            <div class="productprice-copy">{{this.auth.getPrice(i)}}</div>
+            <div *ngIf = i.added class="div-block-60">
+              <div class="text-block-29">{{i.quantity}} in cart</div>
+             </div>
+
+          </div>
+        </div>
+        <div *ngIf = "this.productview == 'list'" class="shoplist">
+          <div *ngFor = "let i of this.products" class="shoplistitem">
+            <div class="shoplistitemimgdiv">
+              <img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="shoplistitemimg"></div>
+            <div (click) = "this.auth.viewitem = i" class="shoplistitemname">{{i.name}}</div>
+            <div class="shoplistitemprice">{{this.auth.getPrice(i)}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

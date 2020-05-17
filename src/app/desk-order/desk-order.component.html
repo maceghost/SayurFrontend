@@ -17,7 +17,7 @@
                 <label for="name-5">Name *</label>
                 <input [(ngModel)] = "this.name" [ngClass]="{ 'error' : this.touchmap.name && this.amIWrong('name') }" type="text" class="hello1 w-input" maxlength="256" name="name-5" data-name="Name 5" placeholder="" id="name-5">
                 <div *ngIf = "this.touchmap.name && this.amIWrong('name')"style="font-size:12px;color:red"> Please enter a valid name</div>
-                <label for="email-2">mobile number Or email*</label>
+                <label for="email-2">mobile number Or email *</label>
                 <label for="email-2">mobile</label>
                 <div [ngClass] = "{ 'error' : (this.phoneForm.controls.phone?.touched || this.touchmap.email) && (this.amIWrong('phone') && this.amIWrong('email')) }">
                   <form form #f="ngForm" [formGroup]="phoneForm" >

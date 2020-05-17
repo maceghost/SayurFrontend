@@ -1,0 +1,57 @@
+<div class="cartdesk">
+  <div class="div-block-14">
+    <div class="div-block-33">
+      <div (click) = "this.auth.changeView('order')" class="checkoutcartdesk w-button">Checkout Cart</div>
+      <h5 class="heading-4-deskcart">Subtotal ({{this.auth.cart.length}} items):</h5>
+      <div class="text-block-2-copy-copy"> {{this.getCartPrice()}}</div>
+      <div class="text-block-9-copy">Delivery cost calculated at checkout<br></div>
+      <div class="div-block-11-mobcart"></div><a (click) = "this.auth.changeView('shop')" class="link-2-mobcart">Continue Shopping on Sayur Stall</a>
+      <div class="div-block-11-mobcart"></div>
+    </div>
+  </div>
+  <div class="div-block-13">
+    <h5 class="heading-18">Cart ({{this.auth.cart.length}} items)</h5>
+    <div class="div-block-156" *ngFor = "let i of this.auth.cart">
+      <div class="div-block-11"></div>
+      <div>
+        <div class="div-block-17-mobcart">
+          <div class="div-block-155">
+            <img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="image-8"></div>
+          <div class="div-block-35">
+            <div class="item-name-mobcart">{{i.name}}</div>
+            <div class="cartcheckoutsingleprice">{{i.price}} x {{i.quantity}}</div>
+          </div>
+        </div>
+        <div class="pvcheckoutrow-copy">
+          <div class="text-block-55">QTY:</div>
+          <div class="form-block-13 w-form">
+            <form id="email-form-2" name="email-form-2" data-name="Email Form 2">
+              <select [(ngModel)]="i.quantity" id="field-11" name="field-11" data-name="Field 11" class="select-field-7 w-select">
+                <option *ngFor="let number of this.auth.numbers" [value]="number">{{number}}</option>
+
+              </select>
+            </form>
+
+          </div>
+          <div class="bigtrash">
+            <mat-icon     style="    display: flex;
+width: 6vh;
+height: 6vh;
+padding: 0px;
+justify-content: center;
+align-items: center;font-size:42px" (click) = "this.removeFromCart(i)">
+                delete_outline
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="div-block-11"></div>
+    <div class="div-block-20">
+      <div class="text-block-4">Subtotal ({{this.auth.cart.length}} items):</div>
+    </div>
+
+    <div class="text-block-2-copy-copy"> {{this.getCartPrice()}}</div>
+    <div (click) = "this.auth.changeView('order')" class="checkoutcartdesk w-button">Checkout Cart</div>
+  </div>
+</div>

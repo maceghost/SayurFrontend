@@ -4,8 +4,8 @@
      <div class="div-block-132 w-clearfix">
        <div class="div-block-133">
          <div class="text-block-61">Online Status</div>
-         <div class="text-block-62">Offline Now</div>
-         <div class="text-block-62-copy">Currently Online</div>
+         <div *ngIf = "this.auth.isOffline()"class="text-block-62">Offline Now</div>
+         <div *ngIf = "!this.auth.isOffline()"class="text-block-62-copy">Currently Online</div>
        </div>
        <div class="div-block-133">
          <div class="text-block-61">Hours of Business</div>
@@ -13,8 +13,8 @@
        </div>
        <div class="div-block-133">
          <div class="text-block-61">Contact Us</div>
-         <div class="icontextrow">
-           <div class="div-block-134" (click) = "this.auth.openMessenger()"  style="    display: flex;
+         <div class="icontextrow" (click) = "this.auth.openMessenger()">
+           <div class="div-block-134"   style="    display: flex;
    width: 7vw;
    height: 7vw;
    padding: 0px;
@@ -28,8 +28,8 @@
    align-items: center;font-size:52px;color:#4267b2;"[icon]="faFacebookMessenger"></fa-icon></div>
            <div (click) = "this.auth.openFacebook()" class="phonerow">Facebook<br></div>
          </div>
-         <div class="icontextrow">
-           <div class="div-block-134" (click) = "this.auth.openWhatsapp()" style="    display: flex;
+         <div class="icontextrow" (click) = "this.auth.openWhatsapp()">
+           <div class="div-block-134"  style="    display: flex;
    width: 7vw;
    height: 7vw;
    padding: 0px;
@@ -39,7 +39,7 @@
    height: 7vw;
    padding: 0px;
    font-size:52px;color:#82c91e;align-items:center;justify-content:center"[icon]="faWhatsapp"></fa-icon></div>
-           <div (click) = "this.auth.openWhatsapp()" class="phonerow">WhatsApp<br></div>
+           <div  class="phonerow">WhatsApp<br></div>
          </div>
          <div class="icontextrow">
            <div class="div-block-134" style="    display: flex;

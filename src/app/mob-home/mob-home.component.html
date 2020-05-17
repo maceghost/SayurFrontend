@@ -1,0 +1,101 @@
+<div class="home">
+    <div style = "position:relative">
+      <div class="div-block-158">
+          <div class="div-block-159 fade-in-slider" [ngClass] = "{'div-block-159': !this.auth.slidechange, 'div-block-159-done': this.auth.slidechange}">
+            <div class="slide1t1">Welcome to <br>Sayur Stall!</div>
+            <div class="text-block-63">We deliver fresh, local groceries to your doorstep.<br>Locally run, locally owned.<br></div><a (click) = "this.auth.changeView('shop')" class="button-10 w-button">Shop Now</a></div>
+          <div class="div-block-159-copy">
+            <div class="slide2t1">The freshest <br>ingredients.</div>
+            <div class="slide2t2">Delivered right <br>to your doorstep.</div><a (click) = "this.auth.changeView('shop')" class="button-10 w-button">Shop Now</a></div>
+        </div>
+      <div class="div-block-126">
+        <div (click) = "this.auth.slidechange && animate()" [ngClass] = "{'div-block-127': this.auth.slidechange, 'div-block-127-selected': !this.auth.slidechange}"></div>
+        <div (click) = "!this.auth.slidechange && animate()" [ngClass] = "{'div-block-127': !this.auth.slidechange, 'div-block-127-selected': this.auth.slidechange}"></div>
+      </div>
+      <div (click) = "animate()"class="left-arrow w-slider-arrow-left">
+        <div class="icon-3 w-icon-slider-left"></div>
+      </div>
+      <div (click) = "animate()"class="rightarrow w-slider-arrow-right">
+        <div class="icon-4 w-icon-slider-right"></div>
+      </div>
+    </div>
+
+
+  <div class="section-7">
+    <h3 class="heading-13">Products</h3>
+    <div class="w-layout-grid catgrud-copy">
+      <div (click) = "this.auth.hitCat(i);this.auth.changeView('shop');" *ngFor = "let i of this.auth.categories.slice(1,9)" class="category">
+        <img src="{{ i.image || 'https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg'}}" alt="" class="catimg">
+        <div class="cattext">{{i.name}}</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="section-7-copy">
+    <h3 class="heading-13">Fresh Produce</h3>
+    <div class="div-block-162">
+    <div class="div-block-161" style = "margin-left:25vw;display:flex;overflow:visible">
+      <div class="productitem-copy" *ngFor = "let i of this.auth.getProduce()">
+        <div class="div-block-138">
+          <img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="productimg"></div>
+        <div (click) = "this.auth.viewitem = i;this.auth.changeView('shop')" class="productname">{{i.name}}</div>
+        <div class="productprice">{{this.auth.getPrice(i)}}</div>
+        <div *ngIf = i.added class="div-block-60">
+          <div class="text-block-29">{{i.quantity}} in cart</div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div class="section-7-copy-copy">
+    <h3 class="heading-13">Our Process</h3>
+    <div class="w-layout-grid processgrid">
+      <div class="processitem"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" alt="" class="processimg">
+        <div class="processtext">Bakery</div>
+      </div>
+      <div class="processitem"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" alt="" class="processimg">
+        <div class="processtext">Bakery</div>
+      </div>
+      <div class="processitem"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" alt="" class="processimg">
+        <div class="processtext">Bakery</div>
+      </div>
+    </div>
+  </div>
+  <div class="section-8">
+    <div>
+      <div class="text-block-33">GET 10% OFF YOUR FIRST ORDER</div>
+      <div class="text-block-34">Register now and we&#x27;ll send you an <br>email with a 10% off coupon!</div>
+      <div class="div-block-69"><a href="#" class="button-11 w-button">Register Now</a></div>
+    </div><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" alt="" class="image-2"></div>
+  <div class="div-block-75"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" alt="" class="image-4">
+    <div class="div-block-79">
+      <div class="text-block-37">This is some text inside of a div block.</div>
+      <div class="text-block-40">This is some text inside of a div block.</div>
+      <div class="text-block-38">This is some text inside of a div block.</div>
+      <div class="div-block-76">
+        <div class="div-block-77">
+          <div class="form-block-12 w-form">
+            <form id="email-form" name="email-form" data-name="Email Form"><input type="text" class="text-field-3 w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name"></form>
+            <div class="w-form-done">
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+          <div class="div-block-78">
+            <div class="button-13">
+              <div class="text-block-39">+</div>
+            </div>
+            <div class="button-13">
+              <div class="text-block-39">-</div>
+            </div>
+          </div>
+        </div><a href="#" class="button-14 w-button">Add to cart</a></div>
+    </div>
+    <div class="div-block-80">
+      <div class="text-block-41">x</div>
+    </div>
+  </div>
+</div>

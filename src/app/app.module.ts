@@ -47,6 +47,16 @@ import { SearchOffCLickDirective } from './search-off-click.directive';
 import { ShareButtonModule } from '@ngx-share/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { MobPortalComponent } from './mob-portal/mob-portal.component';
+import { MobHeaderComponent } from './mob-header/mob-header.component';
+import { MobHomeComponent } from './mob-home/mob-home.component';
+import { MobShopComponent } from './mob-shop/mob-shop.component';
+import { MobCheckoutComponent } from './mob-checkout/mob-checkout.component';
+import { MobMycartComponent } from './mob-mycart/mob-mycart.component';
+import { MobInfoComponent } from './mob-info/mob-info.component';
+import { MobFooterComponent } from './mob-footer/mob-footer.component';
+
+
 // import 'hammerjs';
 
 
@@ -72,6 +82,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
     DeskHeaderComponent,
     SearchOffCLickDirective,
+    MobPortalComponent,
+    MobHeaderComponent,
+    MobHomeComponent,
+    MobShopComponent,
+    MobCheckoutComponent,
+    MobMycartComponent,
+    MobInfoComponent,
+    MobFooterComponent,
 
   ],
 

@@ -86,7 +86,7 @@
  max-height: 7vh;max-width:7vh;"src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="shoplistitemimg">
             </div>
             <div (click) = "this.auth.viewitem = i" class="shoplistitemname">{{i.name}}</div>
-            <div class="shoplistitemprice">{{this.getPrice(i)}}</div>
+            <div class="shoplistitemprice">{{this.auth.getPrice(i)}}</div>
             <div class="shoplistquantity">
               <div class="qtystring">QTY:</div>
               <div class="shoplistquantityformblock w-form">

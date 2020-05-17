@@ -1,0 +1,227 @@
+<div class="checkout-copy-mobile">
+        <div class="w-container">
+          <div (click) = "this.auth.changeView('cart')" class="link-5">Back to Cart</div>
+        </div>
+        <div class="container-2-copy-mobile w-container">
+          <div class="placeorder-deskcheck">
+            <div class="ordersummary-deskcheck">
+              <div class="w-commerce-commercecheckoutsummaryblockheader">
+                <h4>Order Summary</h4>
+              </div>
+              <fieldset class="w-commerce-commercecheckoutblockcontent">
+                <div class="w-commerce-commercecheckoutsummarylineitem">
+                  <div>Subtotal</div>
+                  <div>{{this.getCartPrice()}}</div>
+                </div>
+                <div class="w-commerce-commercecheckoutsummarylineitem">
+                  <div class="text-block-12">Note: all prices are estimated according to current market prices. Any difference between actual and estimated price will be reimbursed on delivery.</div>
+                </div>
+                <div class="w-commerce-commercecheckoutsummarylineitem">
+                  <div>Delivery</div>
+                  <div>Rp12000</div>
+                </div>
+                <div class="w-commerce-commercecheckoutsummarylineitem line-item">
+                  <div class="text-block-11">Delivery is fixed cost </div>
+                </div>
+                <div class="w-commerce-commercecheckoutsummarylineitem">
+                  <div>Total</div>
+                  <div class="text-block-13">{{this.getTotal()}}</div>
+                </div>
+              </fieldset>
+              <fieldset class="w-commerce-commercecheckoutblockcontent remember-deskcheck">
+                <div class="div-block-42">
+                  <h5 class="heading-9">Remember me?</h5>
+                  <input [(ngModel)] = "this.remember" style = "margin-left: 30px;" type="checkbox" checked>
+                  <!-- <div class="form-block-11 w-form">
+                    <form id="email-form-2" name="email-form-2" data-name="Email Form 2">
+                      <label class="w-checkbox checkbox-field">
+                        <input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox">
+                        <span class="checkbox-label w-form-label">Checkbox</span>
+                      </label>
+                    </form>
+                    <div class="w-form-done">
+                      <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="w-form-fail">
+                      <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
+                  </div> -->
+                </div>
+                <div>
+                  <div class="text-block-19">Remember info and purchases for faster shopping and checkout times.</div>
+                </div>
+              </fieldset>
+            </div>
+            <a *ngIf = "!this.formsValid()" class = "submit-mobile-inactive w-button">Place Order</a>
+            <a *ngIf = "this.formsValid()" (click) = "this.placeOrder()" class = "submit-deskcheck w-button">Place Order</a>
+
+          </div>
+          <div class="classtest">
+            <div class="custinfo">
+              <div class="w-commerce-commercecheckoutblockheader">
+                <h4 class="heading-11">Customer Info</h4>
+                <div class="text-block-27">* Required</div>
+              </div>
+
+              <div class="w-form">
+                <div id="email-form" name="email-form" data-name="Email Form" class="hello2-copy">
+                  <label for="name-5">Name *</label>
+                  <input
+  (blur)="this.touchmap.name = true"[(ngModel)] = "this.name" [ngClass]="{ 'error' : this.touchmap.name && this.amIWrong('name') }" type="text" class="hello1 w-input" maxlength="256" name="name-5" data-name="Name 5" placeholder="" id="name-5">
+                  <div *ngIf = "this.touchmap.name && this.amIWrong('name')"style="font-size:12px;color:red"> Please enter a valid name</div>
+                  <label for="email-2">mobile number Or email*</label>
+                  <label for="email-2">mobile</label>
+                  <div [ngClass] = "{ 'error' : (this.phoneForm.controls.phone?.touched || this.touchmap.email) && (this.amIWrong('phone') && this.amIWrong('email')) }">
+                    <form #f="ngForm"  [formGroup]="phoneForm" >
+                  <ngx-intl-tel-input matInput
+                  [cssClass]="{ 'error' : (this.phoneForm.controls.phone?.touched || this.touchmap.email) && (this.amIWrong('phone') && this.amIWrong('email')) }"
+                    [preferredCountries]="preferredCountries"
+                    [enableAutoCountrySelect]="false"
+                    [enablePlaceholder]="true"
+                    [searchCountryFlag]="true"
+                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                    [selectFirstCountry]="false"
+                    [selectedCountryISO]="CountryISO.Indonesia"
+                    [maxLength]="15"
+                    [tooltipField]="TooltipLabel.Name"
+                    [phoneValidation]="true"
+                    [separateDialCode]="separateDialCode"
+                    name="phone" formControlName = "phone" >
+                  </ngx-intl-tel-input></form>
+                  </div>
+                  <label for="email-2">email</label>
+                  <input (blur)="this.touchmap.email = true"[ngClass]="{ 'error' : (this.phoneForm.controls.phone?.touched || this.touchmap.email) && (this.amIWrong('phone') && this.amIWrong('email')) }" [(ngModel)] = "this.email" type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
+                  <div *ngIf = "(this.phoneForm.controls.phone?.touched || this.touchmap.email) && (this.amIWrong('phone') && this.amIWrong('email'))"style="font-size:12px;color:red"> Please either enter a valid email or phone</div>
+
+                </div>
+
+              </div>
+              <!-- <div class="w-form">
+                <form id="email-form" name="email-form" data-name="Email Form" class="hello2-copy"><label for="name-4">Name *</label><input type="text" class="hello1 w-input" maxlength="256" name="name-5" data-name="Name 5" placeholder="" id="name-5"><label for="email">mobile number Or email*</label><label for="email">Mobile</label><input type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3"><label for="email">email</label><input type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3"></form>
+                <div class="w-form-done">
+                  <div>Thank you! Your submission has been received!</div>
+                </div>
+                <div class="w-form-fail">
+                  <div>Oops! Something went wrong while submitting the form.</div>
+                </div>
+              </div> -->
+            </div>
+            <div class="custinfo-copy">
+              <div class="w-commerce-commercecheckoutblockheader">
+                <h4 class="heading-12">Delivery Address</h4>
+                <div class="text-block-28">* Required</div>
+              </div>
+              <div class="w-form">
+                <div id="email-form" name="email-form" data-name="Email Form" class="hello2-copy">
+                  <label for="email">Street Address *</label>
+                  <input (blur)="this.touchmap.address1 = true" [ngClass]="{ 'error' : this.touchmap.address1 && this.amIWrong('address1') }" [(ngModel)] = "this.address1" type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
+                  <input [(ngModel)] = "this.address2" type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3">
+
+                  <!-- <input type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3"><input type="text" class="hello1 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3"> -->
+                  <div class="w-commerce-commercecheckoutrow">
+                    <div class="w-commerce-commercecheckoutcolumn">
+                      <label class="w-commerce-commercecheckoutlabel">City *</label>
+
+                      <input (blur)="this.touchmap.city = true"[ngClass]="{ 'error' : this.touchmap.city && this.amIWrong('city') }" [(ngModel)] = "this.city" type="text" name="address_city" required="" class="w-commerce-commercecheckoutshippingcity">
+                    </div>
+                      <!--
+                      <input type="text" name="address_city" required="" class="w-commerce-commercecheckoutshippingcity"></div>
+                    <div class="w-commerce-commercecheckoutcolumn"><label class="w-commerce-commercecheckoutlabel">State/Province *</label><input type="text" name="address_state" class="w-commerce-commercecheckoutshippingstateprovince"></div>
+                    <div class="w-commerce-commercecheckoutcolumn"><label class="w-commerce-commercecheckoutlabel">Zip/Postal Code *</label><input type="text" name="address_zip" required="" class="w-commerce-commercecheckoutshippingzippostalcode"></div>
+                  </div><label>Country *</label><select name="address_country" class="w-commerce-commercecheckoutshippingcountryselector"><option value="AF">Afghanistan</option><option value="AX">Aland Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BQ">Bonaire, Saint Eustatius and Saba</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="VG">British Virgin Islands</option><option value="BN">Brunei</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CW">Curacao</option><option value="CY">Cyprus</option><option value="CZ">Czechia</option><option value="CD">Democratic Republic of the Congo</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="CI">Ivory Coast</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="XK">Kosovo</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Laos</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macao</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="KP">North Korea</option><option value="MP">Northern Mariana Islands</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestinian Territory</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="CG">Republic of the Congo</option><option value="RE">Reunion</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="RW">Rwanda</option><option value="BL">Saint Barthelemy</option><option value="SH">Saint Helena</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="MF">Saint Martin</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and the Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome and Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SX">Sint Maarten</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia and the South Sandwich Islands</option><option value="KR">South Korea</option><option value="SS">South Sudan</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="SY">Syria</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TL">Timor Leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="VI">U.S. Virgin Islands</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="UM">United States Minor Outlying Islands</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VA">Vatican</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option><option value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option></select></form>
+               -->
+                  </div>
+
+                  <div *ngIf = "(this.touchmap.address1 && this.amIWrong('address1')) || (this.touchmap.city && this.amIWrong('city') )"style="font-size:12px;color:red">
+                    Please give a valid address
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="custinfo-copy">
+              <div class="w-commerce-commercecheckoutblockheader">
+                <h4>Payment</h4>
+              </div>
+              <div class="w-form">
+                <div id="email-form" name="email-form" data-name="Email Form" class="hello2-copy">
+                  <div class="text-block-14">We only offer Cash on Delivery right now. </div>
+                  <label class="radio-button-field w-radio">
+                    <!-- <input type="radio" data-name="Radio" id="radio" name="radio" value="Radio" class="w-form-formradioinput radio-button w-radio-input"> -->
+                    <input value="COD" [(ngModel)] = this.payment  type="radio" data-name="Radio 2" id="radio-2" name="radio" class="w-form-formradioinput radio-button w-radio-input" >
+
+                    <span class="radio-button-label w-form-label">(COD) Cash on delivery</span>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+            <div class="custinfo">
+              <div class="w-commerce-commercecheckoutblockheader">
+                <h4>Schedule your order</h4>
+              </div>
+              <div class="w-form">
+                <form id="email-form" name="email-form" data-name="Email Form" class="hello2">
+                  <div class="div-block-55-mobile">
+                    <div class="text-block-23">Select a date</div>
+                    <div class="div-block-53">
+                      <div *ngFor = "let i of this.auth.days" (click) = "this.auth.day = i;this.auth.time = i.times[0]" [ngClass]="{'div-block-54' : this.auth.day.name == i.name, 'div-block-54-copy': this.auth.day.name != i.name, 'div-block-54-copy-copy': this.isAvailable(i) == 'Not Available'}">
+                        <div class="text-block-26">{{i.name}}</div>
+                        <div class="text-block-25">{{i.date}}</div>
+                        <div class="text-block-24">{{this.isAvailable(i)}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="div-block-57-mobile">
+                    <div class="text-block-23">Select a time</div>
+                    <select [(ngModel)] = "this.auth.time" name="address_country" class="w-commerce-commercecheckoutshippingcountryselector timeselect-deskcheck">
+                      <option *ngFor="let time of this.auth.day.times" [value]="time">{{time}}</option>
+
+                    </select>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+          <div class="placeorder-deskcheck">
+            <div class="ordersummary-deskcheck">
+              <div class="w-commerce-commercecheckoutsummaryblockheader">
+                <h4>Order Summary</h4>
+              </div>
+              <fieldset class="w-commerce-commercecheckoutblockcontent">
+                <div class="w-commerce-commercecheckoutsummarylineitem">
+                  <div>Subtotal</div>
+                  <div>{{this.getCartPrice()}}</div>
+                </div>
+                <div class="w-commerce-commercecheckoutsummarylineitem">
+                  <div class="text-block-12">Note: all prices are estimated according to current market prices. Any difference between actual and estimated price will be reimbursed on delivery.</div>
+                </div>
+                <div class="w-commerce-commercecheckoutsummarylineitem">
+                  <div>Delivery</div>
+                  <div>Rp12000</div>
+                </div>
+                <div class="w-commerce-commercecheckoutsummarylineitem line-item">
+                  <div class="text-block-11">Delivery is fixed cost </div>
+                </div>
+                <div class="w-commerce-commercecheckoutsummarylineitem">
+                  <div>Total</div>
+                  <div class="text-block-13">{{this.getTotal()}}</div>
+                </div>
+              </fieldset>
+              <fieldset class="w-commerce-commercecheckoutblockcontent remember-deskcheck">
+                <div style = "align-items:center" class="div-block-42">
+                  <h5 class="heading-9">Remember me?</h5>
+                  <input [(ngModel)] = "this.remember" style = "margin-left: 30px;" type="checkbox" checked>
+
+                </div>
+                <div>
+                  <div class="text-block-19">Remember info and purchases for faster shopping and checkout times.</div>
+                </div>
+              </fieldset>
+            </div>
+            <a *ngIf = "!this.formsValid()" class = "submit-mobile-inactive w-button">Place Order</a>
+            <a  *ngIf = "this.formsValid()" (click) = "this.placeOrder()" class = "submit-deskcheck w-button">Place Order</a>
+
+          </div>
+        </div>
+      </div>
