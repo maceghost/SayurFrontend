@@ -35,7 +35,7 @@
     <h3 class="heading-13">Fresh Produce</h3>
     <div class="div-block-162">
     <div class="div-block-161" style = "margin-left:25vw;display:flex;overflow:visible">
-      <div class="productitem-copy" *ngFor = "let i of this.auth.getProduce()">
+      <div class="productitem-copy" *ngFor = "let i of this.auth.produce">
         <div class="div-block-138">
           <img src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="productimg"></div>
         <div (click) = "this.auth.viewitem = i;this.auth.changeView('shop')" class="productname">{{i.name}}</div>

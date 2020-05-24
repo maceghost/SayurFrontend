@@ -47,15 +47,19 @@
     <div class="section-7-copy">
       <h3 class="heading-13">Fresh Produce</h3>
       <div class="w-layout-grid veggrid">
-        <div  class="productitem" style = "padding:1vw"*ngFor = "let i of this.auth.getProduce()">
+        <div  class="productitem-copy" *ngFor = "let i of this.auth.produce">
           <div *ngIf = i.added class="div-block-60">
             <div class="text-block-29">{{i.quantity}} in cart</div>
            </div>
+           <div>
+             <!-- <img style = "width:12vw;min-height: 12vw;
+   max-height: 12vw;max-width:12vw;"> -->
+          <img style = "width:11vw;min-height: 11vw;
+max-height: 11vw;max-width:11vw;" src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="productimg-copy">
+          </div>
 
-          <img style = "width:12vw;min-height: 12vw;
-max-height: 12vw;max-width:12vw;"src="{{i.image || 'https://uploads-ssl.webflow.com/5db1c76aadcfe25e881680fa/5db86dc421496616bf357c25_placeholder.svg'}}" alt="" class="productimg">
-          <div (click) = "this.auth.viewitem = i;this.auth.changeView('shop')" class="productname">{{i.name}}</div>
-          <div class="productprice">{{this.auth.getPrice(i)}}</div>
+          <div (click) = "this.auth.viewitem = i;this.auth.changeView('shop')" class="productname-copy">{{i.name}}</div>
+          <div class="productprice-copy">{{this.auth.getPrice(i)}}</div>
         </div>
       </div>
     </div>

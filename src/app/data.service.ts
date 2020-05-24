@@ -101,7 +101,7 @@ export class DataService {
   lastUrl:string;
   backButton:boolean = false;
   viewitem = null;
-
+  produce = [];
   shopcatselect:any=false;
 
   catfilter = 'All items';
@@ -514,6 +514,8 @@ placing:any = false;
       this.getDates(myresult.occupied)
 
       this.retrieveCart()
+      this.getProduce()
+      console.log(this.produce)
 
       // if (false === this.location.setup_complete) {
       // // if (this.location.setup_complete && this.location.setup_complete == false) {
@@ -727,18 +729,19 @@ placing:any = false;
   }
 
   getProduce(){
-    let temp = [];
     let i = 0;
-    while (i<4){
-      for (let i of this.storeproducts){
-        if (i.category == 'Fruits and Vegetables'){
-          temp.push(i)
+    let j = 0
+    while (i<5){
+      let prod = this.storeproducts[j]
+      if (prod.category == 'Fruits and Vegetables'){
+          this.produce.push(prod)
           i = i + 1
-        }
+
       }
-      break;
+      j = j + 1
     }
-    return temp
+
+    return
 
   }
 
